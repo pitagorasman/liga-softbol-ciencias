@@ -29,11 +29,9 @@
         .card-shadow {
             box-shadow: 0 10px 25px -5px rgba(0, 48, 73, 0.05), 0 8px 10px -6px rgba(0, 48, 73, 0.05);
         }
-        /* Ocultar elementos que no se deben capturar en la foto */
         .taking-screenshot .no-capture {
             display: none !important;
         }
-        /* Estilos personalizados para inputs */
         input, select {
             transition: all 0.2s ease-in-out;
         }
@@ -92,7 +90,7 @@
                         <h2 class="text-lg font-black text-[#003049] flex items-center gap-2">
                             <i class="fa-solid fa-star text-[#f77f00]"></i> TABLA DE POSICIONES
                         </h2>
-                        <span class="bg-orange-100 text-[#f77f00] text-xs font-bold px-3 py-1 rounded-full">Fase de Grupos</span>
+                        <span class="bg-orange-100 text-[#f77f00] text-xs font-bold px-3 py-1 rounded-full">Fase Regular</span>
                     </div>
                     <div class="overflow-x-auto">
                         <table class="w-full text-left text-sm">
@@ -107,9 +105,7 @@
                                     <th class="p-3 font-bold text-slate-600 text-center text-[#f77f00]">PTS</th>
                                 </tr>
                             </thead>
-                            <tbody id="homeStandingsBody" class="divide-y divide-slate-100">
-                                <!-- Generación de la tabla vacía o con datos -->
-                            </tbody>
+                            <tbody id="homeStandingsBody" class="divide-y divide-slate-100"></tbody>
                         </table>
                     </div>
                 </div>
@@ -119,9 +115,7 @@
                     <h2 class="text-lg font-black text-[#003049] mb-4 pb-2 border-b border-[#f77f00] border-opacity-30 flex items-center gap-2">
                         <i class="fa-solid fa-square-poll-horizontal text-emerald-600"></i> RECIENTES
                     </h2>
-                    <div id="homeRecentGames" class="space-y-3 max-h-[300px] overflow-y-auto pr-1">
-                        <!-- Juegos completados -->
-                    </div>
+                    <div id="homeRecentGames" class="space-y-3 max-h-[300px] overflow-y-auto pr-1"></div>
                 </div>
             </div>
 
@@ -132,9 +126,7 @@
                     <h2 class="text-lg font-black text-[#003049] mb-4 pb-2 border-b border-[#f77f00] border-opacity-30 flex items-center gap-2">
                         <i class="fa-solid fa-fire text-orange-500"></i> CUADRO DE HONOR: LÍDERES DE BATEO
                     </h2>
-                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4" id="battingLeadersGrid">
-                        <!-- Líderes -->
-                    </div>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4" id="battingLeadersGrid"></div>
                 </div>
 
                 <!-- Líderes de Pitcheo -->
@@ -142,9 +134,7 @@
                     <h2 class="text-lg font-black text-[#003049] mb-4 pb-2 border-b border-blue-500 border-opacity-30 flex items-center gap-2">
                         <i class="fa-solid fa-mound text-blue-500"></i> CUADRO DE HONOR: LÍDERES DE PITCHEO
                     </h2>
-                    <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4" id="pitchingLeadersGrid">
-                        <!-- Líderes -->
-                    </div>
+                    <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4" id="pitchingLeadersGrid"></div>
                 </div>
             </div>
         </div>
@@ -155,7 +145,7 @@
                 <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6 pb-4 border-b border-slate-200">
                     <div>
                         <h2 class="text-xl font-black text-[#003049]">Calendario Oficial de Juegos</h2>
-                        <p class="text-sm text-slate-500">Jornadas equitativas rotativas en horarios específicos (8:30 AM, 10:30 AM, 12:30 PM, 2:30 PM).</p>
+                        <p class="text-sm text-slate-500">Inauguración Viernes 25 de Septiembre con 5 equipos confirmados.</p>
                     </div>
                     <select id="calendarFilter" onchange="renderCalendar()" class="bg-slate-50 border border-slate-200 p-2.5 rounded-xl text-sm font-semibold text-slate-700">
                         <option value="all">Ver Todos los Encuentros</option>
@@ -164,9 +154,7 @@
                     </select>
                 </div>
 
-                <div id="calendarList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
-                    <!-- Calendario -->
-                </div>
+                <div id="calendarList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6"></div>
             </div>
         </div>
 
@@ -179,9 +167,7 @@
                         <p class="text-sm text-slate-500">Evalúa el rendimiento de los bateadores y lanzadores del club seleccionado.</p>
                     </div>
                     <div class="w-full md:w-64">
-                        <select id="teamSelector" onchange="renderTeamView()" class="w-full bg-slate-50 border-2 border-orange-500 p-3 rounded-xl font-bold text-[#003049]">
-                            <!-- Opciones automáticas -->
-                        </select>
+                        <select id="teamSelector" onchange="renderTeamView()" class="w-full bg-slate-50 border-2 border-orange-500 p-3 rounded-xl font-bold text-[#003049]"></select>
                     </div>
                 </div>
             </div>
@@ -217,9 +203,7 @@
                                     <th class="p-3 font-bold text-slate-600 text-center text-orange-600 bg-orange-50">OPS</th>
                                 </tr>
                             </thead>
-                            <tbody id="teamBattingBody">
-                                <!-- Bateadores -->
-                            </tbody>
+                            <tbody id="teamBattingBody"></tbody>
                         </table>
                     </div>
                 </div>
@@ -250,18 +234,15 @@
                                     <th class="p-3 font-bold text-slate-600 text-center">WHIP</th>
                                 </tr>
                             </thead>
-                            <tbody id="teamPitchingBody">
-                                <!-- Lanzadores -->
-                            </tbody>
+                            <tbody id="teamPitchingBody"></tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- PESTAÑA 4: SEGURIDAD Y PANEL ADMINISTRATIVO -->
+        <!-- PESTAÑA 4: PANEL ADMINISTRATIVO -->
         <div id="content-admin" class="tab-content hidden no-capture">
-            <!-- PANTALLA DE LOGEO ADMINISTRATIVO -->
             <div id="admin-lockscreen" class="bg-white p-8 rounded-3xl card-shadow border border-slate-100 max-w-md mx-auto text-center my-12">
                 <div class="bg-orange-100 text-[#f77f00] p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 text-2xl">
                     <i class="fa-solid fa-lock"></i>
@@ -276,24 +257,21 @@
                 </div>
             </div>
 
-            <!-- CONTROLES ADMINISTRATIVOS (OCULTOS POR DEFECTO) -->
             <div id="admin-controls" class="hidden space-y-6">
-                <!-- 1. CONFIGURACIÓN DEL CONGRESILLO (SORTEO) -->
+                <!-- 1. CONFIGURACIÓN DEL CONGRESILLO -->
                 <div class="bg-white p-6 rounded-3xl card-shadow border border-slate-100">
                     <h3 class="text-lg font-black text-[#003049] mb-4 pb-2 border-b border-slate-200 flex items-center gap-2">
                         <i class="fa-solid fa-shuffle text-[#f77f00]"></i> Sorteo Oficial de Equipos (Asignar Nombres Reales)
                     </h3>
-                    <p class="text-sm text-slate-500 mb-6">Asocia los nombres definitivos que surjan de las bolitas del congresillo a cada número. Se actualizará todo el sistema automáticamente.</p>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4" id="renameTeamsContainer">
-                        <!-- Inputs de nombres cargados dinámicamente -->
-                    </div>
+                    <p class="text-sm text-slate-500 mb-6">Asocia los nombres definitivos que surjan del congresillo a cada número. Se actualizará todo el sistema automáticamente.</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4" id="renameTeamsContainer"></div>
                     <button onclick="saveTeamNames()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-6 rounded-xl shadow-md transition-all">
                         <i class="fa-solid fa-save mr-1"></i> Guardar Nombres y Sincronizar Liga
                     </button>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <!-- 2. REGISTRAR JUGADOR EN ROSTER -->
+                    <!-- 2. REGISTRAR JUGADOR -->
                     <div class="bg-white p-6 rounded-3xl card-shadow border border-slate-100">
                         <h3 class="text-lg font-bold text-[#003049] mb-4 pb-2 border-b border-slate-200 flex items-center gap-2">
                             <i class="fa-solid fa-user-plus text-orange-500"></i> Registrar Jugador en Roster
@@ -306,9 +284,7 @@
                             <div class="grid grid-cols-2 gap-4">
                                 <div>
                                     <label class="block text-xs font-bold text-slate-600 mb-1">Asignar al Equipo</label>
-                                    <select id="adminNewPlayerTeam" class="w-full bg-slate-50 border border-slate-200 p-2.5 rounded-xl font-semibold">
-                                        <!-- Opciones -->
-                                    </select>
+                                    <select id="adminNewPlayerTeam" class="w-full bg-slate-50 border border-slate-200 p-2.5 rounded-xl font-semibold"></select>
                                 </div>
                                 <div>
                                     <label class="block text-xs font-bold text-slate-600 mb-1">Rol Principal</label>
@@ -324,7 +300,7 @@
                         </div>
                     </div>
 
-                    <!-- 3. CARGAR NÚMEROS DE JUEGO -->
+                    <!-- 3. CARGAR NÚMEROS -->
                     <div class="bg-white p-6 rounded-3xl card-shadow border border-slate-100">
                         <h3 class="text-lg font-bold text-[#003049] mb-4 pb-2 border-b border-slate-200 flex items-center gap-2">
                             <i class="fa-solid fa-square-plus text-blue-500"></i> Cargar Numeritos de Partido
@@ -333,15 +309,11 @@
                             <div class="grid grid-cols-2 gap-4">
                                 <div>
                                     <label class="block text-xs font-bold text-slate-600 mb-1">Seleccionar Equipo</label>
-                                    <select id="adminLoadTeam" onchange="adminUpdatePlayerDropdown()" class="w-full bg-slate-50 border border-slate-200 p-2.5 rounded-xl font-semibold">
-                                        <!-- Opciones -->
-                                    </select>
+                                    <select id="adminLoadTeam" onchange="adminUpdatePlayerDropdown()" class="w-full bg-slate-50 border border-slate-200 p-2.5 rounded-xl font-semibold"></select>
                                 </div>
                                 <div>
                                     <label class="block text-xs font-bold text-slate-600 mb-1">Seleccionar Jugador</label>
-                                    <select id="adminLoadPlayer" onchange="adminToggleLoadFields()" class="w-full bg-slate-50 border border-slate-200 p-2.5 rounded-xl font-semibold">
-                                        <!-- Opciones -->
-                                    </select>
+                                    <select id="adminLoadPlayer" onchange="adminToggleLoadFields()" class="w-full bg-slate-50 border border-slate-200 p-2.5 rounded-xl font-semibold"></select>
                                 </div>
                             </div>
 
@@ -436,7 +408,7 @@
                     </div>
                 </div>
 
-                <!-- 4. IMPORTAR Y RESETEAR BASE DE DATOS -->
+                <!-- 4. IMPORTAR Y RESETEAR -->
                 <div class="bg-white p-6 rounded-3xl card-shadow border border-slate-100 flex flex-col justify-between">
                     <div>
                         <h3 class="text-lg font-bold text-[#003049] mb-4 pb-2 border-b border-slate-200 flex items-center gap-2">
@@ -462,83 +434,83 @@
     </div>
 
     <script>
-        // LISTADO INICIAL DE EQUIPOS GENÉRICOS (SE ACTUALIZA CON EL SORTEO)
+        // CONFIGURACIÓN DE EQUIPOS: 5 CONFIRMADOS + 3 DISPONIBLES PARA SORTEO
         let teamNames = {
-            1: "Equipo 1",
-            2: "Equipo 2",
-            3: "Equipo 3",
-            4: "Equipo 4",
-            5: "Equipo 5",
+            1: "Ciencias",
+            2: "Ingeniería",
+            3: "Humanidades",
+            4: "FaCES",
+            5: "Derecho",
             6: "Equipo 6",
             7: "Equipo 7",
             8: "Equipo 8"
         };
 
-        // ROSTERS DESDE CERO (SIN JUGADORES PRE-CARGADOS)
         let players = [];
 
-        // CALENDARIO DE ROL REGULAR PERFECTAMENTE EQUITATIVO Y ROTATIVO DE HORARIOS
-        // Cada equipo juega exactamente 7 jornadas.
-        // Slots correspondientes: Slot 1 (8:30 AM), Slot 2 (10:30 AM), Slot 3 (12:30 PM), Slot 4 (2:30 PM)
+        // CALENDARIO OFICIAL: JORNADA 1 FIJADA (VIE 25/09) Y JORNADAS 2-8 PARA SORTEO
         const defaultGames = [
-            // JORNADA 1
-            { id: 1, homeIdx: 1, visitorIdx: 8, date: "Fecha 1", slot: "08:30 AM", jornada: 1, status: "pending", scoreHome: 0, scoreVisitor: 0 },
-            { id: 2, homeIdx: 2, visitorIdx: 7, date: "Fecha 1", slot: "10:30 AM", jornada: 1, status: "pending", scoreHome: 0, scoreVisitor: 0 },
-            { id: 3, homeIdx: 3, visitorIdx: 6, date: "Fecha 1", slot: "12:30 PM", jornada: 1, status: "pending", scoreHome: 0, scoreVisitor: 0 },
-            { id: 4, homeIdx: 4, visitorIdx: 5, date: "Fecha 1", slot: "02:30 PM", jornada: 1, status: "pending", scoreHome: 0, scoreVisitor: 0 },
+            // JORNADA 1 - Viernes 25 de Septiembre (Inauguración - Descansa Derecho)
+            { id: 1, homeIdx: 2, visitorIdx: 1, date: "Vie 25/09", slot: "11:00 AM", jornada: 1, status: "pending", scoreHome: 0, scoreVisitor: 0 },
+            { id: 2, homeIdx: 3, visitorIdx: 4, date: "Vie 25/09", slot: "02:00 PM", jornada: 1, status: "pending", scoreHome: 0, scoreVisitor: 0 },
 
-            // JORNADA 2 (Rotación de horarios para balance de Sol)
-            { id: 5, homeIdx: 6, visitorIdx: 4, date: "Fecha 2", slot: "08:30 AM", jornada: 2, status: "pending", scoreHome: 0, scoreVisitor: 0 },
-            { id: 6, homeIdx: 7, visitorIdx: 3, date: "Fecha 2", slot: "10:30 AM", jornada: 2, status: "pending", scoreHome: 0, scoreVisitor: 0 },
-            { id: 7, homeIdx: 1, visitorIdx: 2, date: "Fecha 2", slot: "12:30 PM", jornada: 2, status: "pending", scoreHome: 0, scoreVisitor: 0 },
-            { id: 8, homeIdx: 8, visitorIdx: 5, date: "Fecha 2", slot: "02:30 PM", jornada: 2, status: "pending", scoreHome: 0, scoreVisitor: 0 },
+            // JORNADA 2 (Sorteo / Rotativo)
+            { id: 5, homeIdx: 6, visitorIdx: 4, date: "Vie 02/10", slot: "08:30 AM", jornada: 2, status: "pending", scoreHome: 0, scoreVisitor: 0 },
+            { id: 6, homeIdx: 7, visitorIdx: 3, date: "Vie 02/10", slot: "10:30 AM", jornada: 2, status: "pending", scoreHome: 0, scoreVisitor: 0 },
+            { id: 7, homeIdx: 1, visitorIdx: 2, date: "Vie 02/10", slot: "12:30 PM", jornada: 2, status: "pending", scoreHome: 0, scoreVisitor: 0 },
+            { id: 8, homeIdx: 8, visitorIdx: 5, date: "Vie 02/10", slot: "02:30 PM", jornada: 2, status: "pending", scoreHome: 0, scoreVisitor: 0 },
 
             // JORNADA 3
-            { id: 9, homeIdx: 3, visitorIdx: 1, date: "Fecha 3", slot: "08:30 AM", jornada: 3, status: "pending", scoreHome: 0, scoreVisitor: 0 },
-            { id: 10, homeIdx: 4, visitorIdx: 7, date: "Fecha 3", slot: "10:30 AM", jornada: 3, status: "pending", scoreHome: 0, scoreVisitor: 0 },
-            { id: 11, homeIdx: 2, visitorIdx: 8, date: "Fecha 3", slot: "12:30 PM", jornada: 3, status: "pending", scoreHome: 0, scoreVisitor: 0 },
-            { id: 12, homeIdx: 5, visitorIdx: 6, date: "Fecha 3", slot: "02:30 PM", jornada: 3, status: "pending", scoreHome: 0, scoreVisitor: 0 },
+            { id: 9, homeIdx: 3, visitorIdx: 1, date: "Vie 09/10", slot: "08:30 AM", jornada: 3, status: "pending", scoreHome: 0, scoreVisitor: 0 },
+            { id: 10, homeIdx: 4, visitorIdx: 7, date: "Vie 09/10", slot: "10:30 AM", jornada: 3, status: "pending", scoreHome: 0, scoreVisitor: 0 },
+            { id: 11, homeIdx: 2, visitorIdx: 8, date: "Vie 09/10", slot: "12:30 PM", jornada: 3, status: "pending", scoreHome: 0, scoreVisitor: 0 },
+            { id: 12, homeIdx: 5, visitorIdx: 6, date: "Vie 09/10", slot: "02:30 PM", jornada: 3, status: "pending", scoreHome: 0, scoreVisitor: 0 },
 
             // JORNADA 4
-            { id: 13, homeIdx: 7, visitorIdx: 5, date: "Fecha 4", slot: "08:30 AM", jornada: 4, status: "pending", scoreHome: 0, scoreVisitor: 0 },
-            { id: 14, homeIdx: 1, visitorIdx: 4, date: "Fecha 4", slot: "10:30 AM", jornada: 4, status: "pending", scoreHome: 0, scoreVisitor: 0 },
-            { id: 15, homeIdx: 2, visitorIdx: 3, date: "Fecha 4", slot: "12:30 PM", jornada: 4, status: "pending", scoreHome: 0, scoreVisitor: 0 },
-            { id: 16, homeIdx: 8, visitorIdx: 6, date: "Fecha 4", slot: "02:30 PM", jornada: 4, status: "pending", scoreHome: 0, scoreVisitor: 0 },
+            { id: 13, homeIdx: 7, visitorIdx: 5, date: "Vie 16/10", slot: "08:30 AM", jornada: 4, status: "pending", scoreHome: 0, scoreVisitor: 0 },
+            { id: 14, homeIdx: 1, visitorIdx: 4, date: "Vie 16/10", slot: "10:30 AM", jornada: 4, status: "pending", scoreHome: 0, scoreVisitor: 0 },
+            { id: 15, homeIdx: 2, visitorIdx: 3, date: "Vie 16/10", slot: "12:30 PM", jornada: 4, status: "pending", scoreHome: 0, scoreVisitor: 0 },
+            { id: 16, homeIdx: 8, visitorIdx: 6, date: "Vie 16/10", slot: "02:30 PM", jornada: 4, status: "pending", scoreHome: 0, scoreVisitor: 0 },
 
             // JORNADA 5
-            { id: 17, homeIdx: 4, visitorIdx: 2, date: "Fecha 5", slot: "08:30 AM", jornada: 5, status: "pending", scoreHome: 0, scoreVisitor: 0 },
-            { id: 18, homeIdx: 5, visitorIdx: 1, date: "Fecha 5", slot: "10:30 AM", jornada: 5, status: "pending", scoreHome: 0, scoreVisitor: 0 },
-            { id: 19, homeIdx: 6, visitorIdx: 7, date: "Fecha 5", slot: "12:30 PM", jornada: 5, status: "pending", scoreHome: 0, scoreVisitor: 0 },
-            { id: 20, homeIdx: 3, visitorIdx: 8, date: "Fecha 5", slot: "02:30 PM", jornada: 5, status: "pending", scoreHome: 0, scoreVisitor: 0 },
+            { id: 17, homeIdx: 4, visitorIdx: 2, date: "Vie 23/10", slot: "08:30 AM", jornada: 5, status: "pending", scoreHome: 0, scoreVisitor: 0 },
+            { id: 18, homeIdx: 5, visitorIdx: 1, date: "Vie 23/10", slot: "10:30 AM", jornada: 5, status: "pending", scoreHome: 0, scoreVisitor: 0 },
+            { id: 19, homeIdx: 6, visitorIdx: 7, date: "Vie 23/10", slot: "12:30 PM", jornada: 5, status: "pending", scoreHome: 0, scoreVisitor: 0 },
+            { id: 20, homeIdx: 3, visitorIdx: 8, date: "Vie 23/10", slot: "02:30 PM", jornada: 5, status: "pending", scoreHome: 0, scoreVisitor: 0 },
 
             // JORNADA 6
-            { id: 21, homeIdx: 1, visitorIdx: 6, date: "Fecha 6", slot: "08:30 AM", jornada: 6, status: "pending", scoreHome: 0, scoreVisitor: 0 },
-            { id: 22, homeIdx: 2, visitorIdx: 5, date: "Fecha 6", slot: "10:30 AM", jornada: 6, status: "pending", scoreHome: 0, scoreVisitor: 0 },
-            { id: 23, homeIdx: 3, visitorIdx: 4, date: "Fecha 6", slot: "12:30 PM", jornada: 6, status: "pending", scoreHome: 0, scoreVisitor: 0 },
-            { id: 24, homeIdx: 8, visitorIdx: 7, date: "Fecha 6", slot: "02:30 PM", jornada: 6, status: "pending", scoreHome: 0, scoreVisitor: 0 },
+            { id: 21, homeIdx: 1, visitorIdx: 6, date: "Vie 30/10", slot: "08:30 AM", jornada: 6, status: "pending", scoreHome: 0, scoreVisitor: 0 },
+            { id: 22, homeIdx: 2, visitorIdx: 5, date: "Vie 30/10", slot: "10:30 AM", jornada: 6, status: "pending", scoreHome: 0, scoreVisitor: 0 },
+            { id: 23, homeIdx: 3, visitorIdx: 4, date: "Vie 30/10", slot: "12:30 PM", jornada: 6, status: "pending", scoreHome: 0, scoreVisitor: 0 },
+            { id: 24, homeIdx: 8, visitorIdx: 7, date: "Vie 30/10", slot: "02:30 PM", jornada: 6, status: "pending", scoreHome: 0, scoreVisitor: 0 },
 
             // JORNADA 7
-            { id: 25, homeIdx: 5, visitorIdx: 3, date: "Fecha 7", slot: "08:30 AM", jornada: 7, status: "pending", scoreHome: 0, scoreVisitor: 0 },
-            { id: 26, homeIdx: 6, visitorIdx: 2, date: "Fecha 7", slot: "10:30 AM", jornada: 7, status: "pending", scoreHome: 0, scoreVisitor: 0 },
-            { id: 27, homeIdx: 7, visitorIdx: 1, date: "Fecha 7", slot: "12:30 PM", jornada: 7, status: "pending", scoreHome: 0, scoreVisitor: 0 },
-            { id: 28, homeIdx: 4, visitorIdx: 8, date: "Fecha 7", slot: "02:30 PM", jornada: 7, status: "pending", scoreHome: 0, scoreVisitor: 0 }
+            { id: 25, homeIdx: 5, visitorIdx: 3, date: "Vie 06/11", slot: "08:30 AM", jornada: 7, status: "pending", scoreHome: 0, scoreVisitor: 0 },
+            { id: 26, homeIdx: 6, visitorIdx: 2, date: "Vie 06/11", slot: "10:30 AM", jornada: 7, status: "pending", scoreHome: 0, scoreVisitor: 0 },
+            { id: 27, homeIdx: 7, visitorIdx: 1, date: "Vie 06/11", slot: "12:30 PM", jornada: 7, status: "pending", scoreHome: 0, scoreVisitor: 0 },
+            { id: 28, homeIdx: 4, visitorIdx: 8, date: "Vie 06/11", slot: "02:30 PM", jornada: 7, status: "pending", scoreHome: 0, scoreVisitor: 0 },
+
+            // JORNADA 8 (Fase Final / Postemporada)
+            { id: 29, homeIdx: 1, visitorIdx: 4, date: "Vie 13/11", slot: "08:30 AM", jornada: 8, status: "pending", scoreHome: 0, scoreVisitor: 0 },
+            { id: 30, homeIdx: 2, visitorIdx: 3, date: "Vie 13/11", slot: "10:30 AM", jornada: 8, status: "pending", scoreHome: 0, scoreVisitor: 0 },
+            { id: 31, homeIdx: 5, visitorIdx: 6, date: "Vie 13/11", slot: "12:30 PM", jornada: 8, status: "pending", scoreHome: 0, scoreVisitor: 0 },
+            { id: 32, homeIdx: 7, visitorIdx: 8, date: "Vie 13/11", slot: "02:30 PM", jornada: 8, status: "pending", scoreHome: 0, scoreVisitor: 0 }
         ];
 
         let games = [];
         let leagueStandings = [];
         let isAdminLoggedIn = false;
 
-        // INICIAR CARGA DE DATOS DE LA LIGA
+        // INICIAR CARGA DE DATOS (_v4 fuerza la actualización limpia del nuevo calendario y equipos)
         function initLeague() {
-            const savedNames = localStorage.getItem('LICS_teamNames_v2');
-            const savedPlayers = localStorage.getItem('LICS_players_v2');
-            const savedGames = localStorage.getItem('LICS_games_v2');
+            const savedNames = localStorage.getItem('LICS_teamNames_v4');
+            const savedPlayers = localStorage.getItem('LICS_players_v4');
+            const savedGames = localStorage.getItem('LICS_games_v4');
 
             teamNames = savedNames ? JSON.parse(savedNames) : { ...teamNames };
             players = savedPlayers ? JSON.parse(savedPlayers) : [];
             games = savedGames ? JSON.parse(savedGames) : [ ...defaultGames ];
 
-            // Si es desbloqueado en la sesión
             if (sessionStorage.getItem('LICS_admin_unlocked') === 'true') {
                 isAdminLoggedIn = true;
                 showAdminDashboard();
@@ -551,12 +523,11 @@
         }
 
         function saveData() {
-            localStorage.setItem('LICS_teamNames_v2', JSON.stringify(teamNames));
-            localStorage.setItem('LICS_players_v2', JSON.stringify(players));
-            localStorage.setItem('LICS_games_v2', JSON.stringify(games));
+            localStorage.setItem('LICS_teamNames_v4', JSON.stringify(teamNames));
+            localStorage.setItem('LICS_players_v4', JSON.stringify(players));
+            localStorage.setItem('LICS_games_v4', JSON.stringify(games));
         }
 
-        // CONTROL DE ACCESO ADMINISTRATIVO SIN ALERTS
         function unlockAdmin() {
             const pass = document.getElementById('adminPassInput').value;
             if (pass === "ciencias2026") {
@@ -581,7 +552,6 @@
             tabBtn.innerHTML = `<i class="fa-solid fa-unlock text-lg text-emerald-500"></i> Panel de Control`;
         }
 
-        // RENDER DE ENTRADAS PARA EL SORTEO
         function renderTeamNameInputs() {
             const container = document.getElementById('renameTeamsContainer');
             container.innerHTML = '';
@@ -595,13 +565,11 @@
             }
         }
 
-        // GUARDAR EL CONGRESILLO (SORTEO)
         function saveTeamNames() {
             let changesMade = false;
             for (let i = 1; i <= 8; i++) {
                 const val = document.getElementById(`renameTeam-${i}`).value.trim();
                 if (val && val !== teamNames[i]) {
-                    // Actualizamos rosters anteriores que tuvieran el nombre viejo
                     const oldName = teamNames[i];
                     players.forEach(p => {
                         if (p.team === oldName) p.team = val;
@@ -616,7 +584,6 @@
                 populateTeamSelectors();
                 renderAll();
                 
-                // Efecto visual positivo en el botón
                 const btn = document.querySelector("#admin-controls button");
                 const originalText = btn.innerHTML;
                 btn.innerHTML = `<i class="fa-solid fa-check mr-1"></i> ¡Sorteo Sincronizado!`;
@@ -629,7 +596,6 @@
         }
 
         function calculateStandings() {
-            // Generar tabla basada en los nombres actuales del sorteo
             leagueStandings = [];
             for (let i = 1; i <= 8; i++) {
                 leagueStandings.push({
@@ -662,10 +628,8 @@
                 }
             });
 
-            // Ordenamiento Oficial de Liga (Puntos, juegos ganados)
             leagueStandings.sort((a, b) => b.pts - a.pts || b.jg - a.jg);
 
-            // Calcular Diferencia (DIF) y Porcentaje (PCT)
             if (leagueStandings.length > 0) {
                 const leader = leagueStandings[0];
                 leagueStandings.forEach(t => {
@@ -675,7 +639,6 @@
             }
         }
 
-        // SELECTORES DINÁMICOS
         function populateTeamSelectors() {
             const teamSelects = [
                 document.getElementById('teamSelector'),
@@ -732,7 +695,6 @@
             }
         }
 
-        // SISTEMA DE PESTAÑAS
         function switchTab(tabId) {
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
             document.querySelectorAll('.tab-content').forEach(c => c.classList.add('hidden'));
@@ -741,7 +703,6 @@
             document.getElementById(`content-${tabId}`).classList.remove('hidden');
         }
 
-        // CALCULADORAS DE MÉTRICAS OFICIALES
         function calculateAVG(h, vb) { return vb > 0 ? h / vb : 0; }
         function calculateOBP(h, bb, vb, sf) { return (vb + bb + sf) > 0 ? (h + bb) / (vb + bb + sf) : 0; }
         function calculateSLG(singles, d2b, d3b, hr, vb) {
@@ -771,7 +732,7 @@
             const tbody = document.getElementById('homeStandingsBody');
             tbody.innerHTML = '';
             leagueStandings.forEach((t, i) => {
-                const boldClass = i < 4 ? 'font-bold text-[#f77f00]' : 'text-slate-800'; // Top 4 clasifican
+                const boldClass = i < 4 ? 'font-bold text-[#f77f00]' : 'text-slate-800';
                 tbody.innerHTML += `
                     <tr class="hover:bg-slate-50 border-b border-slate-100 transition">
                         <td class="p-3 font-bold ${boldClass}">${t.name}</td>
@@ -811,14 +772,13 @@
                             </div>
                         </div>
                         <div class="ml-4 pl-4 border-l border-slate-200 text-right text-[9px] text-slate-400 font-bold">
-                            Jor. ${g.jornada}<br>${g.slot}
+                            Jor. ${g.jornada} (${g.date})<br>${g.slot}
                         </div>
                     </div>
                 `;
             });
         }
 
-        // RENDER DE LÍDERES
         function renderLeaders() {
             const battingGrid = document.getElementById('battingLeadersGrid');
             const pitchingGrid = document.getElementById('pitchingLeadersGrid');
@@ -826,7 +786,6 @@
             const batters = players.filter(p => p.type === 'Bateador');
             batters.forEach(p => calculateMetrics(p));
 
-            // Clasificados con al menos 2 VB para AVG/OPS
             const qualifiedBatters = batters.filter(p => p.vb >= 2);
 
             const leadAVG = [...qualifiedBatters].sort((a,b) => b.avg - a.avg)[0] || { name: '-', team: '-', avg: 0 };
@@ -906,7 +865,7 @@
                 list.innerHTML += `
                     <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm flex flex-col justify-between">
                         <div class="p-3 ${headerClass} flex justify-between items-center text-xs font-black">
-                            <span>JORNADA ${g.jornada}</span>
+                            <span>JORNADA ${g.jornada} · ${g.date}</span>
                             <span><i class="fa-solid fa-clock mr-1"></i>${g.slot}</span>
                         </div>
                         <div class="p-4 flex-1">
@@ -925,7 +884,6 @@
             });
         }
 
-        // RENDER VISTA ROSTER EQUIPO
         function renderTeamView() {
             const team = document.getElementById('teamSelector').value;
             const batBody = document.getElementById('teamBattingBody');
@@ -937,7 +895,6 @@
             document.getElementById('teamBattersCount').innerText = `${teamBatters.length} Jugadores`;
             document.getElementById('teamPitchersCount').innerText = `${teamPitchers.length} Pitchers`;
 
-            // Bateadores
             batBody.innerHTML = '';
             if (teamBatters.length === 0) {
                 batBody.innerHTML = `<tr><td colspan="15" class="p-4 text-center text-slate-400 font-bold">No hay bateadores inscritos. Agrégalos en el Panel Administrativo.</td></tr>`;
@@ -966,7 +923,6 @@
                 });
             }
 
-            // Lanzadores
             pitBody.innerHTML = '';
             if (teamPitchers.length === 0) {
                 pitBody.innerHTML = `<tr><td colspan="12" class="p-4 text-center text-slate-400 font-bold">No hay lanzadores inscritos. Agrégalos en el Panel Administrativo.</td></tr>`;
@@ -994,7 +950,6 @@
             }
         }
 
-        // REGISTRAR NUEVO JUGADOR EN ROSTER
         function createNewPlayer() {
             const name = document.getElementById('adminNewPlayerName').value.trim();
             const team = document.getElementById('adminNewPlayerTeam').value;
@@ -1024,7 +979,6 @@
             document.getElementById('adminNewPlayerName').value = '';
         }
 
-        // SUSTENTAR ESTADÍSTICAS A JUGADOR
         function adminApplyStats() {
             const team = document.getElementById('adminLoadTeam').value;
             const name = document.getElementById('adminLoadPlayer').value;
@@ -1058,11 +1012,9 @@
             saveData();
             renderAll();
 
-            // Resetear inputs de carga
             document.querySelectorAll('#adminFieldsBateador input, #adminFieldsLanzador input').forEach(inp => inp.value = "0");
         }
 
-        // FINALIZAR JUEGOS EN CALENDARIO
         function finishGame(id) {
             const scoreH = parseInt(document.getElementById(`scH-${id}`).value);
             const scoreV = parseInt(document.getElementById(`scV-${id}`).value);
@@ -1079,7 +1031,6 @@
             renderAll();
         }
 
-        // RESPALDAR RESPALDO JSON
         function exportToJSON() {
             const data = {
                 teamNames: teamNames,
@@ -1097,7 +1048,6 @@
             document.body.removeChild(a);
         }
 
-        // IMPORTAR RESPALDO
         function importFromJSON(event) {
             const file = event.target.files[0];
             if (!file) return;
@@ -1121,7 +1071,6 @@
             reader.readAsText(file);
         }
 
-        // CAPTURAR DASHBOARD A IMAGEN
         function captureDashboard() {
             document.body.classList.add('taking-screenshot');
             html2canvas(document.querySelector("#dashboard-content")).then(canvas => {
@@ -1133,7 +1082,6 @@
             });
         }
 
-        // RESETEAR DATA COMPLETA
         function resetWholeLeague() {
             if (confirm("¿Seguro de reiniciar la liga completa? Se eliminarán rosters y estadísticas ingresadas.")) {
                 localStorage.clear();
@@ -1142,11 +1090,9 @@
             }
         }
 
-        // INICIALIZACIÓN
         window.onload = function() {
             initLeague();
         };
     </script>
 </body>
 </html>
-```
