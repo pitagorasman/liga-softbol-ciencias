@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>I Liga Interestudiantil de Softbol de Ciencias UCV</title>
-    <!-- Tailwind CSS -->
+    <!-- Tailwind CSS para el diseño premium -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Chart.js -->
+    <!-- Chart.js para las gráficas interactivas -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- FontAwesome -->
+    <!-- FontAwesome para iconografía deportiva -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- html2canvas -->
+    <!-- html2canvas para capturar reportes de la liga -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600;700&display=swap');
@@ -65,7 +65,7 @@
             </div>
         </header>
 
-        <!-- NAVEGACIÓN -->
+        <!-- NAVEGACIÓN ENTRE SECCIONES -->
         <nav class="flex border-b border-slate-200 mb-6 bg-white rounded-2xl p-2 shadow-sm no-capture overflow-x-auto">
             <button onclick="switchTab('inicio')" id="tab-inicio" class="tab-btn active flex items-center gap-2 py-3 px-6 font-bold text-sm border-b-2 border-transparent text-slate-500 hover:text-[#f77f00] transition whitespace-nowrap">
                 <i class="fa-solid fa-trophy text-lg"></i> Resumen del Torneo
@@ -84,7 +84,7 @@
         <!-- PESTAÑA 1: INICIO Y LÍDERES -->
         <div id="content-inicio" class="tab-content">
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
-                <!-- Tabla de Posiciones -->
+                <!-- Tabla de Posiciones de la Liga -->
                 <div class="bg-white p-6 rounded-3xl card-shadow border border-slate-100 lg:col-span-2">
                     <div class="flex justify-between items-center mb-4 pb-2 border-b border-[#f77f00] border-opacity-30">
                         <h2 class="text-lg font-black text-[#003049] flex items-center gap-2">
@@ -124,7 +124,7 @@
                 <!-- Líderes de Bateo -->
                 <div class="bg-white p-6 rounded-3xl card-shadow border border-slate-100">
                     <h2 class="text-lg font-black text-[#003049] mb-4 pb-2 border-b border-[#f77f00] border-opacity-30 flex items-center gap-2">
-                        <i class="fa-solid fa-fire text-orange-500"></i> CUADRO DE HONOR: LÍDERES DE BATEO[cite: 9]
+                        <i class="fa-solid fa-fire text-orange-500"></i> CUADRO DE HONOR: LÍDERES DE BATEO
                     </h2>
                     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4" id="battingLeadersGrid"></div>
                 </div>
@@ -132,7 +132,7 @@
                 <!-- Líderes de Pitcheo -->
                 <div class="bg-white p-6 rounded-3xl card-shadow border border-slate-100">
                     <h2 class="text-lg font-black text-[#003049] mb-4 pb-2 border-b border-blue-500 border-opacity-30 flex items-center gap-2">
-                        <i class="fa-solid fa-mound text-blue-500"></i> CUADRO DE HONOR: LÍDERES DE PITCHEO[cite: 9]
+                        <i class="fa-solid fa-mound text-blue-500"></i> CUADRO DE HONOR: LÍDERES DE PITCHEO
                     </h2>
                     <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4" id="pitchingLeadersGrid"></div>
                 </div>
@@ -145,7 +145,7 @@
                 <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6 pb-4 border-b border-slate-200">
                     <div>
                         <h2 class="text-xl font-black text-[#003049]">Calendario Oficial de Juegos</h2>
-                        <p class="text-sm text-slate-500">5 Jornadas de fase regular sin repetir 3 veces ningún horario (11:00 AM, 01:00 PM y 03:00 PM).</p>
+                        <p class="text-sm text-slate-500">5 Jornadas de fase regular sin repetir 3 veces ningún horario. Horarios: 11:00 AM, 01:00 PM y 03:00 PM.</p>
                     </div>
                     <select id="calendarFilter" onchange="renderCalendar()" class="bg-slate-50 border border-slate-200 p-2.5 rounded-xl text-sm font-semibold text-slate-700">
                         <option value="all">Ver Todos los Encuentros</option>
@@ -258,7 +258,7 @@
             </div>
 
             <div id="admin-controls" class="hidden space-y-6">
-                <!-- Configuración de Nombres -->
+                <!-- 1. CONFIGURACIÓN DE NOMBRES -->
                 <div class="bg-white p-6 rounded-3xl card-shadow border border-slate-100">
                     <h3 class="text-lg font-black text-[#003049] mb-4 pb-2 border-b border-slate-200 flex items-center gap-2">
                         <i class="fa-solid fa-shuffle text-[#f77f00]"></i> Nombres Oficiales de los 6 Equipos
@@ -271,7 +271,7 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <!-- Registrar Jugador -->
+                    <!-- 2. REGISTRAR JUGADOR -->
                     <div class="bg-white p-6 rounded-3xl card-shadow border border-slate-100">
                         <h3 class="text-lg font-bold text-[#003049] mb-4 pb-2 border-b border-slate-200 flex items-center gap-2">
                             <i class="fa-solid fa-user-plus text-orange-500"></i> Registrar Jugador en Roster
@@ -300,7 +300,7 @@
                         </div>
                     </div>
 
-                    <!-- Cargar Números -->
+                    <!-- 3. CARGAR NÚMEROS -->
                     <div class="bg-white p-6 rounded-3xl card-shadow border border-slate-100">
                         <h3 class="text-lg font-bold text-[#003049] mb-4 pb-2 border-b border-slate-200 flex items-center gap-2">
                             <i class="fa-solid fa-square-plus text-blue-500"></i> Cargar Numeritos de Partido
@@ -408,7 +408,7 @@
                     </div>
                 </div>
 
-                <!-- Backup & Reset -->
+                <!-- 4. IMPORTAR Y RESETEAR -->
                 <div class="bg-white p-6 rounded-3xl card-shadow border border-slate-100 flex flex-col justify-between">
                     <div>
                         <h3 class="text-lg font-bold text-[#003049] mb-4 pb-2 border-b border-slate-200 flex items-center gap-2">
@@ -434,6 +434,7 @@
     </div>
 
     <script>
+        // CONFIGURACIÓN DE LOS 6 EQUIPOS OFICIALES
         const TOTAL_TEAMS = 6;
         let teamNames = {
             1: "Ciencias",
@@ -444,8 +445,8 @@
             6: "Profesores"
         };
 
-        // BASE DE DATOS FIJA INCRUSTADA CON LOS JUGADORES Y NUMERITOS OFICIALES CARGADOS
-        const initialOfficialPlayers = [
+        // BASE DE DATOS INICIAL CON LOS 48 JUGADORES Y LANZADORES REGISTRADOS DEL JSON OFICIAL
+        const defaultPlayers = [
             {"name":"Luis Flores","team":"Ciencias","type":"Bateador","vb":3,"h":3,"d2b":1,"d3b":0,"hr":0,"bb":1,"sf":0,"ci":0,"ca":1,"k":0},
             {"name":"Jose Yvimas","team":"Ciencias","type":"Bateador","vb":4,"h":1,"d2b":0,"d3b":0,"hr":0,"bb":1,"sf":0,"ci":1,"ca":1,"k":0},
             {"name":"Pedro Machado","team":"Ciencias","type":"Bateador","vb":3,"h":1,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":0,"k":0},
@@ -472,9 +473,9 @@
             {"name":"Luis Villamizar","team":"Ingeniería","type":"Bateador","vb":2,"h":0,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":0,"k":0},
             {"name":"Luis Camejo","team":"Ingeniería","type":"Bateador","vb":2,"h":0,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":0,"k":0},
             {"name":"Adrian Corro","team":"Ingeniería","type":"Bateador","vb":2,"h":0,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":0,"k":0},
-            {"name":"Ronald Gonzalez","team":"Ciencias","type":"Lanzador","vb":0,"h":0,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":0,"jl":0,"jg":0,"jp":0,"js":0,"ip":0,"cl":0,"k":0},
-            {"name":"Ronald Gonzalez P","team":"Ingeniería","type":"Lanzador","vb":0,"h":13,"d2b":0,"d3b":0,"hr":0,"bb":5,"sf":0,"ci":0,"ca":0,"jl":1,"jg":0,"jp":1,"js":0,"ip":5,"cl":10,"k":1},
-            {"name":"Bryant Rivas (P)","team":"Ciencias","type":"Lanzador","vb":0,"h":9,"d2b":0,"d3b":0,"hr":0,"bb":2,"sf":0,"ci":0,"ca":0,"jl":1,"jg":1,"jp":0,"js":0,"ip":5,"cl":6,"k":2},
+            {"name":"Ronald Gonzalez","team":"Ciencias","type":"Lanzador","jl":0,"jg":0,"jp":0,"js":0,"ip":0,"h":0,"cl":0,"bb":0,"k":0,"era":0},
+            {"name":"Ronald Gonzalez P","team":"Ingeniería","type":"Lanzador","jl":1,"jg":0,"jp":1,"js":0,"ip":5,"h":13,"cl":10,"bb":5,"k":1,"era":14},
+            {"name":"Bryant Rivas (P)","team":"Ciencias","type":"Lanzador","jl":1,"jg":1,"jp":0,"js":0,"ip":5,"h":9,"cl":6,"bb":2,"k":2,"era":8.4},
             {"name":"Daniel Madrid","team":"FaCES","type":"Bateador","vb":2,"h":1,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":0,"k":0},
             {"name":"Diego Benavides","team":"FaCES","type":"Bateador","vb":3,"h":1,"d2b":1,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":1,"ca":1,"k":0},
             {"name":"Omar Gamero","team":"FaCES","type":"Bateador","vb":2,"h":1,"d2b":0,"d3b":0,"hr":1,"bb":1,"sf":0,"ci":1,"ca":2,"k":0},
@@ -489,8 +490,8 @@
             {"name":"Luis Gomez","team":"FaCES","type":"Bateador","vb":2,"h":1,"d2b":1,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":1,"ca":1,"k":0},
             {"name":"Michel Toglia","team":"FaCES","type":"Bateador","vb":1,"h":0,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":0,"k":0},
             {"name":"Felix Garcia","team":"FaCES","type":"Bateador","vb":1,"h":0,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":0,"k":0},
-            {"name":"Juvenal Jimenez (P)","team":"FaCES","type":"Lanzador","vb":0,"h":9,"d2b":0,"d3b":0,"hr":0,"bb":1,"sf":0,"ci":0,"ca":0,"jl":1,"jg":0,"jp":0,"js":0,"ip":3,"cl":5,"k":0},
-            {"name":"Jose Torrealba (P)","team":"FaCES","type":"Lanzador","vb":0,"h":3,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":0,"jl":1,"jg":1,"jp":0,"js":0,"ip":3,"cl":0,"k":0},
+            {"name":"Juvenal Jimenez (P)","team":"FaCES","type":"Lanzador","jl":1,"jg":0,"jp":0,"js":0,"ip":3,"h":9,"cl":5,"bb":1,"k":0,"era":11.67},
+            {"name":"Jose Torrealba (P)","team":"FaCES","type":"Lanzador","jl":1,"jg":1,"jp":0,"js":0,"ip":3,"h":3,"cl":0,"bb":0,"k":0,"era":0},
             {"name":"Daniel Martinez","team":"Humanidades","type":"Bateador","vb":3,"h":0,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":0,"k":0},
             {"name":"Manuel Aguiar","team":"Humanidades","type":"Bateador","vb":3,"h":0,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":0,"k":0},
             {"name":"Hector Marquez","team":"Humanidades","type":"Bateador","vb":2,"h":1,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":1,"k":0},
@@ -502,15 +503,15 @@
             {"name":"Yonmar Montoya","team":"Humanidades","type":"Bateador","vb":2,"h":1,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":1,"ca":0,"k":0},
             {"name":"Jesus Briceño","team":"Humanidades","type":"Bateador","vb":2,"h":0,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":0,"k":0},
             {"name":"Asdrubal Polidor","team":"Humanidades","type":"Bateador","vb":2,"h":0,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":0,"k":0},
-            {"name":"Yonmar Montoya (P)","team":"Humanidades","type":"Lanzador","vb":0,"h":7,"d2b":0,"d3b":0,"hr":0,"bb":3,"sf":0,"ci":0,"ca":0,"jl":1,"jg":0,"jp":1,"js":0,"ip":4.2,"cl":7,"k":0},
-            {"name":"Luis Salazar (P)","team":"Humanidades","type":"Lanzador","vb":0,"h":2,"d2b":0,"d3b":0,"hr":0,"bb":2,"sf":0,"ci":0,"ca":0,"jl":1,"jg":0,"jp":0,"js":0,"ip":1,"cl":3,"k":0}
+            {"name":"Yonmar Montoya (P)","team":"Humanidades","type":"Lanzador","jl":1,"jg":0,"jp":1,"js":0,"ip":4.2,"h":7,"cl":7,"bb":3,"k":0,"era":10.5},
+            {"name":"Luis Salazar (P)","team":"Humanidades","type":"Lanzador","jl":1,"jg":0,"jp":0,"js":0,"ip":1,"h":2,"cl":3,"bb":2,"k":0,"era":21}
         ];
 
         let players = [];
 
-        // CALENDARIO OFICIAL ROUND-ROBIN: 5 JORNADAS EXACTAS (SIN REPETIR NINGÚN HORARIO 3 VECES)
+        // CALENDARIO OFICIAL ROUND-ROBIN (5 JORNADAS EXACTAS - SIN REPETIR 3 VECES NINGÚN HORARIO)
         const defaultGames = [
-            // JORNADA 1 - Viernes 25 de Septiembre
+            // JORNADA 1 - Viernes 25 de Septiembre (OFICIAL JUGADA)
             { id: 1, homeIdx: 2, visitorIdx: 1, date: "Vie 25/09", slot: "11:00 AM", jornada: 1, status: "finished", scoreHome: 6, scoreVisitor: 10 },
             { id: 2, homeIdx: 5, visitorIdx: 6, date: "Vie 25/09", slot: "01:00 PM", jornada: 1, status: "pending", scoreHome: 0, scoreVisitor: 0 },
             { id: 3, homeIdx: 3, visitorIdx: 4, date: "Vie 25/09", slot: "03:00 PM", jornada: 1, status: "finished", scoreHome: 5, scoreVisitor: 10 },
@@ -530,7 +531,7 @@
             { id: 11, homeIdx: 1, visitorIdx: 5, date: "Vie 16/10", slot: "01:00 PM", jornada: 4, status: "pending", scoreHome: 0, scoreVisitor: 0 },
             { id: 12, homeIdx: 2, visitorIdx: 4, date: "Vie 16/10", slot: "03:00 PM", jornada: 4, status: "pending", scoreHome: 0, scoreVisitor: 0 },
 
-            // JORNADA 5 - Viernes 23 de Octubre
+            // JORNADA 5 - Viernes 23 de Octubre (Cierre Oficial del Campeonato)
             { id: 13, homeIdx: 4, visitorIdx: 5, date: "Vie 23/10", slot: "11:00 AM", jornada: 5, status: "pending", scoreHome: 0, scoreVisitor: 0 },
             { id: 14, homeIdx: 2, visitorIdx: 3, date: "Vie 23/10", slot: "01:00 PM", jornada: 5, status: "pending", scoreHome: 0, scoreVisitor: 0 },
             { id: 15, homeIdx: 1, visitorIdx: 6, date: "Vie 23/10", slot: "03:00 PM", jornada: 5, status: "pending", scoreHome: 0, scoreVisitor: 0 }
@@ -540,7 +541,7 @@
         let leagueStandings = [];
         let isAdminLoggedIn = false;
 
-        // INICIAR CARGA DE DATOS (_v8 sincroniza los 50 jugadores y líderes fijos en cualquier navegador)
+        // INICIAR CARGA DE DATOS (_v8 integra los 48 jugadores reales del JSON con sus numeritos limpios)
         function initLeague() {
             const savedNames = localStorage.getItem('LICS_teamNames_v8');
             const savedPlayers = localStorage.getItem('LICS_players_v8');
@@ -548,16 +549,13 @@
 
             teamNames = savedNames ? JSON.parse(savedNames) : { ...teamNames };
             
-            // Priorizamos la base de datos oficial cargada si en el navegador no hay nada
-            if (savedPlayers) {
-                players = JSON.parse(savedPlayers);
-            } else {
-                players = JSON.parse(JSON.stringify(initialOfficialPlayers));
-            }
-
-            // Normalización de nulos
+            // Priorizar jugadores cargados en la base de datos oficial
+            players = savedPlayers ? JSON.parse(savedPlayers) : [ ...defaultPlayers ];
+            
+            // Blindaje de seguridad para que ningún jugador tenga k como null o undefined
             players.forEach(p => {
                 if (p.k === null || p.k === undefined) p.k = 0;
+                calculateMetrics(p);
             });
 
             games = savedGames ? JSON.parse(savedGames) : [ ...defaultGames ];
@@ -571,7 +569,6 @@
             populateTeamSelectors();
             renderAll();
             renderTeamNameInputs();
-            saveData();
         }
 
         function saveData() {
@@ -647,7 +644,7 @@
             }
         }
 
-        // TABLA DE POSICIONES CON REGLA Y ORDEN MLB ESTRICTO
+        // CÁLCULO DE TABLA DE POSICIONES CON REGLA Y ORDEN MLB ESTRICTO
         function calculateStandings() {
             leagueStandings = [];
             for (let i = 1; i <= TOTAL_TEAMS; i++) {
@@ -657,6 +654,7 @@
                 });
             }
 
+            // Considerar las 5 jornadas de fase regular
             games.forEach(g => {
                 if (g.status === 'finished') {
                     const homeName = teamNames[g.homeIdx];
@@ -690,12 +688,13 @@
                 t.pct = t.jj > 0 ? (t.jg / t.jj) : 0;
             });
 
-            // Determinar líder
+            // Encontrar al líder (mayor PCT y mayor número de JG)
             let leader = [...leagueStandings].sort((a,b) => b.pct - a.pct || b.jg - a.jg)[0];
             const leaderJG = leader ? leader.jg : 0;
             const leaderJP = leader ? leader.jp : 0;
 
-            // FÓRMULA OFICIAL DE DIFERENCIA (GAMES BEHIND) MLB
+            // FÓRMULA OFICIAL DE DIFERENCIA (GAMES BEHIND) MLB:
+            // DIF = ((JG_Líder - JG_Equipo) + (JP_Equipo - JP_Líder)) / 2
             leagueStandings.forEach(t => {
                 const gb = ((leaderJG - t.jg) + (t.jp - leaderJP)) / 2.0;
                 t.difNum = gb;
@@ -708,7 +707,7 @@
                 }
             });
 
-            // ORDEN ESTRICTO POR DIFERENCIA
+            // ORDEN ESTRICTO POR DIFERENCIA (Menor DIF va arriba, desempata por PCT, PTS y DIF de carreras)
             leagueStandings.sort((a, b) => {
                 if (a.difNum !== b.difNum) return a.difNum - b.difNum;
                 if (b.pct !== a.pct) return b.pct - a.pct;
@@ -858,7 +857,7 @@
             });
         }
 
-        // RENDER LÍDERES
+        // RENDER DE CUADROS DE HONOR Y LÍDERES
         function renderLeaders() {
             const battingGrid = document.getElementById('battingLeadersGrid');
             const pitchingGrid = document.getElementById('pitchingLeadersGrid');
@@ -866,7 +865,7 @@
             const batters = players.filter(p => p.type === 'Bateador');
             batters.forEach(p => calculateMetrics(p));
 
-            // Filtro clasificados: mínimo 2 VB para AVG y OPS
+            // Bateadores calificados con al menos 2 VB para AVG/OPS
             const qualifiedBatters = batters.filter(p => (p.vb || 0) >= 2);
 
             const leadAVG = [...qualifiedBatters].sort((a,b) => b.avg - a.avg)[0] || { name: '-', team: '-', avg: 0 };
@@ -876,15 +875,17 @@
             const leadOPS = [...qualifiedBatters].sort((a,b) => b.ops - a.ops)[0] || { name: '-', team: '-', ops: 0 };
 
             battingGrid.innerHTML = `
-                ${renderLeaderCard("🥇 AVG Bateo", leadAVG.name, leadAVG.team, leadAVG.avg.toFixed(3), "text-orange-500")}
-                ${renderLeaderCard("💪 Impulsadas", leadCI.name, leadCI.team, leadCI.ci || 0, "text-orange-600")}
-                ${renderLeaderCard("🏃 Anotadas", leadCA.name, leadCA.team, leadCA.ca || 0, "text-amber-500")}
-                ${renderLeaderCard("💣 Jonrones", leadHR.name, leadHR.team, leadHR.hr || 0, "text-red-500")}
+                ${renderLeaderCard("🥇 AVG BATEO", leadAVG.name, leadAVG.team, leadAVG.avg.toFixed(3), "text-orange-500")}
+                ${renderLeaderCard("💪 IMPULSADAS", leadCI.name, leadCI.team, leadCI.ci || 0, "text-orange-600")}
+                ${renderLeaderCard("🏃 ANOTADAS", leadCA.name, leadCA.team, leadCA.ca || 0, "text-amber-500")}
+                ${renderLeaderCard("💣 JONRONES", leadHR.name, leadHR.team, leadHR.hr || 0, "text-red-500")}
                 ${renderLeaderCard("👑 OPS", leadOPS.name, leadOPS.team, leadOPS.ops.toFixed(3), "text-yellow-600")}
             `;
 
             const pitchers = players.filter(p => p.type === 'Lanzador');
-            pitchers.forEach(p => { p.era = calculateERA(p.cl || 0, p.ip || 0); });
+            pitchers.forEach(p => { 
+                p.era = calculateERA(p.cl || 0, p.ip || 0); 
+            });
 
             const leadJG = [...pitchers].sort((a,b) => (b.jg || 0) - (a.jg || 0))[0] || { name: '-', team: '-', jg: 0 };
             const leadK = [...pitchers].sort((a,b) => (b.k || 0) - (a.k || 0))[0] || { name: '-', team: '-', k: 0 };
@@ -892,10 +893,10 @@
             const leadJS = [...pitchers].sort((a,b) => (b.js || 0) - (a.js || 0))[0] || { name: '-', team: '-', js: 0 };
 
             pitchingGrid.innerHTML = `
-                ${renderLeaderCard("⭐ Ganados", leadJG.name, leadJG.team, leadJG.jg || 0, "text-blue-500")}
-                ${renderLeaderCard("🔥 Ponches", leadK.name, leadK.team, leadK.k || 0, "text-indigo-500")}
-                ${renderLeaderCard("🎯 Efectividad", leadERA.name, leadERA.team, leadERA.era.toFixed(2), "text-teal-500")}
-                ${renderLeaderCard("🛡️ Salvados", leadJS.name, leadJS.team, leadJS.js || 0, "text-blue-600")}
+                ${renderLeaderCard("⭐ GANADOS", leadJG.name, leadJG.team, leadJG.jg || 0, "text-blue-500")}
+                ${renderLeaderCard("🔥 PONCHES", leadK.name, leadK.team, leadK.k || 0, "text-indigo-500")}
+                ${renderLeaderCard("🎯 EFECTIVIDAD", leadERA.name, leadERA.team, leadERA.era.toFixed(2), "text-teal-500")}
+                ${renderLeaderCard("🛡️ SALVADOS", leadJS.name, leadJS.team, leadJS.js || 0, "text-blue-600")}
             `;
         }
 
@@ -910,7 +911,7 @@
             `;
         }
 
-        // RENDER CALENDARIO
+        // RENDER CALENDARIO (5 JORNADAS DE FASE REGULAR)
         function renderCalendar() {
             const list = document.getElementById('calendarList');
             const filter = document.getElementById('calendarFilter').value;
@@ -965,7 +966,7 @@
             });
         }
 
-        // RENDER VISTA ROSTER EQUIPO
+        // RENDER VISTA ROSTER EQUIPO (SIN NULL EN K)
         function renderTeamView() {
             const team = document.getElementById('teamSelector').value;
             const batBody = document.getElementById('teamBattingBody');
@@ -1145,6 +1146,13 @@
                     if (parsed.teamNames && parsed.players && parsed.games) {
                         teamNames = parsed.teamNames;
                         players = parsed.players;
+                        
+                        // Sanear k: null al importar
+                        players.forEach(p => {
+                            if (p.k === null || p.k === undefined) p.k = 0;
+                            calculateMetrics(p);
+                        });
+
                         games = parsed.games;
                         saveData();
                         calculateStandings();
