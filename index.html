@@ -52,7 +52,7 @@
                 <img src="Vintage Denim Apparel Logo (1).png" alt="Logo Softbol Ciencias UCV" class="h-20 w-20 object-contain rounded-full bg-white p-1 border-2 border-orange-500 shadow-md">
                 <div>
                     <h1 class="text-xl md:text-2xl font-black tracking-wide text-white uppercase">I Liga Interestudiantil de Softbol</h1>
-                    <p class="text-sm text-orange-400 font-bold">Facultad de Ciencias - UCV • 6 Equipos en Competencia</p>
+                    <p class="text-sm text-orange-400 font-bold">Facultad de Ciencias - UCV • 6 Equipos • 5 Jornadas Oficiales</p>
                 </div>
             </div>
             <div class="flex gap-2 no-capture relative z-10">
@@ -145,7 +145,7 @@
                 <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6 pb-4 border-b border-slate-200">
                     <div>
                         <h2 class="text-xl font-black text-[#003049]">Calendario Oficial de Juegos</h2>
-                        <p class="text-sm text-slate-500">Horarios oficiales rotativos: 11:00 AM, 01:00 PM y 03:00 PM.</p>
+                        <p class="text-sm text-slate-500">5 Jornadas de fase regular sin repetir 3 veces ningún horario. Horarios: 11:00 AM, 01:00 PM y 03:00 PM.</p>
                     </div>
                     <select id="calendarFilter" onchange="renderCalendar()" class="bg-slate-50 border border-slate-200 p-2.5 rounded-xl text-sm font-semibold text-slate-700">
                         <option value="all">Ver Todos los Encuentros</option>
@@ -447,8 +447,9 @@
 
         let players = [];
 
-        // CALENDARIO COMPLETO Y ROTATIVO EN LOS HORARIOS: 11:00 AM, 01:00 PM y 03:00 PM
-        // Todos los equipos juegan equilibradamente en cada horario.
+        // CALENDARIO OFICIAL ROUND-ROBIN (5 JORNADAS EXACTAS - SIN REPETIR 3 VECES NINGÚN HORARIO)
+        // Todos juegan 15 partidos en total (5 partidos por equipo, todos contra todos una vez).
+        // Cada equipo juega 2 veces en dos horarios y 1 vez en el restante (máximo 2 por horario).
         const defaultGames = [
             // JORNADA 1 - Viernes 25 de Septiembre
             { id: 1, homeIdx: 2, visitorIdx: 1, date: "Vie 25/09", slot: "11:00 AM", jornada: 1, status: "finished", scoreHome: 6, scoreVisitor: 10 },
@@ -457,50 +458,42 @@
 
             // JORNADA 2 - Viernes 02 de Octubre
             { id: 4, homeIdx: 1, visitorIdx: 3, date: "Vie 02/10", slot: "11:00 AM", jornada: 2, status: "pending", scoreHome: 0, scoreVisitor: 0 },
-            { id: 5, homeIdx: 2, visitorIdx: 5, date: "Vie 02/10", slot: "01:00 PM", jornada: 2, status: "pending", scoreHome: 0, scoreVisitor: 0 },
-            { id: 6, homeIdx: 4, visitorIdx: 6, date: "Vie 02/10", slot: "03:00 PM", jornada: 2, status: "pending", scoreHome: 0, scoreVisitor: 0 },
+            { id: 5, homeIdx: 4, visitorIdx: 6, date: "Vie 02/10", slot: "01:00 PM", jornada: 2, status: "pending", scoreHome: 0, scoreVisitor: 0 },
+            { id: 6, homeIdx: 2, visitorIdx: 5, date: "Vie 02/10", slot: "03:00 PM", jornada: 2, status: "pending", scoreHome: 0, scoreVisitor: 0 },
 
             // JORNADA 3 - Viernes 09 de Octubre
-            { id: 7, homeIdx: 1, visitorIdx: 4, date: "Vie 09/10", slot: "11:00 AM", jornada: 3, status: "pending", scoreHome: 0, scoreVisitor: 0 },
-            { id: 8, homeIdx: 3, visitorIdx: 5, date: "Vie 09/10", slot: "01:00 PM", jornada: 3, status: "pending", scoreHome: 0, scoreVisitor: 0 },
-            { id: 9, homeIdx: 2, visitorIdx: 6, date: "Vie 09/10", slot: "03:00 PM", jornada: 3, status: "pending", scoreHome: 0, scoreVisitor: 0 },
+            { id: 7, homeIdx: 2, visitorIdx: 6, date: "Vie 09/10", slot: "11:00 AM", jornada: 3, status: "pending", scoreHome: 0, scoreVisitor: 0 },
+            { id: 8, homeIdx: 1, visitorIdx: 4, date: "Vie 09/10", slot: "01:00 PM", jornada: 3, status: "pending", scoreHome: 0, scoreVisitor: 0 },
+            { id: 9, homeIdx: 3, visitorIdx: 5, date: "Vie 09/10", slot: "03:00 PM", jornada: 3, status: "pending", scoreHome: 0, scoreVisitor: 0 },
 
             // JORNADA 4 - Viernes 16 de Octubre
             { id: 10, homeIdx: 3, visitorIdx: 6, date: "Vie 16/10", slot: "11:00 AM", jornada: 4, status: "pending", scoreHome: 0, scoreVisitor: 0 },
-            { id: 11, homeIdx: 2, visitorIdx: 4, date: "Vie 16/10", slot: "01:00 PM", jornada: 4, status: "pending", scoreHome: 0, scoreVisitor: 0 },
-            { id: 12, homeIdx: 1, visitorIdx: 5, date: "Vie 16/10", slot: "03:00 PM", jornada: 4, status: "pending", scoreHome: 0, scoreVisitor: 0 },
+            { id: 11, homeIdx: 1, visitorIdx: 5, date: "Vie 16/10", slot: "01:00 PM", jornada: 4, status: "pending", scoreHome: 0, scoreVisitor: 0 },
+            { id: 12, homeIdx: 2, visitorIdx: 4, date: "Vie 16/10", slot: "03:00 PM", jornada: 4, status: "pending", scoreHome: 0, scoreVisitor: 0 },
 
-            // JORNADA 5 - Viernes 23 de Octubre (Cierre de Ronda Regular)
+            // JORNADA 5 - Viernes 23 de Octubre (Cierre Oficial del Campeonato)
             { id: 13, homeIdx: 4, visitorIdx: 5, date: "Vie 23/10", slot: "11:00 AM", jornada: 5, status: "pending", scoreHome: 0, scoreVisitor: 0 },
-            { id: 14, homeIdx: 1, visitorIdx: 6, date: "Vie 23/10", slot: "01:00 PM", jornada: 5, status: "pending", scoreHome: 0, scoreVisitor: 0 },
-            { id: 15, homeIdx: 2, visitorIdx: 3, date: "Vie 23/10", slot: "03:00 PM", jornada: 5, status: "pending", scoreHome: 0, scoreVisitor: 0 },
-
-            // JORNADA 6 - Viernes 30 de Octubre (Semifinales: 1° vs 4° y 2° vs 3°)
-            { id: 16, homeIdx: 1, visitorIdx: 4, date: "Vie 30/10", slot: "11:00 AM", jornada: 6, status: "pending", scoreHome: 0, scoreVisitor: 0 },
-            { id: 17, homeIdx: 2, visitorIdx: 3, date: "Vie 30/10", slot: "01:30 PM", jornada: 6, status: "pending", scoreHome: 0, scoreVisitor: 0 },
-
-            // JORNADA 7 - Viernes 06 de Noviembre (3er Lugar y Gran Final)
-            { id: 18, homeIdx: 3, visitorIdx: 4, date: "Vie 06/11", slot: "11:00 AM", jornada: 7, status: "pending", scoreHome: 0, scoreVisitor: 0 },
-            { id: 19, homeIdx: 1, visitorIdx: 2, date: "Vie 06/11", slot: "01:30 PM", jornada: 7, status: "pending", scoreHome: 0, scoreVisitor: 0 }
+            { id: 14, homeIdx: 2, visitorIdx: 3, date: "Vie 23/10", slot: "01:00 PM", jornada: 5, status: "pending", scoreHome: 0, scoreVisitor: 0 },
+            { id: 15, homeIdx: 1, visitorIdx: 6, date: "Vie 23/10", slot: "03:00 PM", jornada: 5, status: "pending", scoreHome: 0, scoreVisitor: 0 }
         ];
 
         let games = [];
         let leagueStandings = [];
         let isAdminLoggedIn = false;
 
-        // INICIAR CARGA DE DATOS (_v6 actualiza la fórmula MLB, slots de horas y corrige K en rosters)
+        // INICIAR CARGA DE DATOS (_v7 migra jugadores existentes y aplica 5 jornadas con balance 2-2-1)
         function initLeague() {
-            const savedNames = localStorage.getItem('LICS_teamNames_v6');
-            const savedPlayers = localStorage.getItem('LICS_players_v6');
-            const savedGames = localStorage.getItem('LICS_games_v6');
+            const savedNames = localStorage.getItem('LICS_teamNames_v7');
+            const savedPlayers = localStorage.getItem('LICS_players_v7');
+            const savedGames = localStorage.getItem('LICS_games_v7');
 
-            // Si el usuario tenía jugadores guardados en v5 o v4, migrarlos automáticamente
-            const legacyPlayers = savedPlayers || localStorage.getItem('LICS_players_v5') || localStorage.getItem('LICS_players_v4');
+            // Migración automática de jugadores anteriores si existían
+            const legacyPlayers = savedPlayers || localStorage.getItem('LICS_players_v6') || localStorage.getItem('LICS_players_v5') || localStorage.getItem('LICS_players_v4');
 
             teamNames = savedNames ? JSON.parse(savedNames) : { ...teamNames };
             players = legacyPlayers ? JSON.parse(legacyPlayers) : [];
             
-            // Aseguramos que ningún jugador tenga k como null o undefined
+            // Garantizar que ningún jugador tenga k como null o undefined
             players.forEach(p => {
                 if (p.k === null || p.k === undefined) p.k = 0;
             });
@@ -519,9 +512,9 @@
         }
 
         function saveData() {
-            localStorage.setItem('LICS_teamNames_v6', JSON.stringify(teamNames));
-            localStorage.setItem('LICS_players_v6', JSON.stringify(players));
-            localStorage.setItem('LICS_games_v6', JSON.stringify(games));
+            localStorage.setItem('LICS_teamNames_v7', JSON.stringify(teamNames));
+            localStorage.setItem('LICS_players_v7', JSON.stringify(players));
+            localStorage.setItem('LICS_games_v7', JSON.stringify(games));
         }
 
         function unlockAdmin() {
@@ -601,9 +594,9 @@
                 });
             }
 
-            // Considerar solo jornadas de fase regular (Jornadas 1 a 5)
+            // Considerar las 5 jornadas de fase regular
             games.forEach(g => {
-                if (g.status === 'finished' && g.jornada <= 5) {
+                if (g.status === 'finished') {
                     const homeName = teamNames[g.homeIdx];
                     const visitorName = teamNames[g.visitorIdx];
                     
@@ -631,17 +624,16 @@
                 }
             });
 
-            // Calcular porcentajes primero para determinar líder
             leagueStandings.forEach(t => {
                 t.pct = t.jj > 0 ? (t.jg / t.jj) : 0;
             });
 
-            // Encontrar el líder o líderes (con mayor PCT y más JG)
+            // Encontrar al líder (mayor PCT y mayor número de JG)
             let leader = [...leagueStandings].sort((a,b) => b.pct - a.pct || b.jg - a.jg)[0];
             const leaderJG = leader ? leader.jg : 0;
             const leaderJP = leader ? leader.jp : 0;
 
-            // FÓRMULA OFICIAL DE DIFERENCIA (GAMES BEHIND) MLB:
+            // FÓRMULA OFICIAL DE DIFERENCIA MLB:
             // DIF = ((JG_Líder - JG_Equipo) + (JP_Equipo - JP_Líder)) / 2
             leagueStandings.forEach(t => {
                 const gb = ((leaderJG - t.jg) + (t.jp - leaderJP)) / 2.0;
@@ -855,7 +847,7 @@
             `;
         }
 
-        // RENDER CALENDARIO
+        // RENDER CALENDARIO (5 JORNADAS DE FASE REGULAR)
         function renderCalendar() {
             const list = document.getElementById('calendarList');
             const filter = document.getElementById('calendarFilter').value;
@@ -910,7 +902,7 @@
             });
         }
 
-        // RENDER VISTA ROSTER EQUIPO CON CORRECCIÓN DEL NULL EN PONCHES (K)
+        // RENDER VISTA ROSTER EQUIPO (SIN NULL EN K)
         function renderTeamView() {
             const team = document.getElementById('teamSelector').value;
             const batBody = document.getElementById('teamBattingBody');
@@ -928,7 +920,6 @@
             } else {
                 teamBatters.forEach(p => {
                     calculateMetrics(p);
-                    // Corrección estricta: asegurar que K se muestre como entero y nunca null
                     const ponches = (p.k !== undefined && p.k !== null) ? p.k : 0;
 
                     batBody.innerHTML += `
