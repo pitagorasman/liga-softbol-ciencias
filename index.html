@@ -52,7 +52,7 @@
                 <img src="Vintage Denim Apparel Logo (1).png" alt="Logo Softbol Ciencias UCV" class="h-20 w-20 object-contain rounded-full bg-white p-1 border-2 border-orange-500 shadow-md">
                 <div>
                     <h1 class="text-xl md:text-2xl font-black tracking-wide text-white uppercase">I Liga Interestudiantil de Softbol</h1>
-                    <p class="text-sm text-orange-400 font-bold">Facultad de Ciencias - UCV • Torneo Oficial</p>
+                    <p class="text-sm text-orange-400 font-bold">Facultad de Ciencias - UCV • 6 Equipos en Competencia</p>
                 </div>
             </div>
             <div class="flex gap-2 no-capture relative z-10">
@@ -90,7 +90,7 @@
                         <h2 class="text-lg font-black text-[#003049] flex items-center gap-2">
                             <i class="fa-solid fa-star text-[#f77f00]"></i> TABLA DE POSICIONES
                         </h2>
-                        <span class="bg-orange-100 text-[#f77f00] text-xs font-bold px-3 py-1 rounded-full">Fase Regular</span>
+                        <span class="bg-orange-100 text-[#f77f00] text-xs font-bold px-3 py-1 rounded-full">Fase Regular (Top 4 a Semis)</span>
                     </div>
                     <div class="overflow-x-auto">
                         <table class="w-full text-left text-sm">
@@ -145,7 +145,7 @@
                 <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6 pb-4 border-b border-slate-200">
                     <div>
                         <h2 class="text-xl font-black text-[#003049]">Calendario Oficial de Juegos</h2>
-                        <p class="text-sm text-slate-500">Inauguración Viernes 25 de Septiembre con 5 equipos confirmados.</p>
+                        <p class="text-sm text-slate-500">Torneo de 6 equipos: 5 Jornadas de fase regular + Semifinales y Gran Final.</p>
                     </div>
                     <select id="calendarFilter" onchange="renderCalendar()" class="bg-slate-50 border border-slate-200 p-2.5 rounded-xl text-sm font-semibold text-slate-700">
                         <option value="all">Ver Todos los Encuentros</option>
@@ -258,13 +258,13 @@
             </div>
 
             <div id="admin-controls" class="hidden space-y-6">
-                <!-- 1. CONFIGURACIÓN DEL CONGRESILLO -->
+                <!-- 1. CONFIGURACIÓN DE NOMBRES -->
                 <div class="bg-white p-6 rounded-3xl card-shadow border border-slate-100">
                     <h3 class="text-lg font-black text-[#003049] mb-4 pb-2 border-b border-slate-200 flex items-center gap-2">
-                        <i class="fa-solid fa-shuffle text-[#f77f00]"></i> Sorteo Oficial de Equipos (Asignar Nombres Reales)
+                        <i class="fa-solid fa-shuffle text-[#f77f00]"></i> Nombres Oficiales de los 6 Equipos
                     </h3>
-                    <p class="text-sm text-slate-500 mb-6">Asocia los nombres definitivos que surjan del congresillo a cada número. Se actualizará todo el sistema automáticamente.</p>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4" id="renameTeamsContainer"></div>
+                    <p class="text-sm text-slate-500 mb-6">Puedes ajustar los nombres de los 6 equipos de la liga. Se actualizarán en todas las vistas automáticamente.</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-4" id="renameTeamsContainer"></div>
                     <button onclick="saveTeamNames()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-6 rounded-xl shadow-md transition-all">
                         <i class="fa-solid fa-save mr-1"></i> Guardar Nombres y Sincronizar Liga
                     </button>
@@ -434,78 +434,64 @@
     </div>
 
     <script>
-        // CONFIGURACIÓN DE EQUIPOS: 5 CONFIRMADOS + 3 DISPONIBLES PARA SORTEO
+        // CONFIGURACIÓN DE LOS 6 EQUIPOS OFICIALES
+        const TOTAL_TEAMS = 6;
         let teamNames = {
             1: "Ciencias",
             2: "Ingeniería",
             3: "Humanidades",
             4: "FaCES",
             5: "Derecho",
-            6: "Equipo 6",
-            7: "Equipo 7",
-            8: "Equipo 8"
+            6: "Profesores"
         };
 
         let players = [];
 
-        // CALENDARIO OFICIAL: JORNADA 1 FIJADA (VIE 25/09) Y JORNADAS 2-8 PARA SORTEO
+        // CALENDARIO COMPLETO PARA 6 EQUIPOS (CON RESULTADOS DEL 25/09 Y RESTO SORTEADO EQUITATIVAMENTE)
         const defaultGames = [
-            // JORNADA 1 - Viernes 25 de Septiembre (Inauguración - Descansa Derecho)
-            { id: 1, homeIdx: 2, visitorIdx: 1, date: "Vie 25/09", slot: "11:00 AM", jornada: 1, status: "pending", scoreHome: 0, scoreVisitor: 0 },
-            { id: 2, homeIdx: 3, visitorIdx: 4, date: "Vie 25/09", slot: "02:00 PM", jornada: 1, status: "pending", scoreHome: 0, scoreVisitor: 0 },
+            // JORNADA 1 - Viernes 25 de Septiembre (JUGADA)
+            { id: 1, homeIdx: 2, visitorIdx: 1, date: "Vie 25/09", slot: "11:00 AM", jornada: 1, status: "finished", scoreHome: 6, scoreVisitor: 10 },
+            { id: 2, homeIdx: 3, visitorIdx: 4, date: "Vie 25/09", slot: "02:00 PM", jornada: 1, status: "finished", scoreHome: 5, scoreVisitor: 10 },
+            { id: 3, homeIdx: 5, visitorIdx: 6, date: "Vie 25/09", slot: "03:45 PM", jornada: 1, status: "pending", scoreHome: 0, scoreVisitor: 0 },
 
-            // JORNADA 2 (Sorteo / Rotativo)
-            { id: 5, homeIdx: 6, visitorIdx: 4, date: "Vie 02/10", slot: "08:30 AM", jornada: 2, status: "pending", scoreHome: 0, scoreVisitor: 0 },
-            { id: 6, homeIdx: 7, visitorIdx: 3, date: "Vie 02/10", slot: "10:30 AM", jornada: 2, status: "pending", scoreHome: 0, scoreVisitor: 0 },
-            { id: 7, homeIdx: 1, visitorIdx: 2, date: "Vie 02/10", slot: "12:30 PM", jornada: 2, status: "pending", scoreHome: 0, scoreVisitor: 0 },
-            { id: 8, homeIdx: 8, visitorIdx: 5, date: "Vie 02/10", slot: "02:30 PM", jornada: 2, status: "pending", scoreHome: 0, scoreVisitor: 0 },
+            // JORNADA 2 - Viernes 02 de Octubre
+            { id: 4, homeIdx: 1, visitorIdx: 5, date: "Vie 02/10", slot: "09:00 AM", jornada: 2, status: "pending", scoreHome: 0, scoreVisitor: 0 },
+            { id: 5, homeIdx: 4, visitorIdx: 6, date: "Vie 02/10", slot: "11:30 AM", jornada: 2, status: "pending", scoreHome: 0, scoreVisitor: 0 },
+            { id: 6, homeIdx: 2, visitorIdx: 3, date: "Vie 02/10", slot: "02:00 PM", jornada: 2, status: "pending", scoreHome: 0, scoreVisitor: 0 },
 
-            // JORNADA 3
-            { id: 9, homeIdx: 3, visitorIdx: 1, date: "Vie 09/10", slot: "08:30 AM", jornada: 3, status: "pending", scoreHome: 0, scoreVisitor: 0 },
-            { id: 10, homeIdx: 4, visitorIdx: 7, date: "Vie 09/10", slot: "10:30 AM", jornada: 3, status: "pending", scoreHome: 0, scoreVisitor: 0 },
-            { id: 11, homeIdx: 2, visitorIdx: 8, date: "Vie 09/10", slot: "12:30 PM", jornada: 3, status: "pending", scoreHome: 0, scoreVisitor: 0 },
-            { id: 12, homeIdx: 5, visitorIdx: 6, date: "Vie 09/10", slot: "02:30 PM", jornada: 3, status: "pending", scoreHome: 0, scoreVisitor: 0 },
+            // JORNADA 3 - Viernes 09 de Octubre
+            { id: 7, homeIdx: 1, visitorIdx: 4, date: "Vie 09/10", slot: "09:00 AM", jornada: 3, status: "pending", scoreHome: 0, scoreVisitor: 0 },
+            { id: 8, homeIdx: 5, visitorIdx: 2, date: "Vie 09/10", slot: "11:30 AM", jornada: 3, status: "pending", scoreHome: 0, scoreVisitor: 0 },
+            { id: 9, homeIdx: 6, visitorIdx: 3, date: "Vie 09/10", slot: "02:00 PM", jornada: 3, status: "pending", scoreHome: 0, scoreVisitor: 0 },
 
-            // JORNADA 4
-            { id: 13, homeIdx: 7, visitorIdx: 5, date: "Vie 16/10", slot: "08:30 AM", jornada: 4, status: "pending", scoreHome: 0, scoreVisitor: 0 },
-            { id: 14, homeIdx: 1, visitorIdx: 4, date: "Vie 16/10", slot: "10:30 AM", jornada: 4, status: "pending", scoreHome: 0, scoreVisitor: 0 },
-            { id: 15, homeIdx: 2, visitorIdx: 3, date: "Vie 16/10", slot: "12:30 PM", jornada: 4, status: "pending", scoreHome: 0, scoreVisitor: 0 },
-            { id: 16, homeIdx: 8, visitorIdx: 6, date: "Vie 16/10", slot: "02:30 PM", jornada: 4, status: "pending", scoreHome: 0, scoreVisitor: 0 },
+            // JORNADA 4 - Viernes 16 de Octubre
+            { id: 10, homeIdx: 3, visitorIdx: 1, date: "Vie 16/10", slot: "09:00 AM", jornada: 4, status: "pending", scoreHome: 0, scoreVisitor: 0 },
+            { id: 11, homeIdx: 2, visitorIdx: 6, date: "Vie 16/10", slot: "11:30 AM", jornada: 4, status: "pending", scoreHome: 0, scoreVisitor: 0 },
+            { id: 12, homeIdx: 4, visitorIdx: 5, date: "Vie 16/10", slot: "02:00 PM", jornada: 4, status: "pending", scoreHome: 0, scoreVisitor: 0 },
 
-            // JORNADA 5
-            { id: 17, homeIdx: 4, visitorIdx: 2, date: "Vie 23/10", slot: "08:30 AM", jornada: 5, status: "pending", scoreHome: 0, scoreVisitor: 0 },
-            { id: 18, homeIdx: 5, visitorIdx: 1, date: "Vie 23/10", slot: "10:30 AM", jornada: 5, status: "pending", scoreHome: 0, scoreVisitor: 0 },
-            { id: 19, homeIdx: 6, visitorIdx: 7, date: "Vie 23/10", slot: "12:30 PM", jornada: 5, status: "pending", scoreHome: 0, scoreVisitor: 0 },
-            { id: 20, homeIdx: 3, visitorIdx: 8, date: "Vie 23/10", slot: "02:30 PM", jornada: 5, status: "pending", scoreHome: 0, scoreVisitor: 0 },
+            // JORNADA 5 - Viernes 23 de Octubre (Cierre de Fase Regular)
+            { id: 13, homeIdx: 6, visitorIdx: 1, date: "Vie 23/10", slot: "09:00 AM", jornada: 5, status: "pending", scoreHome: 0, scoreVisitor: 0 },
+            { id: 14, homeIdx: 5, visitorIdx: 3, date: "Vie 23/10", slot: "11:30 AM", jornada: 5, status: "pending", scoreHome: 0, scoreVisitor: 0 },
+            { id: 15, homeIdx: 4, visitorIdx: 2, date: "Vie 23/10", slot: "02:00 PM", jornada: 5, status: "pending", scoreHome: 0, scoreVisitor: 0 },
 
-            // JORNADA 6
-            { id: 21, homeIdx: 1, visitorIdx: 6, date: "Vie 30/10", slot: "08:30 AM", jornada: 6, status: "pending", scoreHome: 0, scoreVisitor: 0 },
-            { id: 22, homeIdx: 2, visitorIdx: 5, date: "Vie 30/10", slot: "10:30 AM", jornada: 6, status: "pending", scoreHome: 0, scoreVisitor: 0 },
-            { id: 23, homeIdx: 3, visitorIdx: 4, date: "Vie 30/10", slot: "12:30 PM", jornada: 6, status: "pending", scoreHome: 0, scoreVisitor: 0 },
-            { id: 24, homeIdx: 8, visitorIdx: 7, date: "Vie 30/10", slot: "02:30 PM", jornada: 6, status: "pending", scoreHome: 0, scoreVisitor: 0 },
+            // JORNADA 6 - Viernes 30 de Octubre (Semifinales)
+            { id: 16, homeIdx: 1, visitorIdx: 4, date: "Vie 30/10", slot: "10:00 AM", jornada: 6, status: "pending", scoreHome: 0, scoreVisitor: 0 },
+            { id: 17, homeIdx: 2, visitorIdx: 3, date: "Vie 30/10", slot: "01:00 PM", jornada: 6, status: "pending", scoreHome: 0, scoreVisitor: 0 },
 
-            // JORNADA 7
-            { id: 25, homeIdx: 5, visitorIdx: 3, date: "Vie 06/11", slot: "08:30 AM", jornada: 7, status: "pending", scoreHome: 0, scoreVisitor: 0 },
-            { id: 26, homeIdx: 6, visitorIdx: 2, date: "Vie 06/11", slot: "10:30 AM", jornada: 7, status: "pending", scoreHome: 0, scoreVisitor: 0 },
-            { id: 27, homeIdx: 7, visitorIdx: 1, date: "Vie 06/11", slot: "12:30 PM", jornada: 7, status: "pending", scoreHome: 0, scoreVisitor: 0 },
-            { id: 28, homeIdx: 4, visitorIdx: 8, date: "Vie 06/11", slot: "02:30 PM", jornada: 7, status: "pending", scoreHome: 0, scoreVisitor: 0 },
-
-            // JORNADA 8 (Fase Final / Postemporada)
-            { id: 29, homeIdx: 1, visitorIdx: 4, date: "Vie 13/11", slot: "08:30 AM", jornada: 8, status: "pending", scoreHome: 0, scoreVisitor: 0 },
-            { id: 30, homeIdx: 2, visitorIdx: 3, date: "Vie 13/11", slot: "10:30 AM", jornada: 8, status: "pending", scoreHome: 0, scoreVisitor: 0 },
-            { id: 31, homeIdx: 5, visitorIdx: 6, date: "Vie 13/11", slot: "12:30 PM", jornada: 8, status: "pending", scoreHome: 0, scoreVisitor: 0 },
-            { id: 32, homeIdx: 7, visitorIdx: 8, date: "Vie 13/11", slot: "02:30 PM", jornada: 8, status: "pending", scoreHome: 0, scoreVisitor: 0 }
+            // JORNADA 7 - Viernes 06 de Noviembre (Gran Final y 3er Lugar)
+            { id: 18, homeIdx: 3, visitorIdx: 4, date: "Vie 06/11", slot: "10:00 AM", jornada: 7, status: "pending", scoreHome: 0, scoreVisitor: 0 },
+            { id: 19, homeIdx: 1, visitorIdx: 2, date: "Vie 06/11", slot: "01:00 PM", jornada: 7, status: "pending", scoreHome: 0, scoreVisitor: 0 }
         ];
 
         let games = [];
         let leagueStandings = [];
         let isAdminLoggedIn = false;
 
-        // INICIAR CARGA DE DATOS (_v4 fuerza la actualización limpia del nuevo calendario y equipos)
+        // INICIAR CARGA DE DATOS (_v5 actualiza a 6 equipos e inserta los resultados de hoy)
         function initLeague() {
-            const savedNames = localStorage.getItem('LICS_teamNames_v4');
-            const savedPlayers = localStorage.getItem('LICS_players_v4');
-            const savedGames = localStorage.getItem('LICS_games_v4');
+            const savedNames = localStorage.getItem('LICS_teamNames_v5');
+            const savedPlayers = localStorage.getItem('LICS_players_v5');
+            const savedGames = localStorage.getItem('LICS_games_v5');
 
             teamNames = savedNames ? JSON.parse(savedNames) : { ...teamNames };
             players = savedPlayers ? JSON.parse(savedPlayers) : [];
@@ -523,9 +509,9 @@
         }
 
         function saveData() {
-            localStorage.setItem('LICS_teamNames_v4', JSON.stringify(teamNames));
-            localStorage.setItem('LICS_players_v4', JSON.stringify(players));
-            localStorage.setItem('LICS_games_v4', JSON.stringify(games));
+            localStorage.setItem('LICS_teamNames_v5', JSON.stringify(teamNames));
+            localStorage.setItem('LICS_players_v5', JSON.stringify(players));
+            localStorage.setItem('LICS_games_v5', JSON.stringify(games));
         }
 
         function unlockAdmin() {
@@ -555,7 +541,7 @@
         function renderTeamNameInputs() {
             const container = document.getElementById('renameTeamsContainer');
             container.innerHTML = '';
-            for (let i = 1; i <= 8; i++) {
+            for (let i = 1; i <= TOTAL_TEAMS; i++) {
                 container.innerHTML += `
                     <div>
                         <label class="block text-xs font-bold text-slate-500 mb-1">Equipo ${i}</label>
@@ -567,7 +553,7 @@
 
         function saveTeamNames() {
             let changesMade = false;
-            for (let i = 1; i <= 8; i++) {
+            for (let i = 1; i <= TOTAL_TEAMS; i++) {
                 const val = document.getElementById(`renameTeam-${i}`).value.trim();
                 if (val && val !== teamNames[i]) {
                     const oldName = teamNames[i];
@@ -586,7 +572,7 @@
                 
                 const btn = document.querySelector("#admin-controls button");
                 const originalText = btn.innerHTML;
-                btn.innerHTML = `<i class="fa-solid fa-check mr-1"></i> ¡Sorteo Sincronizado!`;
+                btn.innerHTML = `<i class="fa-solid fa-check mr-1"></i> ¡Equipos Sincronizados!`;
                 btn.classList.add("bg-emerald-700");
                 setTimeout(() => {
                     btn.innerHTML = originalText;
@@ -597,7 +583,7 @@
 
         function calculateStandings() {
             leagueStandings = [];
-            for (let i = 1; i <= 8; i++) {
+            for (let i = 1; i <= TOTAL_TEAMS; i++) {
                 leagueStandings.push({
                     name: teamNames[i],
                     jj: 0, jg: 0, jp: 0, pct: 0, dif: 0, pts: 0
@@ -647,7 +633,7 @@
             ];
 
             const options = [];
-            for (let i = 1; i <= 8; i++) {
+            for (let i = 1; i <= TOTAL_TEAMS; i++) {
                 options.push(`<option value="${teamNames[i]}">${teamNames[i]}</option>`);
             }
             const optionsHTML = options.join('');
