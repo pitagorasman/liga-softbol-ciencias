@@ -445,7 +445,7 @@
             6: "Profesores"
         };
 
-        // BASE DE DATOS MAESTRA ACTUALIZADA CON LOS 66 JUGADORES Y NUMERITOS EXACTOS
+        // BASE DE DATOS MAESTRA ACTUALIZADA (CON ENDERSON CORRO, SALVADO DE SALAZAR Y AJUSTES DE DERECHO)
         const defaultPlayers = [
             {"name":"Luis Flores","team":"Ciencias","type":"Bateador","vb":3,"h":3,"d2b":1,"d3b":0,"hr":0,"bb":1,"sf":0,"ci":0,"ca":1,"k":0},
             {"name":"Jose Yvimas","team":"Ciencias","type":"Bateador","vb":7,"h":1,"d2b":0,"d3b":0,"hr":0,"bb":1,"sf":0,"ci":1,"ca":1,"k":0},
@@ -525,15 +525,16 @@
             {"name":"Luis Adames","team":"Ingeniería","type":"Bateador","vb":1,"h":0,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":0,"k":0},
             {"name":"Jose Martinez (P)","team":"Ingeniería","type":"Lanzador","jl":1,"jg":0,"jp":0,"js":0,"ip":4,"h":3,"cl":2,"bb":6,"k":1,"era":3.5},
             {"name":"Frank Ariza (P)","team":"Ingeniería","type":"Lanzador","jl":1,"jg":0,"jp":1,"js":0,"ip":1.1,"h":7,"cl":6,"bb":1,"k":0,"era":38.18},
-            {"name":"Eduardo Medina","team":"Derecho","type":"Bateador","vb":8,"h":3,"d2b":2,"d3b":0,"hr":0,"bb":2,"sf":0,"ci":1,"ca":3,"k":0},
+            {"name":"Eduardo Medina","team":"Derecho","type":"Bateador","vb":4,"h":1,"d2b":1,"d3b":0,"hr":0,"bb":1,"sf":0,"ci":0,"ca":1,"k":0},
             {"name":"Carlos Medina","team":"Derecho","type":"Bateador","vb":3,"h":1,"d2b":0,"d3b":0,"hr":0,"bb":2,"sf":0,"ci":0,"ca":3,"k":0},
-            {"name":"Yaron Diaz","team":"Derecho","type":"Bateador","vb":5,"h":4,"d2b":3,"d3b":0,"hr":1,"bb":0,"sf":0,"ci":5,"ca":3,"k":1},
+            {"name":"Yaron Diaz","team":"Derecho","type":"Bateador","vb":5,"h":4,"d2b":2,"d3b":0,"hr":2,"bb":0,"sf":0,"ci":5,"ca":3,"k":1},
             {"name":"Yonaiver Morales","team":"Derecho","type":"Bateador","vb":4,"h":1,"d2b":0,"d3b":0,"hr":0,"bb":1,"sf":0,"ci":1,"ca":1,"k":0},
             {"name":"Christian Garcia","team":"Derecho","type":"Bateador","vb":0,"h":0,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":0,"k":0},
             {"name":"Jomar Mendoza","team":"Derecho","type":"Bateador","vb":3,"h":1,"d2b":0,"d3b":0,"hr":0,"bb":2,"sf":0,"ci":0,"ca":1,"k":0},
             {"name":"Braulio Labrador","team":"Derecho","type":"Bateador","vb":4,"h":2,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":0,"k":0},
             {"name":"Andres Lorant","team":"Derecho","type":"Bateador","vb":4,"h":1,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":0,"k":1},
-            {"name":"Braulio Labrador (P)","team":"Derecho","type":"Lanzador","jl":1,"jg":1,"jp":0,"js":0,"ip":7,"h":14,"cl":6,"bb":0,"k":2,"era":6}
+            {"name":"Braulio Labrador (P)","team":"Derecho","type":"Lanzador","jl":1,"jg":1,"jp":0,"js":0,"ip":7,"h":14,"cl":6,"bb":0,"k":2,"era":6},
+            {"name":"Enderson Corro","team":"Derecho","type":"Bateador","vb":4,"h":1,"d2b":1,"d3b":0,"hr":0,"bb":1,"sf":0,"ci":1,"ca":1,"k":0}
         ];
 
         // JUEGOS OFICIALES (CON LOS RESULTADOS ASENTADOS DE JORNADAS 1 Y 2)
@@ -560,11 +561,11 @@
         let leagueStandings = [];
         let isAdminLoggedIn = false;
 
-        // INICIAR CARGA DE DATOS (_v12 asegura que cualquier navegador tome el JSON completo y actualizado)
+        // INICIAR CARGA DE DATOS (_v13 asegura que cualquier dispositivo lea los datos actualizados)
         function initLeague() {
-            const savedNames = localStorage.getItem('LICS_teamNames_v12');
-            const savedPlayers = localStorage.getItem('LICS_players_v12');
-            const savedGames = localStorage.getItem('LICS_games_v12');
+            const savedNames = localStorage.getItem('LICS_teamNames_v13');
+            const savedPlayers = localStorage.getItem('LICS_players_v13');
+            const savedGames = localStorage.getItem('LICS_games_v13');
 
             teamNames = savedNames ? JSON.parse(savedNames) : { ...teamNames };
             players = savedPlayers ? JSON.parse(savedPlayers) : [ ...defaultPlayers ];
@@ -587,9 +588,9 @@
         }
 
         function saveData() {
-            localStorage.setItem('LICS_teamNames_v12', JSON.stringify(teamNames));
-            localStorage.setItem('LICS_players_v12', JSON.stringify(players));
-            localStorage.setItem('LICS_games_v12', JSON.stringify(games));
+            localStorage.setItem('LICS_teamNames_v13', JSON.stringify(teamNames));
+            localStorage.setItem('LICS_players_v13', JSON.stringify(players));
+            localStorage.setItem('LICS_games_v13', JSON.stringify(games));
         }
 
         function unlockAdmin() {
@@ -804,10 +805,15 @@
         function calculateWHIP(h, bb, ip) { return ip > 0 ? (h + bb) / ip : 0; }
 
         function calculateMetrics(p) {
-            const singles = (p.h || 0) - ((p.d2b || 0) + (p.d3b || 0) + (p.hr || 0));
-            p.avg = calculateAVG(p.h || 0, p.vb || 0);
-            p.obp = calculateOBP(p.h || 0, p.bb || 0, p.vb || 0, p.sf || 0);
-            p.slg = calculateSLG(singles, p.d2b || 0, p.d3b || 0, p.hr || 0, p.vb || 0);
+            const h = Math.max(0, p.h || 0);
+            const d2b = Math.max(0, p.d2b || 0);
+            const d3b = Math.max(0, p.d3b || 0);
+            const hr = Math.max(0, p.hr || 0);
+            const singles = Math.max(0, h - (d2b + d3b + hr));
+
+            p.avg = calculateAVG(h, p.vb || 0);
+            p.obp = calculateOBP(h, p.bb || 0, p.vb || 0, p.sf || 0);
+            p.slg = calculateSLG(singles, d2b, d3b, hr, p.vb || 0);
             p.ops = p.obp + p.slg;
             if (p.k === null || p.k === undefined) p.k = 0;
         }
@@ -879,7 +885,6 @@
             const batters = players.filter(p => p.type === 'Bateador');
             batters.forEach(p => calculateMetrics(p));
 
-            // Bateadores calificados con al menos 2 VB para AVG/OPS
             const qualifiedBatters = batters.filter(p => (p.vb || 0) >= 2);
 
             const leadAVG = [...qualifiedBatters].sort((a,b) => b.avg - a.avg)[0] || { name: '-', team: '-', avg: 0 };
