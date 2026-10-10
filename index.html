@@ -119,22 +119,22 @@
                 </div>
             </div>
 
-            <!-- TABLERO DE LÍDERES INDIVIDUALES -->
-            <div class="grid grid-cols-1 gap-6">
+            <!-- TABLERO DE LÍDERES INDIVIDUALES (TOP 3) -->
+            <div class="space-y-6">
                 <!-- Líderes de Bateo -->
                 <div class="bg-white p-6 rounded-3xl card-shadow border border-slate-100">
                     <h2 class="text-lg font-black text-[#003049] mb-4 pb-2 border-b border-[#f77f00] border-opacity-30 flex items-center gap-2">
-                        <i class="fa-solid fa-fire text-orange-500"></i> CUADRO DE HONOR: LÍDERES DE BATEO
+                        <i class="fa-solid fa-fire text-orange-500"></i> CUADRO DE HONOR: TOP 3 LÍDERES DE BATEO
                     </h2>
-                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4" id="battingLeadersGrid"></div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4" id="battingLeadersGrid"></div>
                 </div>
 
                 <!-- Líderes de Pitcheo -->
                 <div class="bg-white p-6 rounded-3xl card-shadow border border-slate-100">
                     <h2 class="text-lg font-black text-[#003049] mb-4 pb-2 border-b border-blue-500 border-opacity-30 flex items-center gap-2">
-                        <i class="fa-solid fa-mound text-blue-500"></i> CUADRO DE HONOR: LÍDERES DE PITCHEO
+                        <i class="fa-solid fa-mound text-blue-500"></i> CUADRO DE HONOR: TOP 3 LÍDERES DE PITCHEO
                     </h2>
-                    <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4" id="pitchingLeadersGrid"></div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" id="pitchingLeadersGrid"></div>
                 </div>
             </div>
         </div>
@@ -566,11 +566,11 @@
         let leagueStandings = [];
         let isAdminLoggedIn = false;
 
-        // INICIAR CARGA DE DATOS (_v14 asegura la recarga limpia de la base de datos oficial)
+        // INICIAR CARGA DE DATOS (_v15 asegura la recarga limpia de la base de datos oficial con Top 3)
         function initLeague() {
-            const savedNames = localStorage.getItem('LICS_teamNames_v14');
-            const savedPlayers = localStorage.getItem('LICS_players_v14');
-            const savedGames = localStorage.getItem('LICS_games_v14');
+            const savedNames = localStorage.getItem('LICS_teamNames_v15');
+            const savedPlayers = localStorage.getItem('LICS_players_v15');
+            const savedGames = localStorage.getItem('LICS_games_v15');
 
             teamNames = savedNames ? JSON.parse(savedNames) : { ...teamNames };
             players = savedPlayers ? JSON.parse(savedPlayers) : [ ...defaultPlayers ];
@@ -593,9 +593,9 @@
         }
 
         function saveData() {
-            localStorage.setItem('LICS_teamNames_v14', JSON.stringify(teamNames));
-            localStorage.setItem('LICS_players_v14', JSON.stringify(players));
-            localStorage.setItem('LICS_games_v14', JSON.stringify(games));
+            localStorage.setItem('LICS_teamNames_v15', JSON.stringify(teamNames));
+            localStorage.setItem('LICS_players_v15', JSON.stringify(players));
+            localStorage.setItem('LICS_games_v15', JSON.stringify(games));
         }
 
         function unlockAdmin() {
@@ -708,13 +708,10 @@
                 t.pct = t.jj > 0 ? (t.jg / t.jj) : 0;
             });
 
-            // Encontrar al líder (mayor PCT y mayor número de JG)
             let leader = [...leagueStandings].sort((a,b) => b.pct - a.pct || b.jg - a.jg)[0];
             const leaderJG = leader ? leader.jg : 0;
             const leaderJP = leader ? leader.jp : 0;
 
-            // FÓRMULA OFICIAL DE DIFERENCIA (GAMES BEHIND) MLB:
-            // DIF = ((JG_Líder - JG_Equipo) + (JP_Equipo - JP_Líder)) / 2
             leagueStandings.forEach(t => {
                 const gb = ((leaderJG - t.jg) + (t.jp - leaderJP)) / 2.0;
                 t.difNum = gb;
@@ -727,7 +724,6 @@
                 }
             });
 
-            // ORDEN ESTRICTO POR DIFERENCIA (Menor DIF va arriba, desempata por PCT, PTS y DIF de carreras)
             leagueStandings.sort((a, b) => {
                 if (a.difNum !== b.difNum) return a.difNum - b.difNum;
                 if (b.pct !== a.pct) return b.pct - a.pct;
@@ -882,7 +878,7 @@
             });
         }
 
-        // RENDER DE CUADROS DE HONOR Y LÍDERES
+        // RENDER DE CUADROS DE HONOR Y LÍDERES (TOP 3 POR CATEGORÍA)
         function renderLeaders() {
             const battingGrid = document.getElementById('battingLeadersGrid');
             const pitchingGrid = document.getElementById('pitchingLeadersGrid');
@@ -890,21 +886,20 @@
             const batters = players.filter(p => p.type === 'Bateador');
             batters.forEach(p => calculateMetrics(p));
 
-            // Bateadores calificados con al menos 2 VB para AVG/OPS
             const qualifiedBatters = batters.filter(p => (p.vb || 0) >= 2);
 
-            const leadAVG = [...qualifiedBatters].sort((a,b) => b.avg - a.avg)[0] || { name: '-', team: '-', avg: 0 };
-            const leadCI = [...batters].sort((a,b) => (b.ci || 0) - (a.ci || 0))[0] || { name: '-', team: '-', ci: 0 };
-            const leadCA = [...batters].sort((a,b) => (b.ca || 0) - (a.ca || 0))[0] || { name: '-', team: '-', ca: 0 };
-            const leadHR = [...batters].sort((a,b) => (b.hr || 0) - (a.hr || 0))[0] || { name: '-', team: '-', hr: 0 };
-            const leadOPS = [...qualifiedBatters].sort((a,b) => b.ops - a.ops)[0] || { name: '-', team: '-', ops: 0 };
+            const topAVG = [...qualifiedBatters].sort((a,b) => b.avg - a.avg || b.vb - a.vb).slice(0, 3);
+            const topCI  = [...batters].sort((a,b) => (b.ci || 0) - (a.ci || 0) || (b.h || 0) - (a.h || 0)).slice(0, 3);
+            const topCA  = [...batters].sort((a,b) => (b.ca || 0) - (a.ca || 0) || (b.h || 0) - (a.h || 0)).slice(0, 3);
+            const topHR  = [...batters].sort((a,b) => (b.hr || 0) - (a.hr || 0) || (b.ci || 0) - (a.ci || 0)).slice(0, 3);
+            const topOPS = [...qualifiedBatters].sort((a,b) => b.ops - a.ops || b.vb - a.vb).slice(0, 3);
 
             battingGrid.innerHTML = `
-                ${renderLeaderCard("🥇 AVG BATEO", leadAVG.name, leadAVG.team, leadAVG.avg.toFixed(3), "text-orange-500")}
-                ${renderLeaderCard("💪 IMPULSADAS", leadCI.name, leadCI.team, leadCI.ci || 0, "text-orange-600")}
-                ${renderLeaderCard("🏃 ANOTADAS", leadCA.name, leadCA.team, leadCA.ca || 0, "text-amber-500")}
-                ${renderLeaderCard("💣 JONRONES", leadHR.name, leadHR.team, leadHR.hr || 0, "text-red-500")}
-                ${renderLeaderCard("👑 OPS", leadOPS.name, leadOPS.team, leadOPS.ops.toFixed(3), "text-yellow-600")}
+                ${renderTop3LeaderCard("AVG BATEO", topAVG, p => p.avg.toFixed(3), "text-orange-500")}
+                ${renderTop3LeaderCard("IMPULSADAS", topCI, p => p.ci || 0, "text-orange-600")}
+                ${renderTop3LeaderCard("ANOTADAS", topCA, p => p.ca || 0, "text-amber-500")}
+                ${renderTop3LeaderCard("JONRONES", topHR, p => p.hr || 0, "text-red-500")}
+                ${renderTop3LeaderCard("OPS", topOPS, p => p.ops.toFixed(3), "text-yellow-600")}
             `;
 
             const pitchers = players.filter(p => p.type === 'Lanzador');
@@ -912,26 +907,61 @@
                 p.era = calculateERA(p.cl || 0, p.ip || 0); 
             });
 
-            const leadJG = [...pitchers].sort((a,b) => (b.jg || 0) - (a.jg || 0))[0] || { name: '-', team: '-', jg: 0 };
-            const leadK = [...pitchers].sort((a,b) => (b.k || 0) - (a.k || 0))[0] || { name: '-', team: '-', k: 0 };
-            const leadERA = [...pitchers].filter(p => (p.ip || 0) >= 3).sort((a,b) => a.era - b.era)[0] || { name: '-', team: '-', era: 0 };
-            const leadJS = [...pitchers].sort((a,b) => (b.js || 0) - (a.js || 0))[0] || { name: '-', team: '-', js: 0 };
+            const topJG  = [...pitchers].sort((a,b) => (b.jg || 0) - (a.jg || 0) || (b.ip || 0) - (a.ip || 0)).slice(0, 3);
+            const topK   = [...pitchers].sort((a,b) => (b.k || 0) - (a.k || 0) || (b.ip || 0) - (a.ip || 0)).slice(0, 3);
+            const topERA = [...pitchers].filter(p => (p.ip || 0) >= 2.0).sort((a,b) => a.era - b.era || (b.ip || 0) - (a.ip || 0)).slice(0, 3);
+            const topJS  = [...pitchers].sort((a,b) => (b.js || 0) - (a.js || 0) || (b.ip || 0) - (a.ip || 0)).slice(0, 3);
 
             pitchingGrid.innerHTML = `
-                ${renderLeaderCard("⭐ GANADOS", leadJG.name, leadJG.team, leadJG.jg || 0, "text-blue-500")}
-                ${renderLeaderCard("🔥 PONCHES", leadK.name, leadK.team, leadK.k || 0, "text-indigo-500")}
-                ${renderLeaderCard("🎯 EFECTIVIDAD", leadERA.name, leadERA.team, leadERA.era.toFixed(2), "text-teal-500")}
-                ${renderLeaderCard("🛡️ SALVADOS", leadJS.name, leadJS.team, leadJS.js || 0, "text-blue-600")}
+                ${renderTop3LeaderCard("GANADOS", topJG, p => p.jg || 0, "text-blue-500")}
+                ${renderTop3LeaderCard("PONCHES", topK, p => p.k || 0, "text-indigo-500")}
+                ${renderTop3LeaderCard("EFECTIVIDAD", topERA, p => p.era.toFixed(2), "text-teal-500")}
+                ${renderTop3LeaderCard("SALVADOS", topJS, p => p.js || 0, "text-blue-600")}
             `;
         }
 
-        function renderLeaderCard(label, name, team, value, colorClass) {
+        function renderTop3LeaderCard(title, list, valueFormat, colorClass) {
+            const medals = ["🥇", "🥈", "🥉"];
+            let rowsHTML = "";
+
+            for (let i = 0; i < 3; i++) {
+                const item = list[i];
+                if (item) {
+                    const formattedVal = valueFormat(item);
+                    rowsHTML += `
+                        <div class="flex items-center justify-between text-xs py-1 border-b border-slate-100 last:border-0">
+                            <div class="flex items-center gap-1.5 min-w-0 pr-1">
+                                <span class="text-xs leading-none">${medals[i]}</span>
+                                <div class="truncate">
+                                    <span class="font-extrabold text-[#003049] truncate block text-[11px] leading-tight">${item.name}</span>
+                                    <span class="text-[9px] text-slate-400 font-bold block truncate leading-tight">${item.team}</span>
+                                </div>
+                            </div>
+                            <span class="font-black ${colorClass} text-xs ml-1 whitespace-nowrap">${formattedVal}</span>
+                        </div>
+                    `;
+                } else {
+                    rowsHTML += `
+                        <div class="flex items-center justify-between text-xs py-1 border-b border-slate-100 last:border-0 opacity-40">
+                            <div class="flex items-center gap-1.5">
+                                <span class="text-xs leading-none">${medals[i]}</span>
+                                <span class="text-[10px] text-slate-400 font-semibold">-</span>
+                            </div>
+                            <span class="font-bold text-slate-300 text-xs">-</span>
+                        </div>
+                    `;
+                }
+            }
+
             return `
-                <div class="bg-slate-50 p-3 rounded-2xl border border-slate-100 flex flex-col justify-between text-center shadow-sm">
-                    <span class="text-[9px] font-bold text-slate-400 uppercase tracking-wider">${label}</span>
-                    <p class="font-extrabold text-[#003049] text-xs mt-2 truncate">${name}</p>
-                    <span class="text-[9px] text-slate-500 font-bold mb-1 truncate">${team}</span>
-                    <span class="text-lg font-black ${colorClass}">${value}</span>
+                <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-100 flex flex-col justify-between shadow-sm">
+                    <div class="text-[10px] font-black text-slate-500 uppercase tracking-wider mb-2 border-b pb-1 border-slate-200 flex items-center justify-between">
+                        <span>${title}</span>
+                        <span class="text-[8px] bg-white px-1.5 py-0.5 rounded text-slate-400 font-bold">TOP 3</span>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        ${rowsHTML}
+                    </div>
                 </div>
             `;
         }
