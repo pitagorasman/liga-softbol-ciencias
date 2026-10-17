@@ -4,42 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>I Liga Interestudiantil de Softbol de Ciencias UCV</title>
-    <!-- Tailwind CSS para el diseño premium -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Chart.js para las gráficas interactivas -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- FontAwesome para iconografía deportiva -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- html2canvas para capturar reportes de la liga -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600;700&display=swap');
-        body {
-            font-family: 'Open Sans', sans-serif;
-            background-color: #f8fafc;
-        }
-        h1, h2, h3, h4, .font-title {
-            font-family: 'Montserrat', sans-serif;
-        }
-        .tab-btn.active {
-            border-bottom-color: #f77f00;
-            color: #f77f00;
-            font-weight: 800;
-        }
-        .card-shadow {
-            box-shadow: 0 10px 25px -5px rgba(0, 48, 73, 0.05), 0 8px 10px -6px rgba(0, 48, 73, 0.05);
-        }
-        .taking-screenshot .no-capture {
-            display: none !important;
-        }
-        input, select {
-            transition: all 0.2s ease-in-out;
-        }
-        input:focus, select:focus {
-            border-color: #f77f00 !important;
-            box-shadow: 0 0 0 3px rgba(247, 127, 0, 0.2);
-            outline: none;
-        }
+        body { font-family: 'Open Sans', sans-serif; background-color: #f8fafc; }
+        h1, h2, h3, h4, .font-title { font-family: 'Montserrat', sans-serif; }
+        .tab-btn.active { border-bottom-color: #f77f00; color: #f77f00; font-weight: 800; }
+        .card-shadow { box-shadow: 0 10px 25px -5px rgba(0, 48, 73, 0.05), 0 8px 10px -6px rgba(0, 48, 73, 0.05); }
+        .taking-screenshot .no-capture { display: none !important; }
+        input, select { transition: all 0.2s ease-in-out; }
+        input:focus, select:focus { border-color: #f77f00 !important; box-shadow: 0 0 0 3px rgba(247, 127, 0, 0.2); outline: none; }
     </style>
 </head>
 <body class="text-slate-800">
@@ -65,7 +42,7 @@
             </div>
         </header>
 
-        <!-- NAVEGACIÓN ENTRE SECCIONES -->
+        <!-- NAVEGACIÓN -->
         <nav class="flex border-b border-slate-200 mb-6 bg-white rounded-2xl p-2 shadow-sm no-capture overflow-x-auto">
             <button onclick="switchTab('inicio')" id="tab-inicio" class="tab-btn active flex items-center gap-2 py-3 px-6 font-bold text-sm border-b-2 border-transparent text-slate-500 hover:text-[#f77f00] transition whitespace-nowrap">
                 <i class="fa-solid fa-trophy text-lg"></i> Resumen del Torneo
@@ -84,7 +61,6 @@
         <!-- PESTAÑA 1: INICIO Y LÍDERES -->
         <div id="content-inicio" class="tab-content">
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
-                <!-- Tabla de Posiciones de la Liga -->
                 <div class="bg-white p-6 rounded-3xl card-shadow border border-slate-100 lg:col-span-2">
                     <div class="flex justify-between items-center mb-4 pb-2 border-b border-[#f77f00] border-opacity-30">
                         <h2 class="text-lg font-black text-[#003049] flex items-center gap-2">
@@ -110,7 +86,6 @@
                     </div>
                 </div>
 
-                <!-- Últimos Resultados -->
                 <div class="bg-white p-6 rounded-3xl card-shadow border border-slate-100">
                     <h2 class="text-lg font-black text-[#003049] mb-4 pb-2 border-b border-[#f77f00] border-opacity-30 flex items-center gap-2">
                         <i class="fa-solid fa-square-poll-horizontal text-emerald-600"></i> RECIENTES
@@ -119,9 +94,7 @@
                 </div>
             </div>
 
-            <!-- TABLERO DE LÍDERES INDIVIDUALES (TOP 3) -->
             <div class="space-y-6">
-                <!-- Líderes de Bateo -->
                 <div class="bg-white p-6 rounded-3xl card-shadow border border-slate-100">
                     <h2 class="text-lg font-black text-[#003049] mb-4 pb-2 border-b border-[#f77f00] border-opacity-30 flex items-center gap-2">
                         <i class="fa-solid fa-fire text-orange-500"></i> CUADRO DE HONOR: TOP 3 LÍDERES DE BATEO
@@ -129,7 +102,6 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4" id="battingLeadersGrid"></div>
                 </div>
 
-                <!-- Líderes de Pitcheo -->
                 <div class="bg-white p-6 rounded-3xl card-shadow border border-slate-100">
                     <h2 class="text-lg font-black text-[#003049] mb-4 pb-2 border-b border-blue-500 border-opacity-30 flex items-center gap-2">
                         <i class="fa-solid fa-mound text-blue-500"></i> CUADRO DE HONOR: TOP 3 LÍDERES DE PITCHEO
@@ -153,7 +125,6 @@
                         <option value="finished">Partidos Finalizados</option>
                     </select>
                 </div>
-
                 <div id="calendarList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6"></div>
             </div>
         </div>
@@ -163,8 +134,8 @@
             <div class="bg-white p-6 rounded-3xl card-shadow border border-slate-100 mb-6">
                 <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                     <div>
-                        <h2 class="text-xl font-black text-[#003049]">Consulta de Rosters y Estadísticas</h2>
-                        <p class="text-sm text-slate-500">Evalúa el rendimiento de los bateadores y lanzadores del club seleccionado.</p>
+                        <h2 class="text-xl font-black text-[#003049]">Consulta de Rosters y Estadísticas Colectivas</h2>
+                        <p class="text-sm text-slate-500">Evalúa el rendimiento individual y los números generales acumulados del club seleccionado.</p>
                     </div>
                     <div class="w-full md:w-64">
                         <select id="teamSelector" onchange="renderTeamView()" class="w-full bg-slate-50 border-2 border-orange-500 p-3 rounded-xl font-bold text-[#003049]"></select>
@@ -172,13 +143,15 @@
                 </div>
             </div>
 
-            <!-- Tablas de Jugadores -->
+            <!-- RESUMEN GENERAL DEL EQUIPO -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-6" id="teamSummaryCards"></div>
+
             <div class="space-y-6">
                 <!-- Bateo -->
                 <div class="bg-white p-6 rounded-3xl card-shadow border border-slate-100">
                     <div class="flex justify-between items-center mb-4 pb-2 border-b border-slate-100">
                         <h3 class="text-lg font-bold text-[#003049] flex items-center gap-2">
-                            <i class="fa-solid fa-baseball-bat-ball text-[#f77f00]"></i> ESTADÍSTICAS DE BATEO INDIVIDUAL
+                            <i class="fa-solid fa-baseball-bat-ball text-[#f77f00]"></i> BATEO INDIVIDUAL Y COLECTIVO
                         </h3>
                         <span id="teamBattersCount" class="text-xs font-bold bg-slate-100 text-slate-600 px-3 py-1 rounded-full"></span>
                     </div>
@@ -204,6 +177,7 @@
                                 </tr>
                             </thead>
                             <tbody id="teamBattingBody"></tbody>
+                            <tfoot id="teamBattingFoot"></tfoot>
                         </table>
                     </div>
                 </div>
@@ -212,7 +186,7 @@
                 <div class="bg-white p-6 rounded-3xl card-shadow border border-slate-100">
                     <div class="flex justify-between items-center mb-4 pb-2 border-b border-slate-100">
                         <h3 class="text-lg font-bold text-[#003049] flex items-center gap-2">
-                            <i class="fa-solid fa-mound text-blue-500"></i> ESTADÍSTICAS DE PITCHEO
+                            <i class="fa-solid fa-mound text-blue-500"></i> PITCHEO INDIVIDUAL Y COLECTIVO
                         </h3>
                         <span id="teamPitchersCount" class="text-xs font-bold bg-slate-100 text-slate-600 px-3 py-1 rounded-full"></span>
                     </div>
@@ -235,35 +209,32 @@
                                 </tr>
                             </thead>
                             <tbody id="teamPitchingBody"></tbody>
+                            <tfoot id="teamPitchingFoot"></tfoot>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- PESTAÑA 4: PANEL ADMINISTRATIVO -->
+        <!-- PESTAÑA 4: ADMIN -->
         <div id="content-admin" class="tab-content hidden no-capture">
             <div id="admin-lockscreen" class="bg-white p-8 rounded-3xl card-shadow border border-slate-100 max-w-md mx-auto text-center my-12">
                 <div class="bg-orange-100 text-[#f77f00] p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 text-2xl">
                     <i class="fa-solid fa-lock"></i>
                 </div>
                 <h3 class="text-xl font-black text-[#003049] mb-2">Sección Restringida</h3>
-                <p class="text-sm text-slate-500 mb-6">Ingresa la contraseña del administrador de la liga para desbloquear los controles de rosters, sorteo y marcadores.</p>
+                <p class="text-sm text-slate-500 mb-6">Ingresa la contraseña del administrador de la liga.</p>
                 <div class="space-y-4">
                     <input type="password" id="adminPassInput" placeholder="Contraseña de Administrador" class="w-full bg-slate-50 border border-slate-200 p-3 rounded-xl text-center font-bold">
-                    <button onclick="unlockAdmin()" class="w-full bg-[#f77f00] hover:bg-orange-600 text-white font-bold py-3 rounded-xl shadow-md transition-all">
-                        Desbloquear Acceso
-                    </button>
+                    <button onclick="unlockAdmin()" class="w-full bg-[#f77f00] hover:bg-orange-600 text-white font-bold py-3 rounded-xl shadow-md transition-all">Desbloquear Acceso</button>
                 </div>
             </div>
 
             <div id="admin-controls" class="hidden space-y-6">
-                <!-- 1. CONFIGURACIÓN DE NOMBRES -->
                 <div class="bg-white p-6 rounded-3xl card-shadow border border-slate-100">
                     <h3 class="text-lg font-black text-[#003049] mb-4 pb-2 border-b border-slate-200 flex items-center gap-2">
                         <i class="fa-solid fa-shuffle text-[#f77f00]"></i> Nombres Oficiales de los 6 Equipos
                     </h3>
-                    <p class="text-sm text-slate-500 mb-6">Puedes ajustar los nombres de los 6 equipos de la liga. Se actualizarán en todas las vistas automáticamente.</p>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-4" id="renameTeamsContainer"></div>
                     <button onclick="saveTeamNames()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-6 rounded-xl shadow-md transition-all">
                         <i class="fa-solid fa-save mr-1"></i> Guardar Nombres y Sincronizar Liga
@@ -271,7 +242,6 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <!-- 2. REGISTRAR JUGADOR -->
                     <div class="bg-white p-6 rounded-3xl card-shadow border border-slate-100">
                         <h3 class="text-lg font-bold text-[#003049] mb-4 pb-2 border-b border-slate-200 flex items-center gap-2">
                             <i class="fa-solid fa-user-plus text-orange-500"></i> Registrar Jugador en Roster
@@ -283,7 +253,7 @@
                             </div>
                             <div class="grid grid-cols-2 gap-4">
                                 <div>
-                                    <label class="block text-xs font-bold text-slate-600 mb-1">Asignar al Equipo</label>
+                                    <label class="block text-xs font-bold text-slate-600 mb-1">Equipo</label>
                                     <select id="adminNewPlayerTeam" class="w-full bg-slate-50 border border-slate-200 p-2.5 rounded-xl font-semibold"></select>
                                 </div>
                                 <div>
@@ -294,13 +264,10 @@
                                     </select>
                                 </div>
                             </div>
-                            <button onclick="createNewPlayer()" class="w-full bg-[#f77f00] hover:bg-orange-600 text-white font-bold py-3 rounded-xl shadow-md transition-all">
-                                Agregar a Roster
-                            </button>
+                            <button onclick="createNewPlayer()" class="w-full bg-[#f77f00] hover:bg-orange-600 text-white font-bold py-3 rounded-xl shadow-md transition-all">Agregar a Roster</button>
                         </div>
                     </div>
 
-                    <!-- 3. CARGAR NÚMEROS -->
                     <div class="bg-white p-6 rounded-3xl card-shadow border border-slate-100">
                         <h3 class="text-lg font-bold text-[#003049] mb-4 pb-2 border-b border-slate-200 flex items-center gap-2">
                             <i class="fa-solid fa-square-plus text-blue-500"></i> Cargar Numeritos de Partido
@@ -308,113 +275,50 @@
                         <div class="space-y-4">
                             <div class="grid grid-cols-2 gap-4">
                                 <div>
-                                    <label class="block text-xs font-bold text-slate-600 mb-1">Seleccionar Equipo</label>
+                                    <label class="block text-xs font-bold text-slate-600 mb-1">Equipo</label>
                                     <select id="adminLoadTeam" onchange="adminUpdatePlayerDropdown()" class="w-full bg-slate-50 border border-slate-200 p-2.5 rounded-xl font-semibold"></select>
                                 </div>
                                 <div>
-                                    <label class="block text-xs font-bold text-slate-600 mb-1">Seleccionar Jugador</label>
+                                    <label class="block text-xs font-bold text-slate-600 mb-1">Jugador</label>
                                     <select id="adminLoadPlayer" onchange="adminToggleLoadFields()" class="w-full bg-slate-50 border border-slate-200 p-2.5 rounded-xl font-semibold"></select>
                                 </div>
                             </div>
 
-                            <!-- Campos Bateo -->
-                            <div id="adminFieldsBateador" class="grid grid-cols-4 gap-2">
-                                <div>
-                                    <label class="block text-[10px] font-bold text-slate-500">VB</label>
-                                    <input type="number" id="loadVB" value="0" class="w-full bg-slate-50 border border-slate-200 p-1.5 rounded-lg text-center font-bold">
-                                </div>
-                                <div>
-                                    <label class="block text-[10px] font-bold text-slate-500">CA</label>
-                                    <input type="number" id="loadCA" value="0" class="w-full bg-slate-50 border border-slate-200 p-1.5 rounded-lg text-center font-bold">
-                                </div>
-                                <div>
-                                    <label class="block text-[10px] font-bold text-slate-500">H</label>
-                                    <input type="number" id="loadH" value="0" class="w-full bg-slate-50 border border-slate-200 p-1.5 rounded-lg text-center font-bold">
-                                </div>
-                                <div>
-                                    <label class="block text-[10px] font-bold text-slate-500">2B</label>
-                                    <input type="number" id="load2B" value="0" class="w-full bg-slate-50 border border-slate-200 p-1.5 rounded-lg text-center font-bold">
-                                </div>
-                                <div>
-                                    <label class="block text-[10px] font-bold text-slate-500">3B</label>
-                                    <input type="number" id="load3B" value="0" class="w-full bg-slate-50 border border-slate-200 p-1.5 rounded-lg text-center font-bold">
-                                </div>
-                                <div>
-                                    <label class="block text-[10px] font-bold text-slate-500">HR</label>
-                                    <input type="number" id="loadHR" value="0" class="w-full bg-slate-50 border border-slate-200 p-1.5 rounded-lg text-center font-bold">
-                                </div>
-                                <div>
-                                    <label class="block text-[10px] font-bold text-slate-500">CI</label>
-                                    <input type="number" id="loadCI" value="0" class="w-full bg-slate-50 border border-slate-200 p-1.5 rounded-lg text-center font-bold">
-                                </div>
-                                <div>
-                                    <label class="block text-[10px] font-bold text-slate-500">BB</label>
-                                    <input type="number" id="loadBB" value="0" class="w-full bg-slate-50 border border-slate-200 p-1.5 rounded-lg text-center font-bold">
-                                </div>
-                                <div>
-                                    <label class="block text-[10px] font-bold text-slate-500">K</label>
-                                    <input type="number" id="loadK" value="0" class="w-full bg-slate-50 border border-slate-200 p-1.5 rounded-lg text-center font-bold">
-                                </div>
-                                <div>
-                                    <label class="block text-[10px] font-bold text-slate-500">SF</label>
-                                    <input type="number" id="loadSF" value="0" class="w-full bg-slate-50 border border-slate-200 p-1.5 rounded-lg text-center font-bold">
-                                </div>
+                            <div id="adminFieldsBateador" class="grid grid-cols-5 gap-2">
+                                <div><label class="block text-[10px] font-bold text-slate-500">VB</label><input type="number" id="loadVB" value="0" class="w-full bg-slate-50 border p-1.5 rounded-lg text-center font-bold"></div>
+                                <div><label class="block text-[10px] font-bold text-slate-500">CA</label><input type="number" id="loadCA" value="0" class="w-full bg-slate-50 border p-1.5 rounded-lg text-center font-bold"></div>
+                                <div><label class="block text-[10px] font-bold text-slate-500">H</label><input type="number" id="loadH" value="0" class="w-full bg-slate-50 border p-1.5 rounded-lg text-center font-bold"></div>
+                                <div><label class="block text-[10px] font-bold text-slate-500">2B</label><input type="number" id="load2B" value="0" class="w-full bg-slate-50 border p-1.5 rounded-lg text-center font-bold"></div>
+                                <div><label class="block text-[10px] font-bold text-slate-500">3B</label><input type="number" id="load3B" value="0" class="w-full bg-slate-50 border p-1.5 rounded-lg text-center font-bold"></div>
+                                <div><label class="block text-[10px] font-bold text-slate-500">HR</label><input type="number" id="loadHR" value="0" class="w-full bg-slate-50 border p-1.5 rounded-lg text-center font-bold"></div>
+                                <div><label class="block text-[10px] font-bold text-slate-500">CI</label><input type="number" id="loadCI" value="0" class="w-full bg-slate-50 border p-1.5 rounded-lg text-center font-bold"></div>
+                                <div><label class="block text-[10px] font-bold text-slate-500">BB</label><input type="number" id="loadBB" value="0" class="w-full bg-slate-50 border p-1.5 rounded-lg text-center font-bold"></div>
+                                <div><label class="block text-[10px] font-bold text-slate-500">K</label><input type="number" id="loadK" value="0" class="w-full bg-slate-50 border p-1.5 rounded-lg text-center font-bold"></div>
+                                <div><label class="block text-[10px] font-bold text-slate-500">SF</label><input type="number" id="loadSF" value="0" class="w-full bg-slate-50 border p-1.5 rounded-lg text-center font-bold"></div>
                             </div>
 
-                            <!-- Campos Lanzador -->
-                            <div id="adminFieldsLanzador" class="grid grid-cols-4 gap-2 hidden">
-                                <div>
-                                    <label class="block text-[10px] font-bold text-slate-500">JL</label>
-                                    <input type="number" id="loadPitchJL" value="0" class="w-full bg-slate-50 border border-slate-200 p-1.5 rounded-lg text-center font-bold">
-                                </div>
-                                <div>
-                                    <label class="block text-[10px] font-bold text-slate-500">JG</label>
-                                    <input type="number" id="loadPitchJG" value="0" class="w-full bg-slate-50 border border-slate-200 p-1.5 rounded-lg text-center font-bold">
-                                </div>
-                                <div>
-                                    <label class="block text-[10px] font-bold text-slate-500">JP</label>
-                                    <input type="number" id="loadPitchJP" value="0" class="w-full bg-slate-50 border border-slate-200 p-1.5 rounded-lg text-center font-bold">
-                                </div>
-                                <div>
-                                    <label class="block text-[10px] font-bold text-slate-500">JS</label>
-                                    <input type="number" id="loadPitchJS" value="0" class="w-full bg-slate-50 border border-slate-200 p-1.5 rounded-lg text-center font-bold">
-                                </div>
-                                <div>
-                                    <label class="block text-[10px] font-bold text-slate-500">IP</label>
-                                    <input type="number" id="loadPitchIP" value="0" step="0.1" class="w-full bg-slate-50 border border-slate-200 p-1.5 rounded-lg text-center font-bold">
-                                </div>
-                                <div>
-                                    <label class="block text-[10px] font-bold text-slate-500">H</label>
-                                    <input type="number" id="loadPitchH" value="0" class="w-full bg-slate-50 border border-slate-200 p-1.5 rounded-lg text-center font-bold">
-                                </div>
-                                <div>
-                                    <label class="block text-[10px] font-bold text-slate-500">CL</label>
-                                    <input type="number" id="loadPitchCL" value="0" class="w-full bg-slate-50 border border-slate-200 p-1.5 rounded-lg text-center font-bold">
-                                </div>
-                                <div>
-                                    <label class="block text-[10px] font-bold text-slate-500">BB</label>
-                                    <input type="number" id="loadPitchBB" value="0" class="w-full bg-slate-50 border border-slate-200 p-1.5 rounded-lg text-center font-bold">
-                                </div>
-                                <div>
-                                    <label class="block text-[10px] font-bold text-slate-500">K</label>
-                                    <input type="number" id="loadPitchK" value="0" class="w-full bg-slate-50 border border-slate-200 p-1.5 rounded-lg text-center font-bold">
-                                </div>
+                            <div id="adminFieldsLanzador" class="grid grid-cols-5 gap-2 hidden">
+                                <div><label class="block text-[10px] font-bold text-slate-500">JL</label><input type="number" id="loadPitchJL" value="0" class="w-full bg-slate-50 border p-1.5 rounded-lg text-center font-bold"></div>
+                                <div><label class="block text-[10px] font-bold text-slate-500">JG</label><input type="number" id="loadPitchJG" value="0" class="w-full bg-slate-50 border p-1.5 rounded-lg text-center font-bold"></div>
+                                <div><label class="block text-[10px] font-bold text-slate-500">JP</label><input type="number" id="loadPitchJP" value="0" class="w-full bg-slate-50 border p-1.5 rounded-lg text-center font-bold"></div>
+                                <div><label class="block text-[10px] font-bold text-slate-500">JS</label><input type="number" id="loadPitchJS" value="0" class="w-full bg-slate-50 border p-1.5 rounded-lg text-center font-bold"></div>
+                                <div><label class="block text-[10px] font-bold text-slate-500">IP</label><input type="number" id="loadPitchIP" value="0" step="0.1" class="w-full bg-slate-50 border p-1.5 rounded-lg text-center font-bold"></div>
+                                <div><label class="block text-[10px] font-bold text-slate-500">H</label><input type="number" id="loadPitchH" value="0" class="w-full bg-slate-50 border p-1.5 rounded-lg text-center font-bold"></div>
+                                <div><label class="block text-[10px] font-bold text-slate-500">CL</label><input type="number" id="loadPitchCL" value="0" class="w-full bg-slate-50 border p-1.5 rounded-lg text-center font-bold"></div>
+                                <div><label class="block text-[10px] font-bold text-slate-500">BB</label><input type="number" id="loadPitchBB" value="0" class="w-full bg-slate-50 border p-1.5 rounded-lg text-center font-bold"></div>
+                                <div><label class="block text-[10px] font-bold text-slate-500">K</label><input type="number" id="loadPitchK" value="0" class="w-full bg-slate-50 border p-1.5 rounded-lg text-center font-bold"></div>
                             </div>
 
-                            <button onclick="adminApplyStats()" class="w-full bg-[#003049] hover:bg-[#002030] text-white font-bold py-3 rounded-xl shadow-md transition-all">
-                                Guardar Desempeño
-                            </button>
+                            <button onclick="adminApplyStats()" class="w-full bg-[#003049] hover:bg-[#002030] text-white font-bold py-3 rounded-xl shadow-md transition-all">Guardar Desempeño</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- 4. IMPORTAR Y RESETEAR -->
                 <div class="bg-white p-6 rounded-3xl card-shadow border border-slate-100 flex flex-col justify-between">
                     <div>
                         <h3 class="text-lg font-bold text-[#003049] mb-4 pb-2 border-b border-slate-200 flex items-center gap-2">
                             <i class="fa-solid fa-database text-blue-600"></i> Opciones de Backup e Importación
                         </h3>
-                        <p class="text-sm text-slate-500 mb-6">Importa copias de seguridad de la liga (.json) o borra toda la información para iniciar una temporada nueva.</p>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
                                 <label class="block text-xs font-bold text-slate-600 mb-1">Importar Archivo JSON</label>
@@ -425,43 +329,31 @@
                             </button>
                         </div>
                     </div>
-                    <div class="mt-6 text-xs text-slate-400 border-t border-slate-100 pt-4 text-center">
-                        Torneo UCV Ciencias Softbol Club • Desarrollado por UCV
-                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        // CONFIGURACIÓN DE LOS 6 EQUIPOS OFICIALES
         const TOTAL_TEAMS = 6;
-        let teamNames = {
-            1: "Ciencias",
-            2: "Ingeniería",
-            3: "Humanidades",
-            4: "FaCES",
-            5: "Derecho",
-            6: "Profesores"
-        };
+        let teamNames = {1:"Ciencias",2:"Ingeniería",3:"Humanidades",4:"FaCES",5:"Derecho",6:"Profesores"};
 
-        // BASE DE DATOS MAESTRA ACTUALIZADA (JORNADA 3 INCLUIDA - 10 DE OCTUBRE)
         const defaultPlayers = [
-            {"name":"Luis Flores","team":"Ciencias","type":"Bateador","vb":6,"h":3,"d2b":1,"d3b":0,"hr":0,"bb":1,"sf":0,"ci":0,"ca":2,"k":0},
-            {"name":"Jose Yvimas","team":"Ciencias","type":"Bateador","vb":9,"h":1,"d2b":0,"d3b":0,"hr":0,"bb":2,"sf":0,"ci":1,"ca":2,"k":0},
+            {"name":"Luis Flores","team":"Ciencias","type":"Bateador","vb":7,"h":4,"d2b":1,"d3b":0,"hr":0,"bb":1,"sf":0,"ci":0,"ca":3,"k":0},
+            {"name":"Jose Yvimas","team":"Ciencias","type":"Bateador","vb":12,"h":4,"d2b":1,"d3b":0,"hr":0,"bb":2,"sf":0,"ci":2,"ca":4,"k":0},
             {"name":"Pedro Machado","team":"Ciencias","type":"Bateador","vb":8,"h":5,"d2b":1,"d3b":1,"hr":1,"bb":1,"sf":0,"ci":3,"ca":3,"k":0},
             {"name":"Donander Huertas","team":"Ciencias","type":"Bateador","vb":3,"h":2,"d2b":0,"d3b":0,"hr":0,"bb":1,"sf":0,"ci":0,"ca":0,"k":0},
-            {"name":"Yosnir Toro","team":"Ciencias","type":"Bateador","vb":7,"h":3,"d2b":1,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":3,"ca":1,"k":0},
-            {"name":"Alejandro Alcala","team":"Ciencias","type":"Bateador","vb":5,"h":0,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":0,"k":0},
-            {"name":"Jose Salazar","team":"Ciencias","type":"Bateador","vb":1,"h":0,"d2b":0,"d3b":0,"hr":0,"bb":1,"sf":0,"ci":0,"ca":0,"k":0},
-            {"name":"Juan Rodriguez","team":"Ciencias","type":"Bateador","vb":5,"h":2,"d2b":0,"d3b":0,"hr":1,"bb":1,"sf":0,"ci":2,"ca":3,"k":0},
+            {"name":"Yosnir Toro","team":"Ciencias","type":"Bateador","vb":8,"h":4,"d2b":1,"d3b":0,"hr":0,"bb":2,"sf":0,"ci":4,"ca":3,"k":0},
+            {"name":"Alejandro Alcala","team":"Ciencias","type":"Bateador","vb":8,"h":2,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":2,"ca":1,"k":0},
+            {"name":"Jose Salazar","team":"Ciencias","type":"Bateador","vb":4,"h":3,"d2b":0,"d3b":1,"hr":0,"bb":1,"sf":0,"ci":2,"ca":1,"k":0},
+            {"name":"Juan Rodriguez","team":"Ciencias","type":"Bateador","vb":8,"h":2,"d2b":0,"d3b":0,"hr":1,"bb":1,"sf":0,"ci":2,"ca":3,"k":1},
             {"name":"Miguel Viera","team":"Ciencias","type":"Bateador","vb":1,"h":0,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":0,"k":1},
             {"name":"Bryant Rivas","team":"Ciencias","type":"Bateador","vb":3,"h":1,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":2,"ca":1,"k":0},
             {"name":"Luis Bruzual","team":"Ciencias","type":"Bateador","vb":8,"h":3,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":2,"k":0},
             {"name":"Samuel Olivo","team":"Ciencias","type":"Bateador","vb":1,"h":0,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":0,"k":0},
             {"name":"Gabriel Peña","team":"Ciencias","type":"Bateador","vb":5,"h":3,"d2b":0,"d3b":0,"hr":2,"bb":0,"sf":0,"ci":5,"ca":3,"k":0},
-            {"name":"Meillen Rivas","team":"Ciencias","type":"Bateador","vb":3,"h":1,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":1,"ca":0,"k":0},
-            {"name":"Yonayvert Melendrez","team":"Ciencias","type":"Bateador","vb":7,"h":2,"d2b":0,"d3b":0,"hr":0,"bb":2,"sf":0,"ci":0,"ca":2,"k":0},
+            {"name":"Meillen Rivas","team":"Ciencias","type":"Bateador","vb":5,"h":1,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":1,"ca":0,"k":0},
+            {"name":"Yonayvert Melendrez","team":"Ciencias","type":"Bateador","vb":9,"h":4,"d2b":0,"d3b":1,"hr":0,"bb":3,"sf":0,"ci":1,"ca":3,"k":0},
             {"name":"Kevin Gomez","team":"Ingeniería","type":"Bateador","vb":5,"h":2,"d2b":0,"d3b":1,"hr":0,"bb":1,"sf":0,"ci":0,"ca":2,"k":0},
             {"name":"Gabriel Gutierrez","team":"Ingeniería","type":"Bateador","vb":4,"h":1,"d2b":0,"d3b":1,"hr":0,"bb":1,"sf":0,"ci":0,"ca":2,"k":0},
             {"name":"Jesus Saez","team":"Ingeniería","type":"Bateador","vb":6,"h":4,"d2b":1,"d3b":0,"hr":1,"bb":0,"sf":0,"ci":4,"ca":2,"k":0},
@@ -505,10 +397,10 @@
             {"name":"Asdrubal Polidor","team":"Humanidades","type":"Bateador","vb":2,"h":0,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":0,"k":0},
             {"name":"Yonmar Montoya (P)","team":"Humanidades","type":"Lanzador","jl":2,"jg":1,"jp":1,"js":0,"ip":7,"h":9,"cl":8,"bb":7,"k":0,"era":8},
             {"name":"Luis Salazar (P)","team":"Humanidades","type":"Lanzador","jl":2,"jg":0,"jp":0,"js":1,"ip":4.1,"h":5,"cl":7,"bb":3,"k":0,"era":11.95},
-            {"name":"Reinaldo Díaz","team":"Ciencias","type":"Bateador","vb":6,"h":5,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":2,"k":0},
+            {"name":"Reinaldo Díaz","team":"Ciencias","type":"Bateador","vb":8,"h":6,"d2b":0,"d3b":0,"hr":1,"bb":0,"sf":0,"ci":2,"ca":3,"k":0},
             {"name":"Sebastian Fernandez","team":"Ciencias","type":"Bateador","vb":2,"h":1,"d2b":0,"d3b":0,"hr":0,"bb":1,"sf":0,"ci":0,"ca":0,"k":0},
-            {"name":"Cesar Bastidas","team":"Ciencias","type":"Bateador","vb":5,"h":3,"d2b":1,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":3,"ca":2,"k":1},
-            {"name":"Juan Subero","team":"Ciencias","type":"Bateador","vb":2,"h":1,"d2b":0,"d3b":0,"hr":0,"bb":1,"sf":0,"ci":0,"ca":0,"k":0},
+            {"name":"Cesar Bastidas","team":"Ciencias","type":"Bateador","vb":8,"h":6,"d2b":4,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":5,"ca":3,"k":1},
+            {"name":"Juan Subero","team":"Ciencias","type":"Bateador","vb":3,"h":1,"d2b":0,"d3b":0,"hr":0,"bb":1,"sf":0,"ci":0,"ca":0,"k":0},
             {"name":"Reinaldo Díaz (P)","team":"Ciencias","type":"Lanzador","jl":1,"jg":0,"jp":0,"js":0,"ip":0.1,"h":3,"cl":4,"bb":2,"k":0,"era":280},
             {"name":"Pedro Machado (P)","team":"Ciencias","type":"Lanzador","jl":1,"jg":0,"jp":1,"js":0,"ip":5.2,"h":4,"cl":3,"bb":6,"k":1,"era":4.04},
             {"name":"Daniel Peñaloza","team":"Humanidades","type":"Bateador","vb":1,"h":0,"d2b":0,"d3b":0,"hr":0,"bb":2,"sf":0,"ci":0,"ca":1,"k":0},
@@ -525,24 +417,32 @@
             {"name":"Luis Adames","team":"Ingeniería","type":"Bateador","vb":1,"h":0,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":0,"k":0},
             {"name":"Jose Martinez (P)","team":"Ingeniería","type":"Lanzador","jl":1,"jg":0,"jp":0,"js":0,"ip":4,"h":3,"cl":2,"bb":6,"k":1,"era":3.5},
             {"name":"Frank Ariza (P)","team":"Ingeniería","type":"Lanzador","jl":1,"jg":0,"jp":1,"js":0,"ip":1.1,"h":7,"cl":6,"bb":1,"k":0,"era":38.18},
-            {"name":"Eduardo Medina","team":"Derecho","type":"Bateador","vb":4,"h":1,"d2b":1,"d3b":0,"hr":0,"bb":1,"sf":0,"ci":0,"ca":1,"k":0},
-            {"name":"Carlos Medina","team":"Derecho","type":"Bateador","vb":3,"h":1,"d2b":0,"d3b":0,"hr":0,"bb":2,"sf":0,"ci":0,"ca":3,"k":0},
-            {"name":"Yaron Diaz","team":"Derecho","type":"Bateador","vb":5,"h":4,"d2b":2,"d3b":0,"hr":2,"bb":0,"sf":0,"ci":5,"ca":3,"k":1},
+            {"name":"Eduardo Medina","team":"Derecho","type":"Bateador","vb":6,"h":1,"d2b":1,"d3b":0,"hr":0,"bb":1,"sf":0,"ci":0,"ca":1,"k":0},
+            {"name":"Carlos Medina","team":"Derecho","type":"Bateador","vb":5,"h":1,"d2b":0,"d3b":0,"hr":0,"bb":2,"sf":0,"ci":0,"ca":3,"k":0},
+            {"name":"Yaron Diaz","team":"Derecho","type":"Bateador","vb":7,"h":6,"d2b":2,"d3b":0,"hr":3,"bb":0,"sf":0,"ci":6,"ca":4,"k":1},
             {"name":"Yonaiver Morales","team":"Derecho","type":"Bateador","vb":4,"h":1,"d2b":0,"d3b":0,"hr":0,"bb":1,"sf":0,"ci":1,"ca":1,"k":0},
-            {"name":"Christian Garcia","team":"Derecho","type":"Bateador","vb":0,"h":0,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":0,"k":0},
-            {"name":"Jomar Mendoza","team":"Derecho","type":"Bateador","vb":3,"h":1,"d2b":0,"d3b":0,"hr":0,"bb":2,"sf":0,"ci":0,"ca":1,"k":0},
-            {"name":"Braulio Labrador","team":"Derecho","type":"Bateador","vb":4,"h":2,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":0,"k":0},
-            {"name":"Andres Lorant","team":"Derecho","type":"Bateador","vb":4,"h":1,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":0,"k":1},
-            {"name":"Braulio Labrador (P)","team":"Derecho","type":"Lanzador","jl":1,"jg":1,"jp":0,"js":0,"ip":7,"h":14,"cl":6,"bb":0,"k":2,"era":6},
-            {"name":"Enderson Corro","team":"Derecho","type":"Bateador","vb":4,"h":1,"d2b":1,"d3b":0,"hr":0,"bb":1,"sf":0,"ci":1,"ca":1,"k":0},
+            {"name":"Christian Garcia","team":"Derecho","type":"Bateador","vb":2,"h":0,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":0,"k":0},
+            {"name":"Jomar Mendoza","team":"Derecho","type":"Bateador","vb":4,"h":1,"d2b":0,"d3b":0,"hr":0,"bb":2,"sf":0,"ci":0,"ca":1,"k":0},
+            {"name":"Braulio Labrador","team":"Derecho","type":"Bateador","vb":6,"h":2,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":0,"k":0},
+            {"name":"Andres Lorant","team":"Derecho","type":"Bateador","vb":5,"h":1,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":0,"k":1},
+            {"name":"Braulio Labrador (P)","team":"Derecho","type":"Lanzador","jl":2,"jg":1,"jp":1,"js":0,"ip":11,"h":28,"cl":16,"bb":2,"k":3,"era":10.18},
+            {"name":"Enderson Corro","team":"Derecho","type":"Bateador","vb":6,"h":1,"d2b":1,"d3b":0,"hr":0,"bb":1,"sf":0,"ci":1,"ca":1,"k":0},
             {"name":"Jefran Flores","team":"Ciencias","type":"Bateador","vb":3,"h":0,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":0,"k":0},
             {"name":"Luis Flores (P)","team":"Ciencias","type":"Lanzador","jl":1,"jg":0,"jp":0,"js":0,"ip":3.2,"h":9,"cl":8,"bb":4,"k":0,"era":17.5},
             {"name":"Jefran Flores (P)","team":"Ciencias","type":"Lanzador","jl":1,"jg":0,"jp":1,"js":0,"ip":1,"h":6,"cl":6,"bb":3,"k":0,"era":42},
             {"name":"Miguel Medina","team":"FaCES","type":"Bateador","vb":2,"h":1,"d2b":0,"d3b":0,"hr":0,"bb":2,"sf":0,"ci":1,"ca":1,"k":0},
-            {"name":"Leonardo La Cruz","team":"FaCES","type":"Bateador","vb":1,"h":1,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":0,"k":0}
+            {"name":"Leonardo La Cruz","team":"FaCES","type":"Bateador","vb":1,"h":1,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":0,"k":0},
+            {"name":"Deivis Camacho","team":"Ciencias","type":"Bateador","vb":3,"h":0,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":0,"k":0},
+            {"name":"Luis Flores Soler","team":"Ciencias","type":"Bateador","vb":2,"h":1,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":1,"k":0},
+            {"name":"Mauricio Hernandez","team":"Ciencias","type":"Bateador","vb":1,"h":0,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":0,"k":0},
+            {"name":"Deivis Camacho (P)","team":"Ciencias","type":"Lanzador","jl":1,"jg":1,"jp":0,"js":0,"ip":5,"h":3,"cl":1,"bb":0,"k":1,"era":1.4},
+            {"name":"Edgar Rodriguez","team":"Derecho","type":"Bateador","vb":2,"h":1,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":0,"k":0},
+            {"name":"Luis Davalillo","team":"Derecho","type":"Bateador","vb":1,"h":1,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":0,"k":0},
+            {"name":"Byron Doria","team":"Derecho","type":"Bateador","vb":1,"h":0,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":0,"k":0},
+            {"name":"Diego Flores","team":"Derecho","type":"Bateador","vb":1,"h":0,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":0,"k":0},
+            {"name":"Moises Solano (P)","team":"Derecho","type":"Lanzador","jl":1,"jg":0,"jp":0,"js":0,"ip":1,"h":2,"cl":1,"bb":0,"k":0,"era":7}
         ];
 
-        // JUEGOS OFICIALES (JORNADA 3: CIENCIAS 7 - 14 FACES FINALIZADO)
         const defaultGames = [
             {"id":1,"homeIdx":2,"visitorIdx":1,"date":"Vie 25/09","slot":"11:00 AM","jornada":1,"status":"finished","scoreHome":6,"scoreVisitor":10},
             {"id":2,"homeIdx":5,"visitorIdx":6,"date":"Vie 25/09","slot":"01:00 PM","jornada":1,"status":"pending","scoreHome":0,"scoreVisitor":0},
@@ -554,7 +454,7 @@
             {"id":8,"homeIdx":1,"visitorIdx":4,"date":"Vie 09/10","slot":"01:00 PM","jornada":3,"status":"finished","scoreHome":7,"scoreVisitor":14},
             {"id":9,"homeIdx":3,"visitorIdx":5,"date":"Vie 09/10","slot":"03:00 PM","jornada":3,"status":"pending","scoreHome":0,"scoreVisitor":0},
             {"id":10,"homeIdx":3,"visitorIdx":6,"date":"Vie 16/10","slot":"11:00 AM","jornada":4,"status":"pending","scoreHome":0,"scoreVisitor":0},
-            {"id":11,"homeIdx":1,"visitorIdx":5,"date":"Vie 16/10","slot":"01:00 PM","jornada":4,"status":"pending","scoreHome":0,"scoreVisitor":0},
+            {"id":11,"homeIdx":1,"visitorIdx":5,"date":"Vie 16/10","slot":"01:00 PM","jornada":4,"status":"finished","scoreHome":11,"scoreVisitor":1},
             {"id":12,"homeIdx":2,"visitorIdx":4,"date":"Vie 16/10","slot":"03:00 PM","jornada":4,"status":"pending","scoreHome":0,"scoreVisitor":0},
             {"id":13,"homeIdx":4,"visitorIdx":5,"date":"Vie 23/10","slot":"11:00 AM","jornada":5,"status":"pending","scoreHome":0,"scoreVisitor":0},
             {"id":14,"homeIdx":2,"visitorIdx":3,"date":"Vie 23/10","slot":"01:00 PM","jornada":5,"status":"pending","scoreHome":0,"scoreVisitor":0},
@@ -566,11 +466,10 @@
         let leagueStandings = [];
         let isAdminLoggedIn = false;
 
-        // INICIAR CARGA DE DATOS (_v15 asegura la recarga limpia de la base de datos oficial con Top 3)
         function initLeague() {
-            const savedNames = localStorage.getItem('LICS_teamNames_v15');
-            const savedPlayers = localStorage.getItem('LICS_players_v15');
-            const savedGames = localStorage.getItem('LICS_games_v15');
+            const savedNames = localStorage.getItem('LICS_teamNames_v19');
+            const savedPlayers = localStorage.getItem('LICS_players_v19');
+            const savedGames = localStorage.getItem('LICS_games_v19');
 
             teamNames = savedNames ? JSON.parse(savedNames) : { ...teamNames };
             players = savedPlayers ? JSON.parse(savedPlayers) : [ ...defaultPlayers ];
@@ -593,9 +492,9 @@
         }
 
         function saveData() {
-            localStorage.setItem('LICS_teamNames_v15', JSON.stringify(teamNames));
-            localStorage.setItem('LICS_players_v15', JSON.stringify(players));
-            localStorage.setItem('LICS_games_v15', JSON.stringify(games));
+            localStorage.setItem('LICS_teamNames_v19', JSON.stringify(teamNames));
+            localStorage.setItem('LICS_players_v19', JSON.stringify(players));
+            localStorage.setItem('LICS_games_v19', JSON.stringify(games));
         }
 
         function unlockAdmin() {
@@ -618,20 +517,14 @@
         function showAdminDashboard() {
             document.getElementById('admin-lockscreen').classList.add('hidden');
             document.getElementById('admin-controls').classList.remove('hidden');
-            const tabBtn = document.getElementById('tab-admin');
-            tabBtn.innerHTML = `<i class="fa-solid fa-unlock text-lg text-emerald-500"></i> Panel de Control`;
+            document.getElementById('tab-admin').innerHTML = `<i class="fa-solid fa-unlock text-lg text-emerald-500"></i> Panel de Control`;
         }
 
         function renderTeamNameInputs() {
             const container = document.getElementById('renameTeamsContainer');
             container.innerHTML = '';
             for (let i = 1; i <= TOTAL_TEAMS; i++) {
-                container.innerHTML += `
-                    <div>
-                        <label class="block text-xs font-bold text-slate-500 mb-1">Equipo ${i}</label>
-                        <input type="text" id="renameTeam-${i}" value="${teamNames[i]}" class="w-full bg-slate-50 border border-slate-200 p-2.5 rounded-xl font-bold text-[#003049]">
-                    </div>
-                `;
+                container.innerHTML += `<div><label class="block text-xs font-bold text-slate-500 mb-1">Equipo ${i}</label><input type="text" id="renameTeam-${i}" value="${teamNames[i]}" class="w-full bg-slate-50 border border-slate-200 p-2.5 rounded-xl font-bold text-[#003049]"></div>`;
             }
         }
 
@@ -641,9 +534,7 @@
                 const val = document.getElementById(`renameTeam-${i}`).value.trim();
                 if (val && val !== teamNames[i]) {
                     const oldName = teamNames[i];
-                    players.forEach(p => {
-                        if (p.team === oldName) p.team = val;
-                    });
+                    players.forEach(p => { if (p.team === oldName) p.team = val; });
                     teamNames[i] = val;
                     changesMade = true;
                 }
@@ -653,60 +544,30 @@
                 calculateStandings();
                 populateTeamSelectors();
                 renderAll();
-                
-                const btn = document.querySelector("#admin-controls button");
-                const originalText = btn.innerHTML;
-                btn.innerHTML = `<i class="fa-solid fa-check mr-1"></i> ¡Equipos Sincronizados!`;
-                btn.classList.add("bg-emerald-700");
-                setTimeout(() => {
-                    btn.innerHTML = originalText;
-                    btn.classList.remove("bg-emerald-700");
-                }, 2000);
             }
         }
 
-        // CÁLCULO DE TABLA DE POSICIONES CON REGLA Y ORDEN MLB ESTRICTO
         function calculateStandings() {
             leagueStandings = [];
             for (let i = 1; i <= TOTAL_TEAMS; i++) {
-                leagueStandings.push({
-                    name: teamNames[i],
-                    jj: 0, jg: 0, jp: 0, pct: 0, dif: 0, difNum: 0, pts: 0, cf: 0, cc: 0
-                });
+                leagueStandings.push({ name: teamNames[i], jj: 0, jg: 0, jp: 0, pct: 0, dif: 0, difNum: 0, pts: 0, cf: 0, cc: 0 });
             }
 
             games.forEach(g => {
                 if (g.status === 'finished') {
-                    const homeName = teamNames[g.homeIdx];
-                    const visitorName = teamNames[g.visitorIdx];
-                    
-                    const home = leagueStandings.find(t => t.name === homeName);
-                    const visitor = leagueStandings.find(t => t.name === visitorName);
-
+                    const home = leagueStandings.find(t => t.name === teamNames[g.homeIdx]);
+                    const visitor = leagueStandings.find(t => t.name === teamNames[g.visitorIdx]);
                     if (home && visitor) {
-                        home.jj++;
-                        visitor.jj++;
-                        home.cf += g.scoreHome;
-                        home.cc += g.scoreVisitor;
-                        visitor.cf += g.scoreVisitor;
-                        visitor.cc += g.scoreHome;
-
-                        if (g.scoreHome > g.scoreVisitor) {
-                            home.jg++;
-                            home.pts += 3;
-                            visitor.jp++;
-                        } else if (g.scoreHome < g.scoreVisitor) {
-                            visitor.jg++;
-                            visitor.pts += 3;
-                            home.jp++;
-                        }
+                        home.jj++; visitor.jj++;
+                        home.cf += g.scoreHome; home.cc += g.scoreVisitor;
+                        visitor.cf += g.scoreVisitor; visitor.cc += g.scoreHome;
+                        if (g.scoreHome > g.scoreVisitor) { home.jg++; home.pts += 3; visitor.jp++; }
+                        else if (g.scoreHome < g.scoreVisitor) { visitor.jg++; visitor.pts += 3; home.jp++; }
                     }
                 }
             });
 
-            leagueStandings.forEach(t => {
-                t.pct = t.jj > 0 ? (t.jg / t.jj) : 0;
-            });
+            leagueStandings.forEach(t => { t.pct = t.jj > 0 ? (t.jg / t.jj) : 0; });
 
             let leader = [...leagueStandings].sort((a,b) => b.pct - a.pct || b.jg - a.jg)[0];
             const leaderJG = leader ? leader.jg : 0;
@@ -715,43 +576,20 @@
             leagueStandings.forEach(t => {
                 const gb = ((leaderJG - t.jg) + (t.jp - leaderJP)) / 2.0;
                 t.difNum = gb;
-                if (gb === 0) {
-                    t.dif = '-';
-                } else if (gb % 1 === 0) {
-                    t.dif = gb.toFixed(0);
-                } else {
-                    t.dif = gb.toFixed(1);
-                }
+                t.dif = gb === 0 ? '-' : (gb % 1 === 0 ? gb.toFixed(0) : gb.toFixed(1));
             });
 
-            leagueStandings.sort((a, b) => {
-                if (a.difNum !== b.difNum) return a.difNum - b.difNum;
-                if (b.pct !== a.pct) return b.pct - a.pct;
-                if (b.pts !== a.pts) return b.pts - a.pts;
-                return (b.cf - b.cc) - (a.cf - a.cc);
-            });
+            leagueStandings.sort((a, b) => a.difNum - b.difNum || b.pct - a.pct || b.pts - a.pts || (b.cf - b.cc) - (a.cf - a.cc));
         }
 
         function populateTeamSelectors() {
-            const teamSelects = [
-                document.getElementById('teamSelector'),
-                document.getElementById('adminNewPlayerTeam'),
-                document.getElementById('adminLoadTeam')
-            ];
-
-            const options = [];
-            for (let i = 1; i <= TOTAL_TEAMS; i++) {
-                options.push(`<option value="${teamNames[i]}">${teamNames[i]}</option>`);
-            }
-            const optionsHTML = options.join('');
-
+            const teamSelects = [document.getElementById('teamSelector'), document.getElementById('adminNewPlayerTeam'), document.getElementById('adminLoadTeam')];
+            const optionsHTML = Array.from({length: TOTAL_TEAMS}, (_, i) => `<option value="${teamNames[i+1]}">${teamNames[i+1]}</option>`).join('');
             teamSelects.forEach(sel => {
                 if (sel) {
                     const currentVal = sel.value;
                     sel.innerHTML = optionsHTML;
-                    if (currentVal && optionsHTML.includes(currentVal)) {
-                        sel.value = currentVal;
-                    }
+                    if (currentVal && optionsHTML.includes(currentVal)) sel.value = currentVal;
                 }
             });
             adminUpdatePlayerDropdown();
@@ -761,13 +599,8 @@
             const team = document.getElementById('adminLoadTeam').value;
             const playerSelect = document.getElementById('adminLoadPlayer');
             if (!playerSelect) return;
-
             const teamPlayers = players.filter(p => p.team === team);
-            playerSelect.innerHTML = teamPlayers.map(p => `<option value="${p.name}">${p.name} (${p.type})</option>`).join('');
-            
-            if (teamPlayers.length === 0) {
-                playerSelect.innerHTML = `<option value="">Sin jugadores en roster</option>`;
-            }
+            playerSelect.innerHTML = teamPlayers.length ? teamPlayers.map(p => `<option value="${p.name}">${p.name} (${p.type})</option>`).join('') : `<option value="">Sin jugadores</option>`;
             adminToggleLoadFields();
         }
 
@@ -775,43 +608,27 @@
             const team = document.getElementById('adminLoadTeam').value;
             const name = document.getElementById('adminLoadPlayer').value;
             const player = players.find(p => p.team === team && p.name === name);
-
-            const batFields = document.getElementById('adminFieldsBateador');
-            const pitFields = document.getElementById('adminFieldsLanzador');
-
-            if (player && player.type === 'Lanzador') {
-                batFields.classList.add('hidden');
-                pitFields.classList.remove('hidden');
-            } else {
-                batFields.classList.remove('hidden');
-                pitFields.classList.add('hidden');
-            }
+            const isPitcher = player && player.type === 'Lanzador';
+            document.getElementById('adminFieldsBateador').classList.toggle('hidden', isPitcher);
+            document.getElementById('adminFieldsLanzador').classList.toggle('hidden', !isPitcher);
         }
 
         function switchTab(tabId) {
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
             document.querySelectorAll('.tab-content').forEach(c => c.classList.add('hidden'));
-
             document.getElementById(`tab-${tabId}`).classList.add('active');
             document.getElementById(`content-${tabId}`).classList.remove('hidden');
         }
 
         function calculateAVG(h, vb) { return vb > 0 ? h / vb : 0; }
         function calculateOBP(h, bb, vb, sf) { return (vb + bb + sf) > 0 ? (h + bb) / (vb + bb + sf) : 0; }
-        function calculateSLG(singles, d2b, d3b, hr, vb) {
-            const tb = singles + (d2b * 2) + (d3b * 3) + (hr * 4);
-            return vb > 0 ? tb / vb : 0;
-        }
+        function calculateSLG(singles, d2b, d3b, hr, vb) { return vb > 0 ? (singles + (d2b * 2) + (d3b * 3) + (hr * 4)) / vb : 0; }
         function calculateERA(cl, ip) { return ip > 0 ? (cl * 7) / ip : 0; }
         function calculateWHIP(h, bb, ip) { return ip > 0 ? (h + bb) / ip : 0; }
 
         function calculateMetrics(p) {
-            const h = Math.max(0, p.h || 0);
-            const d2b = Math.max(0, p.d2b || 0);
-            const d3b = Math.max(0, p.d3b || 0);
-            const hr = Math.max(0, p.hr || 0);
+            const h = Math.max(0, p.h || 0), d2b = Math.max(0, p.d2b || 0), d3b = Math.max(0, p.d3b || 0), hr = Math.max(0, p.hr || 0);
             const singles = Math.max(0, h - (d2b + d3b + hr));
-
             p.avg = calculateAVG(h, p.vb || 0);
             p.obp = calculateOBP(h, p.bb || 0, p.vb || 0, p.sf || 0);
             p.slg = calculateSLG(singles, d2b, d3b, hr, p.vb || 0);
@@ -829,129 +646,97 @@
 
         function renderStandings() {
             const tbody = document.getElementById('homeStandingsBody');
-            tbody.innerHTML = '';
-            leagueStandings.forEach((t, i) => {
-                const boldClass = i < 4 ? 'font-bold text-[#f77f00]' : 'text-slate-800';
-                tbody.innerHTML += `
-                    <tr class="hover:bg-slate-50 border-b border-slate-100 transition">
-                        <td class="p-3 font-bold ${boldClass}">${t.name}</td>
-                        <td class="p-3 text-center font-bold">${t.jj}</td>
-                        <td class="p-3 text-center text-green-600 font-bold">${t.jg}</td>
-                        <td class="p-3 text-center text-red-600 font-bold">${t.jp}</td>
-                        <td class="p-3 text-center font-semibold text-slate-600">${t.pct.toFixed(3)}</td>
-                        <td class="p-3 text-center font-black text-slate-700 bg-slate-50">${t.dif}</td>
-                        <td class="p-3 text-center font-black text-slate-900 bg-orange-50/50">${t.pts}</td>
-                    </tr>
-                `;
-            });
+            tbody.innerHTML = leagueStandings.map((t, i) => `
+                <tr class="hover:bg-slate-50 border-b border-slate-100 transition">
+                    <td class="p-3 font-bold ${i < 4 ? 'font-bold text-[#f77f00]' : 'text-slate-800'}">${t.name}</td>
+                    <td class="p-3 text-center font-bold">${t.jj}</td>
+                    <td class="p-3 text-center text-green-600 font-bold">${t.jg}</td>
+                    <td class="p-3 text-center text-red-600 font-bold">${t.jp}</td>
+                    <td class="p-3 text-center font-semibold text-slate-600">${t.pct.toFixed(3)}</td>
+                    <td class="p-3 text-center font-black text-slate-700 bg-slate-50">${t.dif}</td>
+                    <td class="p-3 text-center font-black text-slate-900 bg-orange-50/50">${t.pts}</td>
+                </tr>
+            `).join('');
         }
 
         function renderRecentGames() {
             const container = document.getElementById('homeRecentGames');
-            container.innerHTML = '';
             const finished = games.filter(g => g.status === 'finished').sort((a,b) => b.id - a.id);
-
-            if (finished.length === 0) {
+            if (!finished.length) {
                 container.innerHTML = `<div class="text-center py-8 text-slate-400 font-semibold text-xs">Aún no se han jugado encuentros.</div>`;
                 return;
             }
-
-            finished.slice(0, 5).forEach(g => {
-                const homeWinner = g.scoreHome > g.scoreVisitor;
-                container.innerHTML += `
+            container.innerHTML = finished.slice(0, 5).map(g => {
+                const homeW = g.scoreHome > g.scoreVisitor;
+                return `
                     <div class="p-3 bg-slate-50 rounded-2xl border border-slate-100 text-xs flex justify-between items-center shadow-sm">
                         <div class="flex-1">
-                            <div class="flex justify-between mb-1 ${homeWinner ? 'font-bold text-[#003049]' : 'text-slate-400'}">
-                                <span>${teamNames[g.homeIdx]}</span>
-                                <span>${g.scoreHome}</span>
-                            </div>
-                            <div class="flex justify-between ${!homeWinner ? 'font-bold text-[#003049]' : 'text-slate-400'}">
-                                <span>${teamNames[g.visitorIdx]}</span>
-                                <span>${g.scoreVisitor}</span>
-                            </div>
+                            <div class="flex justify-between mb-1 ${homeW ? 'font-bold text-[#003049]' : 'text-slate-400'}"><span>${teamNames[g.homeIdx]}</span><span>${g.scoreHome}</span></div>
+                            <div class="flex justify-between ${!homeW ? 'font-bold text-[#003049]' : 'text-slate-400'}"><span>${teamNames[g.visitorIdx]}</span><span>${g.scoreVisitor}</span></div>
                         </div>
-                        <div class="ml-4 pl-4 border-l border-slate-200 text-right text-[9px] text-slate-400 font-bold">
-                            Jor. ${g.jornada} (${g.date})<br>${g.slot}
-                        </div>
+                        <div class="ml-4 pl-4 border-l border-slate-200 text-right text-[9px] text-slate-400 font-bold">Jor. ${g.jornada} (${g.date})<br>${g.slot}</div>
                     </div>
                 `;
-            });
+            }).join('');
         }
 
-        // RENDER DE CUADROS DE HONOR Y LÍDERES (TOP 3 POR CATEGORÍA)
         function renderLeaders() {
-            const battingGrid = document.getElementById('battingLeadersGrid');
-            const pitchingGrid = document.getElementById('pitchingLeadersGrid');
-
             const batters = players.filter(p => p.type === 'Bateador');
             batters.forEach(p => calculateMetrics(p));
+            const qualBat = batters.filter(p => (p.vb || 0) >= 2);
 
-            const qualifiedBatters = batters.filter(p => (p.vb || 0) >= 2);
-
-            const topAVG = [...qualifiedBatters].sort((a,b) => b.avg - a.avg || b.vb - a.vb).slice(0, 3);
+            const topAVG = [...qualBat].sort((a,b) => b.avg - a.avg || b.vb - a.vb).slice(0, 3);
             const topCI  = [...batters].sort((a,b) => (b.ci || 0) - (a.ci || 0) || (b.h || 0) - (a.h || 0)).slice(0, 3);
             const topCA  = [...batters].sort((a,b) => (b.ca || 0) - (a.ca || 0) || (b.h || 0) - (a.h || 0)).slice(0, 3);
             const topHR  = [...batters].sort((a,b) => (b.hr || 0) - (a.hr || 0) || (b.ci || 0) - (a.ci || 0)).slice(0, 3);
-            const topOPS = [...qualifiedBatters].sort((a,b) => b.ops - a.ops || b.vb - a.vb).slice(0, 3);
+            const topOPS = [...qualBat].sort((a,b) => b.ops - a.ops || b.vb - a.vb).slice(0, 3);
 
-            battingGrid.innerHTML = `
-                ${renderTop3LeaderCard("AVG BATEO", topAVG, p => p.avg.toFixed(3), "text-orange-500")}
-                ${renderTop3LeaderCard("IMPULSADAS", topCI, p => p.ci || 0, "text-orange-600")}
-                ${renderTop3LeaderCard("ANOTADAS", topCA, p => p.ca || 0, "text-amber-500")}
-                ${renderTop3LeaderCard("JONRONES", topHR, p => p.hr || 0, "text-red-500")}
-                ${renderTop3LeaderCard("OPS", topOPS, p => p.ops.toFixed(3), "text-yellow-600")}
+            document.getElementById('battingLeadersGrid').innerHTML = `
+                ${renderTop3Card("AVG BATEO", topAVG, p => p.avg.toFixed(3), "text-orange-500")}
+                ${renderTop3Card("IMPULSADAS", topCI, p => p.ci || 0, "text-orange-600")}
+                ${renderTop3Card("ANOTADAS", topCA, p => p.ca || 0, "text-amber-500")}
+                ${renderTop3Card("JONRONES", topHR, p => p.hr || 0, "text-red-500")}
+                ${renderTop3Card("OPS", topOPS, p => p.ops.toFixed(3), "text-yellow-600")}
             `;
 
             const pitchers = players.filter(p => p.type === 'Lanzador');
-            pitchers.forEach(p => { 
-                p.era = calculateERA(p.cl || 0, p.ip || 0); 
-            });
+            pitchers.forEach(p => { p.era = calculateERA(p.cl || 0, p.ip || 0); });
 
             const topJG  = [...pitchers].sort((a,b) => (b.jg || 0) - (a.jg || 0) || (b.ip || 0) - (a.ip || 0)).slice(0, 3);
             const topK   = [...pitchers].sort((a,b) => (b.k || 0) - (a.k || 0) || (b.ip || 0) - (a.ip || 0)).slice(0, 3);
             const topERA = [...pitchers].filter(p => (p.ip || 0) >= 2.0).sort((a,b) => a.era - b.era || (b.ip || 0) - (a.ip || 0)).slice(0, 3);
             const topJS  = [...pitchers].sort((a,b) => (b.js || 0) - (a.js || 0) || (b.ip || 0) - (a.ip || 0)).slice(0, 3);
 
-            pitchingGrid.innerHTML = `
-                ${renderTop3LeaderCard("GANADOS", topJG, p => p.jg || 0, "text-blue-500")}
-                ${renderTop3LeaderCard("PONCHES", topK, p => p.k || 0, "text-indigo-500")}
-                ${renderTop3LeaderCard("EFECTIVIDAD", topERA, p => p.era.toFixed(2), "text-teal-500")}
-                ${renderTop3LeaderCard("SALVADOS", topJS, p => p.js || 0, "text-blue-600")}
+            document.getElementById('pitchingLeadersGrid').innerHTML = `
+                ${renderTop3Card("GANADOS", topJG, p => p.jg || 0, "text-blue-500")}
+                ${renderTop3Card("PONCHES", topK, p => p.k || 0, "text-indigo-500")}
+                ${renderTop3Card("EFECTIVIDAD", topERA, p => p.era.toFixed(2), "text-teal-500")}
+                ${renderTop3Card("SALVADOS", topJS, p => p.js || 0, "text-blue-600")}
             `;
         }
 
-        function renderTop3LeaderCard(title, list, valueFormat, colorClass) {
+        function renderTop3Card(title, list, valFn, colorClass) {
             const medals = ["🥇", "🥈", "🥉"];
-            let rowsHTML = "";
-
-            for (let i = 0; i < 3; i++) {
+            const rows = [0, 1, 2].map(i => {
                 const item = list[i];
-                if (item) {
-                    const formattedVal = valueFormat(item);
-                    rowsHTML += `
-                        <div class="flex items-center justify-between text-xs py-1 border-b border-slate-100 last:border-0">
-                            <div class="flex items-center gap-1.5 min-w-0 pr-1">
-                                <span class="text-xs leading-none">${medals[i]}</span>
-                                <div class="truncate">
-                                    <span class="font-extrabold text-[#003049] truncate block text-[11px] leading-tight">${item.name}</span>
-                                    <span class="text-[9px] text-slate-400 font-bold block truncate leading-tight">${item.team}</span>
-                                </div>
+                return item ? `
+                    <div class="flex items-center justify-between text-xs py-1 border-b border-slate-100 last:border-0">
+                        <div class="flex items-center gap-1.5 min-w-0 pr-1">
+                            <span class="text-xs leading-none">${medals[i]}</span>
+                            <div class="truncate">
+                                <span class="font-extrabold text-[#003049] truncate block text-[11px] leading-tight">${item.name}</span>
+                                <span class="text-[9px] text-slate-400 font-bold block truncate leading-tight">${item.team}</span>
                             </div>
-                            <span class="font-black ${colorClass} text-xs ml-1 whitespace-nowrap">${formattedVal}</span>
                         </div>
-                    `;
-                } else {
-                    rowsHTML += `
-                        <div class="flex items-center justify-between text-xs py-1 border-b border-slate-100 last:border-0 opacity-40">
-                            <div class="flex items-center gap-1.5">
-                                <span class="text-xs leading-none">${medals[i]}</span>
-                                <span class="text-[10px] text-slate-400 font-semibold">-</span>
-                            </div>
-                            <span class="font-bold text-slate-300 text-xs">-</span>
-                        </div>
-                    `;
-                }
-            }
+                        <span class="font-black ${colorClass} text-xs ml-1 whitespace-nowrap">${valFn(item)}</span>
+                    </div>
+                ` : `
+                    <div class="flex items-center justify-between text-xs py-1 border-b border-slate-100 last:border-0 opacity-40">
+                        <div class="flex items-center gap-1.5"><span class="text-xs leading-none">${medals[i]}</span><span class="text-[10px] text-slate-400 font-semibold">-</span></div>
+                        <span class="font-bold text-slate-300 text-xs">-</span>
+                    </div>
+                `;
+            }).join('');
 
             return `
                 <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-100 flex flex-col justify-between shadow-sm">
@@ -959,89 +744,119 @@
                         <span>${title}</span>
                         <span class="text-[8px] bg-white px-1.5 py-0.5 rounded text-slate-400 font-bold">TOP 3</span>
                     </div>
-                    <div class="flex flex-col gap-1">
-                        ${rowsHTML}
-                    </div>
+                    <div class="flex flex-col gap-1">${rows}</div>
                 </div>
             `;
         }
 
-        // RENDER CALENDARIO (5 JORNADAS DE FASE REGULAR)
         function renderCalendar() {
             const list = document.getElementById('calendarList');
             const filter = document.getElementById('calendarFilter').value;
-            list.innerHTML = '';
+            let filtered = [ ...games ];
+            if (filter === 'pending') filtered = games.filter(g => g.status === 'pending');
+            if (filter === 'finished') filtered = games.filter(g => g.status === 'finished');
 
-            let filteredGames = [ ...games ];
-            if (filter === 'pending') filteredGames = games.filter(g => g.status === 'pending');
-            if (filter === 'finished') filteredGames = games.filter(g => g.status === 'finished');
-
-            filteredGames.forEach(g => {
-                const isFinished = g.status === 'finished';
-                const homeName = teamNames[g.homeIdx];
-                const visitorName = teamNames[g.visitorIdx];
-
-                const headerClass = isFinished ? 'bg-slate-100 text-slate-500' : 'bg-orange-50 text-[#f77f00]';
-                
-                let adminScoreInput = '';
-                if (isAdminLoggedIn && !isFinished) {
-                    adminScoreInput = `
-                        <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between no-capture">
-                            <div class="flex gap-1 items-center">
-                                <input type="number" id="scH-${g.id}" placeholder="C" class="w-10 border border-slate-300 rounded-lg p-1 text-xs text-center font-bold">
-                                <span class="text-xs text-slate-400">-</span>
-                                <input type="number" id="scV-${g.id}" placeholder="C" class="w-10 border border-slate-300 rounded-lg p-1 text-xs text-center font-bold">
-                            </div>
-                            <button onclick="finishGame(${g.id})" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold py-1.5 px-3 rounded-xl shadow transition">
-                                <i class="fa-solid fa-check"></i> Finalizar
-                            </button>
+            list.innerHTML = filtered.map(g => {
+                const isFin = g.status === 'finished';
+                const adminInput = (isAdminLoggedIn && !isFin) ? `
+                    <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between no-capture">
+                        <div class="flex gap-1 items-center">
+                            <input type="number" id="scH-${g.id}" placeholder="C" class="w-10 border border-slate-300 rounded-lg p-1 text-xs text-center font-bold">
+                            <span class="text-xs text-slate-400">-</span>
+                            <input type="number" id="scV-${g.id}" placeholder="C" class="w-10 border border-slate-300 rounded-lg p-1 text-xs text-center font-bold">
                         </div>
-                    `;
-                }
+                        <button onclick="finishGame(${g.id})" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold py-1.5 px-3 rounded-xl shadow transition"><i class="fa-solid fa-check"></i> Finalizar</button>
+                    </div>
+                ` : '';
 
-                list.innerHTML += `
+                return `
                     <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm flex flex-col justify-between">
-                        <div class="p-3 ${headerClass} flex justify-between items-center text-xs font-black">
-                            <span>JORNADA ${g.jornada} · ${g.date}</span>
+                        <div class="p-3 ${isFin ? 'bg-slate-100 text-slate-500' : 'bg-orange-50 text-[#f77f00]'} flex justify-between items-center text-xs font-black">
+                            <span>JORNADA ${g.jornada} ·${g.date}</span>
                             <span><i class="fa-solid fa-clock mr-1"></i>${g.slot}</span>
                         </div>
                         <div class="p-4 flex-1">
-                            <div class="flex justify-between items-center py-2">
-                                <span class="font-bold text-sm text-slate-700">${homeName}</span>
-                                <span class="text-lg font-black text-[#003049]">${isFinished ? g.scoreHome : '-'}</span>
-                            </div>
-                            <div class="flex justify-between items-center py-2">
-                                <span class="font-bold text-sm text-slate-700">${visitorName}</span>
-                                <span class="text-lg font-black text-[#003049]">${isFinished ? g.scoreVisitor : '-'}</span>
-                            </div>
-                            ${adminScoreInput}
+                            <div class="flex justify-between items-center py-2"><span class="font-bold text-sm text-slate-700">${teamNames[g.homeIdx]}</span><span class="text-lg font-black text-[#003049]">${isFin ? g.scoreHome : '-'}</span></div>
+                            <div class="flex justify-between items-center py-2"><span class="font-bold text-sm text-slate-700">${teamNames[g.visitorIdx]}</span><span class="text-lg font-black text-[#003049]">${isFin ? g.scoreVisitor : '-'}</span></div>
+                            ${adminInput}
                         </div>
                     </div>
                 `;
-            });
+            }).join('');
         }
 
-        // RENDER VISTA ROSTER EQUIPO
         function renderTeamView() {
             const team = document.getElementById('teamSelector').value;
-            const batBody = document.getElementById('teamBattingBody');
-            const pitBody = document.getElementById('teamPitchingBody');
-
             const teamBatters = players.filter(p => p.team === team && p.type === 'Bateador');
             const teamPitchers = players.filter(p => p.team === team && p.type === 'Lanzador');
 
             document.getElementById('teamBattersCount').innerText = `${teamBatters.length} Jugadores`;
             document.getElementById('teamPitchersCount').innerText = `${teamPitchers.length} Pitchers`;
 
-            batBody.innerHTML = '';
-            if (teamBatters.length === 0) {
-                batBody.innerHTML = `<tr><td colspan="15" class="p-4 text-center text-slate-400 font-bold">No hay bateadores inscritos. Agrégalos en el Panel Administrativo.</td></tr>`;
-            } else {
-                teamBatters.forEach(p => {
-                    calculateMetrics(p);
-                    const ponches = (p.k !== undefined && p.k !== null) ? p.k : 0;
+            let totVB = 0, totCA = 0, totH = 0, tot2B = 0, tot3B = 0, totHR = 0, totCI = 0, totBB = 0, totK = 0, totSF = 0;
+            teamBatters.forEach(p => {
+                totVB += (p.vb || 0); totCA += (p.ca || 0); totH += (p.h || 0);
+                tot2B += (p.d2b || 0); tot3B += (p.d3b || 0); totHR += (p.hr || 0);
+                totCI += (p.ci || 0); totBB += (p.bb || 0); totK += (p.k || 0); totSF += (p.sf || 0);
+            });
 
-                    batBody.innerHTML += `
+            const totSingles = Math.max(0, totH - (tot2B + tot3B + totHR));
+            const teamAVG = calculateAVG(totH, totVB);
+            const teamOBP = calculateOBP(totH, totBB, totVB, totSF);
+            const teamSLG = calculateSLG(totSingles, tot2B, tot3B, totHR, totVB);
+            const teamOPS = teamOBP + teamSLG;
+
+            let totJL = 0, totJG = 0, totJP = 0, totJS = 0, totIP = 0, totPitH = 0, totCL = 0, totPitBB = 0, totPitK = 0;
+            teamPitchers.forEach(p => {
+                totJL += (p.jl || 0); totJG += (p.jg || 0); totJP += (p.jp || 0); totJS += (p.js || 0);
+                totIP += (p.ip || 0); totPitH += (p.h || 0); totCL += (p.cl || 0); totPitBB += (p.bb || 0); totPitK += (p.k || 0);
+            });
+
+            const teamERA  = calculateERA(totCL, totIP);
+            const teamWHIP = calculateWHIP(totPitH, totPitBB, totIP);
+
+            document.getElementById('teamSummaryCards').innerHTML = `
+                <div class="bg-white p-3.5 rounded-2xl card-shadow border border-slate-100 text-center">
+                    <span class="text-[9px] font-black uppercase text-slate-400 block tracking-wider">AVG Colectivo</span>
+                    <span class="text-xl font-black text-orange-500 mt-1 block">${teamAVG.toFixed(3)}</span>
+                    <span class="text-[10px] text-slate-400 font-bold">${totH} H en ${totVB} VB</span>
+                </div>
+                <div class="bg-white p-3.5 rounded-2xl card-shadow border border-slate-100 text-center">
+                    <span class="text-[9px] font-black uppercase text-slate-400 block tracking-wider">Anotadas (CA)</span>
+                    <span class="text-xl font-black text-[#003049] mt-1 block">${totCA}</span>
+                    <span class="text-[10px] text-slate-400 font-bold">${totCI} Impulsadas</span>
+                </div>
+                <div class="bg-white p-3.5 rounded-2xl card-shadow border border-slate-100 text-center">
+                    <span class="text-[9px] font-black uppercase text-slate-400 block tracking-wider">Extrabases</span>
+                    <span class="text-xl font-black text-red-500 mt-1 block">${tot2B + tot3B + totHR}</span>
+                    <span class="text-[10px] text-slate-400 font-bold">${tot2B} 2B · ${tot3B} 3B · ${totHR} HR</span>
+                </div>
+                <div class="bg-white p-3.5 rounded-2xl card-shadow border border-slate-100 text-center">
+                    <span class="text-[9px] font-black uppercase text-slate-400 block tracking-wider">OPS Equipo</span>
+                    <span class="text-xl font-black text-yellow-600 mt-1 block">${teamOPS.toFixed(3)}</span>
+                    <span class="text-[10px] text-slate-400 font-bold">OBP ${teamOBP.toFixed(3)} · SLG ${teamSLG.toFixed(3)}</span>
+                </div>
+                <div class="bg-white p-3.5 rounded-2xl card-shadow border border-slate-100 text-center">
+                    <span class="text-[9px] font-black uppercase text-slate-400 block tracking-wider">ERA Colectiva</span>
+                    <span class="text-xl font-black text-blue-600 mt-1 block">${teamERA.toFixed(2)}</span>
+                    <span class="text-[10px] text-slate-400 font-bold">${totCL} CL en ${totIP.toFixed(1)} IP</span>
+                </div>
+                <div class="bg-white p-3.5 rounded-2xl card-shadow border border-slate-100 text-center">
+                    <span class="text-[9px] font-black uppercase text-slate-400 block tracking-wider">WHIP Colectivo</span>
+                    <span class="text-xl font-black text-teal-600 mt-1 block">${teamWHIP.toFixed(2)}</span>
+                    <span class="text-[10px] text-slate-400 font-bold">${totPitK} K · ${totPitBB} BB</span>
+                </div>
+            `;
+
+            const batBody = document.getElementById('teamBattingBody');
+            const batFoot = document.getElementById('teamBattingFoot');
+            if (!teamBatters.length) {
+                batBody.innerHTML = `<tr><td colspan="15" class="p-4 text-center text-slate-400 font-bold">No hay bateadores inscritos.</td></tr>`;
+                batFoot.innerHTML = '';
+            } else {
+                batBody.innerHTML = teamBatters.map(p => {
+                    calculateMetrics(p);
+                    return `
                         <tr class="hover:bg-slate-50 border-b border-slate-100 transition">
                             <td class="p-3 text-left font-bold text-[#003049]">${p.name}</td>
                             <td class="p-3 text-center">${p.vb || 0}</td>
@@ -1052,7 +867,7 @@
                             <td class="p-3 text-center">${p.hr || 0}</td>
                             <td class="p-3 text-center font-bold">${p.ci || 0}</td>
                             <td class="p-3 text-center">${p.bb || 0}</td>
-                            <td class="p-3 text-center text-slate-500 font-semibold">${ponches}</td>
+                            <td class="p-3 text-center text-slate-500 font-semibold">${p.k || 0}</td>
                             <td class="p-3 text-center">${p.sf || 0}</td>
                             <td class="p-3 text-center font-black text-slate-900">${p.avg.toFixed(3)}</td>
                             <td class="p-3 text-center">${p.obp.toFixed(3)}</td>
@@ -1060,19 +875,39 @@
                             <td class="p-3 text-center font-black text-orange-600 bg-orange-50">${p.ops.toFixed(3)}</td>
                         </tr>
                     `;
-                });
+                }).join('');
+
+                batFoot.innerHTML = `
+                    <tr class="bg-orange-50/90 font-black border-t-2 border-orange-300 text-[#003049]">
+                        <td class="p-3 text-left uppercase text-xs">TOTALES DEL EQUIPO</td>
+                        <td class="p-3 text-center">${totVB}</td>
+                        <td class="p-3 text-center">${totCA}</td>
+                        <td class="p-3 text-center">${totH}</td>
+                        <td class="p-3 text-center">${tot2B}</td>
+                        <td class="p-3 text-center">${tot3B}</td>
+                        <td class="p-3 text-center">${totHR}</td>
+                        <td class="p-3 text-center">${totCI}</td>
+                        <td class="p-3 text-center">${totBB}</td>
+                        <td class="p-3 text-center">${totK}</td>
+                        <td class="p-3 text-center">${totSF}</td>
+                        <td class="p-3 text-center text-slate-900">${teamAVG.toFixed(3)}</td>
+                        <td class="p-3 text-center">${teamOBP.toFixed(3)}</td>
+                        <td class="p-3 text-center">${teamSLG.toFixed(3)}</td>
+                        <td class="p-3 text-center text-orange-600 bg-orange-100">${teamOPS.toFixed(3)}</td>
+                    </tr>
+                `;
             }
 
-            pitBody.innerHTML = '';
-            if (teamPitchers.length === 0) {
-                pitBody.innerHTML = `<tr><td colspan="12" class="p-4 text-center text-slate-400 font-bold">No hay lanzadores inscritos. Agrégalos en el Panel Administrativo.</td></tr>`;
+            const pitBody = document.getElementById('teamPitchingBody');
+            const pitFoot = document.getElementById('teamPitchingFoot');
+            if (!teamPitchers.length) {
+                pitBody.innerHTML = `<tr><td colspan="12" class="p-4 text-center text-slate-400 font-bold">No hay lanzadores inscritos.</td></tr>`;
+                pitFoot.innerHTML = '';
             } else {
-                teamPitchers.forEach(p => {
+                pitBody.innerHTML = teamPitchers.map(p => {
                     const era = calculateERA(p.cl || 0, p.ip || 0);
                     const whip = calculateWHIP(p.h || 0, p.bb || 0, p.ip || 0);
-                    const ponchesPit = (p.k !== undefined && p.k !== null) ? p.k : 0;
-
-                    pitBody.innerHTML += `
+                    return `
                         <tr class="hover:bg-slate-50 border-b border-slate-100 transition">
                             <td class="p-3 text-left font-bold text-[#003049]">${p.name}</td>
                             <td class="p-3 text-center">${p.jl || 0}</td>
@@ -1083,12 +918,29 @@
                             <td class="p-3 text-center">${p.h || 0}</td>
                             <td class="p-3 text-center">${p.cl || 0}</td>
                             <td class="p-3 text-center">${p.bb || 0}</td>
-                            <td class="p-3 text-center font-bold">${ponchesPit}</td>
+                            <td class="p-3 text-center font-bold">${p.k || 0}</td>
                             <td class="p-3 text-center font-black text-blue-600 bg-blue-50">${era.toFixed(2)}</td>
                             <td class="p-3 text-center font-semibold text-[#003049]">${whip.toFixed(2)}</td>
                         </tr>
                     `;
-                });
+                }).join('');
+
+                pitFoot.innerHTML = `
+                    <tr class="bg-blue-50/90 font-black border-t-2 border-blue-300 text-[#003049]">
+                        <td class="p-3 text-left uppercase text-xs">TOTALES PITCHEO</td>
+                        <td class="p-3 text-center">${totJL}</td>
+                        <td class="p-3 text-center text-green-600">${totJG}</td>
+                        <td class="p-3 text-center text-red-600">${totJP}</td>
+                        <td class="p-3 text-center">${totJS}</td>
+                        <td class="p-3 text-center">${totIP.toFixed(1)}</td>
+                        <td class="p-3 text-center">${totPitH}</td>
+                        <td class="p-3 text-center">${totCL}</td>
+                        <td class="p-3 text-center">${totPitBB}</td>
+                        <td class="p-3 text-center">${totPitK}</td>
+                        <td class="p-3 text-center text-blue-600 bg-blue-100">${teamERA.toFixed(2)}</td>
+                        <td class="p-3 text-center text-[#003049]">${teamWHIP.toFixed(2)}</td>
+                    </tr>
+                `;
             }
         }
 
@@ -1096,28 +948,13 @@
             const name = document.getElementById('adminNewPlayerName').value.trim();
             const team = document.getElementById('adminNewPlayerTeam').value;
             const role = document.getElementById('adminNewPlayerRole').value;
-
-            if (!name) return;
-
-            const duplicate = players.find(p => p.name.toLowerCase() === name.toLowerCase() && p.team === team);
-            if (duplicate) return;
-
-            const p = {
-                name: name,
-                team: team,
-                type: role,
-                vb: 0, h: 0, d2b: 0, d3b: 0, hr: 0, bb: 0, k: 0, sf: 0, ci: 0, ca: 0
-            };
-
-            if (role === 'Lanzador') {
-                p.jl = 0; p.jg = 0; p.jp = 0; p.js = 0; p.ip = 0; p.h = 0; p.cl = 0; p.bb = 0; p.k = 0;
-            }
-
+            if (!name || players.find(p => p.name.toLowerCase() === name.toLowerCase() && p.team === team)) return;
+            const p = { name, team, type: role, vb: 0, h: 0, d2b: 0, d3b: 0, hr: 0, bb: 0, k: 0, sf: 0, ci: 0, ca: 0 };
+            if (role === 'Lanzador') Object.assign(p, { jl: 0, jg: 0, jp: 0, js: 0, ip: 0, h: 0, cl: 0, bb: 0, k: 0 });
             players.push(p);
             saveData();
             adminUpdatePlayerDropdown();
             renderAll();
-
             document.getElementById('adminNewPlayerName').value = '';
         }
 
@@ -1125,7 +962,6 @@
             const team = document.getElementById('adminLoadTeam').value;
             const name = document.getElementById('adminLoadPlayer').value;
             const player = players.find(p => p.team === team && p.name === name);
-
             if (!player) return;
 
             if (player.type === 'Bateador') {
@@ -1150,40 +986,26 @@
                 player.bb = (player.bb || 0) + parseInt(document.getElementById('loadPitchBB').value || 0);
                 player.k = (player.k || 0) + parseInt(document.getElementById('loadPitchK').value || 0);
             }
-
             saveData();
             renderAll();
-
             document.querySelectorAll('#adminFieldsBateador input, #adminFieldsLanzador input').forEach(inp => inp.value = "0");
         }
 
         function finishGame(id) {
             const scoreH = parseInt(document.getElementById(`scH-${id}`).value);
             const scoreV = parseInt(document.getElementById(`scV-${id}`).value);
-
             if (isNaN(scoreH) || isNaN(scoreV)) return;
-
             const g = games.find(x => x.id === id);
-            g.scoreHome = scoreH;
-            g.scoreVisitor = scoreV;
-            g.status = "finished";
-
+            g.scoreHome = scoreH; g.scoreVisitor = scoreV; g.status = "finished";
             saveData();
             calculateStandings();
             renderAll();
         }
 
         function exportToJSON() {
-            const data = {
-                teamNames: teamNames,
-                players: players,
-                games: games
-            };
-            const json = JSON.stringify(data);
-            const blob = new Blob([json], { type: "application/json" });
-            const url = URL.createObjectURL(blob);
+            const blob = new Blob([JSON.stringify({ teamNames, players, games })], { type: "application/json" });
             const a = document.createElement('a');
-            a.href = url;
+            a.href = URL.createObjectURL(blob);
             a.download = `LIGA_SOFTBOL_CIENCIAS_${new Date().toLocaleDateString()}.json`;
             document.body.appendChild(a);
             a.click();
@@ -1193,26 +1015,14 @@
         function importFromJSON(event) {
             const file = event.target.files[0];
             if (!file) return;
-
             const reader = new FileReader();
             reader.onload = function(e) {
                 try {
                     const parsed = JSON.parse(e.target.result);
                     if (parsed.teamNames && parsed.players && parsed.games) {
-                        teamNames = parsed.teamNames;
-                        players = parsed.players;
-                        
-                        players.forEach(p => {
-                            if (p.k === null || p.k === undefined) p.k = 0;
-                            calculateMetrics(p);
-                        });
-
-                        games = parsed.games;
-                        saveData();
-                        calculateStandings();
-                        populateTeamSelectors();
-                        renderAll();
-                        renderTeamNameInputs();
+                        teamNames = parsed.teamNames; players = parsed.players; games = parsed.games;
+                        players.forEach(p => { if (p.k === null || p.k === undefined) p.k = 0; calculateMetrics(p); });
+                        saveData(); calculateStandings(); populateTeamSelectors(); renderAll(); renderTeamNameInputs();
                     }
                 } catch (err) {}
             };
@@ -1231,16 +1041,12 @@
         }
 
         function resetWholeLeague() {
-            if (confirm("¿Seguro de reiniciar la liga completa? Se eliminarán rosters y estadísticas ingresadas.")) {
-                localStorage.clear();
-                sessionStorage.clear();
-                location.reload();
+            if (confirm("¿Seguro de reiniciar la liga completa?")) {
+                localStorage.clear(); sessionStorage.clear(); location.reload();
             }
         }
 
-        window.onload = function() {
-            initLeague();
-        };
+        window.onload = initLeague;
     </script>
 </body>
 </html>
