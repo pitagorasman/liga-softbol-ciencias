@@ -335,8 +335,8 @@
     </div>
 
 <script>
-        const TOTAL_TEAMS = 6;
-        let teamNames = {1:"Ciencias",2:"Ingeniería",3:"Humanidades",4:"FaCES",5:"Derecho",6:"Profesores"};
+        const TOTAL_TEAMS = 5;
+        let teamNames = {1:"Ciencias",2:"Ingeniería",3:"Humanidades",4:"FaCES",5:"Derecho"};
 
         const defaultPlayers = [
             {"name":"Luis Flores","team":"Ciencias","type":"Bateador","vb":7,"h":4,"d2b":1,"d3b":0,"hr":0,"bb":1,"sf":0,"ci":0,"ca":3,"k":0},
@@ -368,22 +368,22 @@
             {"name":"Ronald Gonzalez","team":"Ciencias","type":"Lanzador","jl":0,"jg":0,"jp":0,"js":0,"ip":0,"h":0,"cl":0,"bb":0,"k":0,"era":0},
             {"name":"Ronald Gonzalez P","team":"Ingeniería","type":"Lanzador","jl":2,"jg":0,"jp":1,"js":0,"ip":6.2,"h":16,"cl":14,"bb":6,"k":2,"era":14.7},
             {"name":"Bryant Rivas (P)","team":"Ciencias","type":"Lanzador","jl":1,"jg":1,"jp":0,"js":0,"ip":5,"h":9,"cl":6,"bb":2,"k":2,"era":8.4},
-            {"name":"Daniel Madrid","team":"FaCES","type":"Bateador","vb":6,"h":1,"d2b":0,"d3b":0,"hr":0,"bb":1,"sf":0,"ci":0,"ca":0,"k":0},
-            {"name":"Diego Benavides","team":"FaCES","type":"Bateador","vb":8,"h":3,"d2b":1,"d3b":0,"hr":0,"bb":1,"sf":0,"ci":2,"ca":4,"k":0},
-            {"name":"Omar Gamero","team":"FaCES","type":"Bateador","vb":7,"h":5,"d2b":1,"d3b":0,"hr":2,"bb":2,"sf":0,"ci":5,"ca":7,"k":0},
-            {"name":"Jose Torrealba","team":"FaCES","type":"Bateador","vb":7,"h":2,"d2b":0,"d3b":0,"hr":0,"bb":2,"sf":0,"ci":0,"ca":3,"k":0},
-            {"name":"Miguel Ramirez","team":"FaCES","type":"Bateador","vb":5,"h":3,"d2b":0,"d3b":0,"hr":1,"bb":0,"sf":0,"ci":4,"ca":3,"k":0},
-            {"name":"Juanorolo La Cruz","team":"FaCES","type":"Bateador","vb":2,"h":1,"d2b":0,"d3b":0,"hr":0,"bb":1,"sf":0,"ci":1,"ca":1,"k":0},
-            {"name":"Eduardo Palacios","team":"FaCES","type":"Bateador","vb":6,"h":4,"d2b":0,"d3b":0,"hr":3,"bb":0,"sf":0,"ci":7,"ca":3,"k":0},
+            {"name":"Daniel Madrid","team":"FaCES","type":"Bateador","vb":7,"h":1,"d2b":0,"d3b":0,"hr":0,"bb":1,"sf":0,"ci":0,"ca":0,"k":0},
+            {"name":"Diego Benavides","team":"FaCES","type":"Bateador","vb":10,"h":3,"d2b":1,"d3b":0,"hr":0,"bb":2,"sf":0,"ci":2,"ca":5,"k":0},
+            {"name":"Omar Gamero","team":"FaCES","type":"Bateador","vb":9,"h":5,"d2b":1,"d3b":0,"hr":2,"bb":3,"sf":0,"ci":5,"ca":7,"k":0},
+            {"name":"Jose Torrealba","team":"FaCES","type":"Bateador","vb":9,"h":3,"d2b":0,"d3b":0,"hr":0,"bb":2,"sf":0,"ci":0,"ca":3,"k":0},
+            {"name":"Miguel Ramirez","team":"FaCES","type":"Bateador","vb":8,"h":4,"d2b":0,"d3b":0,"hr":1,"bb":0,"sf":0,"ci":4,"ca":4,"k":0},
+            {"name":"Juanorolo La Cruz","team":"FaCES","type":"Bateador","vb":4,"h":1,"d2b":0,"d3b":0,"hr":0,"bb":1,"sf":0,"ci":1,"ca":1,"k":0},
+            {"name":"Eduardo Palacios","team":"FaCES","type":"Bateador","vb":9,"h":5,"d2b":0,"d3b":0,"hr":4,"bb":0,"sf":0,"ci":9,"ca":4,"k":0},
             {"name":"Joyner Carucci","team":"FaCES","type":"Bateador","vb":6,"h":1,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":2,"k":0},
-            {"name":"Christian Castillo","team":"FaCES","type":"Bateador","vb":7,"h":5,"d2b":0,"d3b":0,"hr":0,"bb":2,"sf":0,"ci":1,"ca":4,"k":0},
-            {"name":"Juvenal Jimenez","team":"FaCES","type":"Bateador","vb":3,"h":3,"d2b":1,"d3b":0,"hr":0,"bb":1,"sf":0,"ci":5,"ca":2,"k":0},
-            {"name":"Julio Gomez","team":"FaCES","type":"Bateador","vb":4,"h":1,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":0,"k":1},
-            {"name":"Luis Gomez","team":"FaCES","type":"Bateador","vb":6,"h":2,"d2b":2,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":2,"ca":2,"k":0},
-            {"name":"Michel Toglia","team":"FaCES","type":"Bateador","vb":4,"h":2,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":1,"k":0},
+            {"name":"Christian Castillo","team":"FaCES","type":"Bateador","vb":10,"h":6,"d2b":1,"d3b":0,"hr":0,"bb":2,"sf":0,"ci":2,"ca":5,"k":0},
+            {"name":"Juvenal Jimenez","team":"FaCES","type":"Bateador","vb":5,"h":4,"d2b":1,"d3b":0,"hr":0,"bb":1,"sf":0,"ci":5,"ca":2,"k":0},
+            {"name":"Julio Gomez","team":"FaCES","type":"Bateador","vb":5,"h":2,"d2b":1,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":0,"k":1},
+            {"name":"Luis Gomez","team":"FaCES","type":"Bateador","vb":7,"h":2,"d2b":2,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":2,"ca":2,"k":0},
+            {"name":"Michel Toglia","team":"FaCES","type":"Bateador","vb":6,"h":2,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":1,"k":0},
             {"name":"Felix Garcia","team":"FaCES","type":"Bateador","vb":3,"h":0,"d2b":0,"d3b":0,"hr":0,"bb":1,"sf":0,"ci":1,"ca":0,"k":0},
             {"name":"Juvenal Jimenez (P)","team":"FaCES","type":"Lanzador","jl":2,"jg":0,"jp":0,"js":0,"ip":6.1,"h":20,"cl":15,"bb":3,"k":0,"era":16.58},
-            {"name":"Jose Torrealba (P)","team":"FaCES","type":"Lanzador","jl":3,"jg":2,"jp":0,"js":0,"ip":9.1,"h":17,"cl":7,"bb":1,"k":0,"era":5.25},
+            {"name":"Jose Torrealba (P)","team":"FaCES","type":"Lanzador","jl":4,"jg":2,"jp":1,"js":0,"ip":15.1,"h":30,"cl":16,"bb":3,"k":0,"era":7.3},
             {"name":"Daniel Martinez","team":"Humanidades","type":"Bateador","vb":4,"h":0,"d2b":0,"d3b":0,"hr":0,"bb":2,"sf":0,"ci":0,"ca":0,"k":0},
             {"name":"Manuel Aguiar","team":"Humanidades","type":"Bateador","vb":6,"h":0,"d2b":1,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":1,"ca":1,"k":0},
             {"name":"Hector Marquez","team":"Humanidades","type":"Bateador","vb":2,"h":1,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":1,"k":0},
@@ -417,27 +417,27 @@
             {"name":"Luis Adames","team":"Ingeniería","type":"Bateador","vb":1,"h":0,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":0,"k":0},
             {"name":"Jose Martinez (P)","team":"Ingeniería","type":"Lanzador","jl":2,"jg":1,"jp":0,"js":0,"ip":9,"h":15,"cl":15,"bb":12,"k":2,"era":11.67},
             {"name":"Frank Ariza (P)","team":"Ingeniería","type":"Lanzador","jl":1,"jg":0,"jp":1,"js":0,"ip":1.1,"h":7,"cl":6,"bb":1,"k":0,"era":31.5},
-            {"name":"Eduardo Medina","team":"Derecho","type":"Bateador","vb":6,"h":1,"d2b":1,"d3b":0,"hr":0,"bb":1,"sf":0,"ci":0,"ca":1,"k":0},
-            {"name":"Carlos Medina","team":"Derecho","type":"Bateador","vb":5,"h":1,"d2b":0,"d3b":0,"hr":0,"bb":2,"sf":0,"ci":0,"ca":3,"k":0},
-            {"name":"Yaron Diaz","team":"Derecho","type":"Bateador","vb":7,"h":6,"d2b":2,"d3b":0,"hr":3,"bb":0,"sf":0,"ci":6,"ca":4,"k":1},
-            {"name":"Yonaiver Morales","team":"Derecho","type":"Bateador","vb":4,"h":1,"d2b":0,"d3b":0,"hr":0,"bb":1,"sf":0,"ci":1,"ca":1,"k":0},
-            {"name":"Christian Garcia","team":"Derecho","type":"Bateador","vb":2,"h":0,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":0,"k":0},
-            {"name":"Jomar Mendoza","team":"Derecho","type":"Bateador","vb":4,"h":1,"d2b":0,"d3b":0,"hr":0,"bb":2,"sf":0,"ci":0,"ca":1,"k":0},
-            {"name":"Braulio Labrador","team":"Derecho","type":"Bateador","vb":6,"h":2,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":0,"k":0},
-            {"name":"Andres Lorant","team":"Derecho","type":"Bateador","vb":5,"h":1,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":0,"k":1},
-            {"name":"Braulio Labrador (P)","team":"Derecho","type":"Lanzador","jl":2,"jg":1,"jp":1,"js":0,"ip":11,"h":28,"cl":16,"bb":2,"k":3,"era":10.18},
-            {"name":"Enderson Corro","team":"Derecho","type":"Bateador","vb":6,"h":1,"d2b":1,"d3b":0,"hr":0,"bb":1,"sf":0,"ci":1,"ca":1,"k":0},
+            {"name":"Eduardo Medina","team":"Derecho","type":"Bateador","vb":10,"h":3,"d2b":1,"d3b":1,"hr":0,"bb":1,"sf":0,"ci":1,"ca":3,"k":0},
+            {"name":"Carlos Medina","team":"Derecho","type":"Bateador","vb":7,"h":1,"d2b":0,"d3b":0,"hr":0,"bb":4,"sf":0,"ci":0,"ca":4,"k":0},
+            {"name":"Yaron Diaz","team":"Derecho","type":"Bateador","vb":11,"h":9,"d2b":3,"d3b":0,"hr":3,"bb":0,"sf":0,"ci":9,"ca":5,"k":1},
+            {"name":"Yonaiver Morales","team":"Derecho","type":"Bateador","vb":8,"h":3,"d2b":0,"d3b":0,"hr":0,"bb":1,"sf":0,"ci":1,"ca":4,"k":0},
+            {"name":"Christian Garcia","team":"Derecho","type":"Bateador","vb":6,"h":1,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":1,"k":0},
+            {"name":"Jomar Mendoza","team":"Derecho","type":"Bateador","vb":6,"h":1,"d2b":0,"d3b":0,"hr":0,"bb":2,"sf":0,"ci":0,"ca":1,"k":0},
+            {"name":"Braulio Labrador","team":"Derecho","type":"Bateador","vb":8,"h":3,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":1,"ca":1,"k":0},
+            {"name":"Andres Lorant","team":"Derecho","type":"Bateador","vb":9,"h":3,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":1,"ca":1,"k":1},
+            {"name":"Braulio Labrador (P)","team":"Derecho","type":"Lanzador","jl":3,"jg":2,"jp":1,"js":0,"ip":15,"h":30,"cl":17,"bb":3,"k":3,"era":7.93},
+            {"name":"Enderson Corro","team":"Derecho","type":"Bateador","vb":10,"h":4,"d2b":1,"d3b":0,"hr":1,"bb":1,"sf":0,"ci":3,"ca":3,"k":0},
             {"name":"Jefran Flores","team":"Ciencias","type":"Bateador","vb":3,"h":0,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":0,"k":0},
             {"name":"Luis Flores (P)","team":"Ciencias","type":"Lanzador","jl":1,"jg":0,"jp":0,"js":0,"ip":3.2,"h":9,"cl":8,"bb":4,"k":0,"era":15.27},
             {"name":"Jefran Flores (P)","team":"Ciencias","type":"Lanzador","jl":1,"jg":0,"jp":1,"js":0,"ip":1,"h":6,"cl":6,"bb":3,"k":0,"era":42},
-            {"name":"Miguel Medina","team":"FaCES","type":"Bateador","vb":3,"h":2,"d2b":0,"d3b":0,"hr":0,"bb":3,"sf":0,"ci":2,"ca":3,"k":0},
+            {"name":"Miguel Medina","team":"FaCES","type":"Bateador","vb":4,"h":3,"d2b":0,"d3b":0,"hr":1,"bb":4,"sf":0,"ci":3,"ca":4,"k":0},
             {"name":"Leonardo La Cruz","team":"FaCES","type":"Bateador","vb":1,"h":1,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":0,"k":0},
             {"name":"Deivis Camacho","team":"Ciencias","type":"Bateador","vb":3,"h":0,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":0,"k":0},
             {"name":"Luis Flores Soler","team":"Ciencias","type":"Bateador","vb":2,"h":1,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":1,"k":0},
             {"name":"Mauricio Hernandez","team":"Ciencias","type":"Bateador","vb":1,"h":0,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":0,"k":0},
             {"name":"Deivis Camacho (P)","team":"Ciencias","type":"Lanzador","jl":1,"jg":1,"jp":0,"js":0,"ip":5,"h":3,"cl":1,"bb":0,"k":1,"era":1.4},
             {"name":"Edgar Rodriguez","team":"Derecho","type":"Bateador","vb":2,"h":1,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":0,"k":0},
-            {"name":"Luis Davalillo","team":"Derecho","type":"Bateador","vb":1,"h":1,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":0,"k":0},
+            {"name":"Luis Davalillo","team":"Derecho","type":"Bateador","vb":3,"h":3,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":2,"k":0},
             {"name":"Byron Doria","team":"Derecho","type":"Bateador","vb":1,"h":0,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":0,"k":0},
             {"name":"Diego Flores","team":"Derecho","type":"Bateador","vb":1,"h":0,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":0,"k":0},
             {"name":"Moises Solano (P)","team":"Derecho","type":"Lanzador","jl":1,"jg":0,"jp":0,"js":0,"ip":1,"h":2,"cl":1,"bb":0,"k":0,"era":7},
@@ -445,9 +445,12 @@
             {"name":"Frank Leon","team":"Ingeniería","type":"Bateador","vb":4,"h":4,"d2b":1,"d3b":0,"hr":1,"bb":0,"sf":0,"ci":4,"ca":4,"k":0},
             {"name":"Raul Granado","team":"Ingeniería","type":"Bateador","vb":4,"h":1,"d2b":1,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":1,"ca":0,"k":0},
             {"name":"Jose Arape","team":"Ingeniería","type":"Bateador","vb":0,"h":0,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":0,"k":0},
-            {"name":"Jose Arape","team":"FaCES","type":"Bateador","vb":1,"h":1,"d2b":0,"d3b":0,"hr":1,"bb":1,"sf":0,"ci":2,"ca":2,"k":0},
-            {"name":"Jhonatan Vargas","team":"FaCES","type":"Bateador","vb":0,"h":0,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":0,"k":0},
-            {"name":"Jhonathan Vargas (P)","team":"FaCES","type":"Lanzador","jl":1,"jg":0,"jp":1,"js":0,"ip":0.1,"h":7,"cl":5,"bb":0,"k":0,"era":105}
+            {"name":"Jose Arape","team":"FaCES","type":"Bateador","vb":3,"h":2,"d2b":0,"d3b":0,"hr":2,"bb":2,"sf":0,"ci":3,"ca":3,"k":0},
+            {"name":"Jhonatan Vargas","team":"FaCES","type":"Bateador","vb":1,"h":0,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":0,"k":0},
+            {"name":"Jhonathan Vargas (P)","team":"FaCES","type":"Lanzador","jl":2,"jg":0,"jp":1,"js":0,"ip":1.1,"h":10,"cl":8,"bb":0,"k":1,"era":42},
+            {"name":"Emmanuel Losano","team":"Derecho","type":"Bateador","vb":2,"h":0,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":0,"k":0},
+            {"name":"Roalmi Cabeza","team":"Derecho","type":"Bateador","vb":4,"h":1,"d2b":0,"d3b":0,"hr":0,"bb":0,"sf":0,"ci":0,"ca":1,"k":1},
+            {"name":"Emmanuel Losano (P)","team":"Derecho","type":"Lanzador","jl":1,"jg":0,"jp":0,"js":0,"ip":3,"h":5,"cl":4,"bb":3,"k":0,"era":9.33}
         ];
 
         const defaultGames = [
@@ -463,7 +466,7 @@
             {"id":10,"homeIdx":3,"visitorIdx":6,"date":"Vie 16/10","slot":"11:00 AM","jornada":4,"status":"pending","scoreHome":0,"scoreVisitor":0},
             {"id":11,"homeIdx":1,"visitorIdx":5,"date":"Vie 16/10","slot":"01:00 PM","jornada":4,"status":"finished","scoreHome":11,"scoreVisitor":1},
             {"id":12,"homeIdx":2,"visitorIdx":4,"date":"Vie 16/10","slot":"03:00 PM","jornada":4,"status":"finished","scoreHome":19,"scoreVisitor":13},
-            {"id":13,"homeIdx":4,"visitorIdx":5,"date":"Vie 23/10","slot":"11:00 AM","jornada":5,"status":"pending","scoreHome":0,"scoreVisitor":0},
+            {"id":13,"homeIdx":4,"visitorIdx":5,"date":"Vie 23/10","slot":"11:00 AM","jornada":5,"status":"finished","scoreHome":6,"scoreVisitor":15},
             {"id":14,"homeIdx":2,"visitorIdx":3,"date":"Vie 23/10","slot":"01:00 PM","jornada":5,"status":"pending","scoreHome":0,"scoreVisitor":0},
             {"id":15,"homeIdx":1,"visitorIdx":6,"date":"Vie 23/10","slot":"03:00 PM","jornada":5,"status":"pending","scoreHome":0,"scoreVisitor":0}
         ];
@@ -474,7 +477,6 @@
         let isAdminLoggedIn = false;
 
         // FUNCIONES DE CONVERSIÓN DE INNINGS EN BASE 3 (BÉISBOL/SOFTBOL)
-        // Convierte notación 4.1 -> 13 outs, 4.2 -> 14 outs, 0.3 -> 3 outs (1.0 IP)
         function ipToOuts(ipVal) {
             const val = Math.max(0, parseFloat(ipVal) || 0);
             const whole = Math.floor(val + 1e-6);
@@ -482,7 +484,6 @@
             return (whole * 3) + dec;
         }
 
-        // Convierte outs de vuelta a notación de béisbol (ej. 15 outs -> 5.0, 14 outs -> 4.2)
         function outsToIp(totalOuts) {
             const outs = Math.max(0, Math.round(totalOuts));
             const whole = Math.floor(outs / 3);
@@ -490,25 +491,22 @@
             return parseFloat(`${whole}.${rem}`);
         }
 
-        // Suma dos cantidades de IP en notación de béisbol (ej. 4.2 + 0.1 = 5.0)
         function addBaseballIP(ipA, ipB) {
             return outsToIp(ipToOuts(ipA) + ipToOuts(ipB));
         }
 
-        // Convierte IP de notación béisbol a fracción matemática real (ej. 4.1 -> 4.3333, 4.2 -> 4.6667)
         function ipToRealInnings(ipVal) {
             return ipToOuts(ipVal) / 3.0;
         }
 
-        // Formatea visualmente el IP para mostrar siempre .0, .1 o .2
         function formatIP(ipVal) {
             return outsToIp(ipToOuts(ipVal)).toFixed(1);
         }
 
         function initLeague() {
-            const savedNames = localStorage.getItem('LICS_teamNames_v20');
-            const savedPlayers = localStorage.getItem('LICS_players_v20');
-            const savedGames = localStorage.getItem('LICS_games_v20');
+            const savedNames = localStorage.getItem('LICS_teamNames_v21');
+            const savedPlayers = localStorage.getItem('LICS_players_v21');
+            const savedGames = localStorage.getItem('LICS_games_v21');
 
             teamNames = savedNames ? JSON.parse(savedNames) : { ...teamNames };
             players = savedPlayers ? JSON.parse(savedPlayers) : [ ...defaultPlayers ];
@@ -534,9 +532,9 @@
         }
 
         function saveData() {
-            localStorage.setItem('LICS_teamNames_v20', JSON.stringify(teamNames));
-            localStorage.setItem('LICS_players_v20', JSON.stringify(players));
-            localStorage.setItem('LICS_games_v20', JSON.stringify(games));
+            localStorage.setItem('LICS_teamNames_v21', JSON.stringify(teamNames));
+            localStorage.setItem('LICS_players_v21', JSON.stringify(players));
+            localStorage.setItem('LICS_games_v21', JSON.stringify(games));
         }
 
         function unlockAdmin() {
@@ -624,7 +622,7 @@
 
             leagueStandings.forEach(t => {
                 if (t.jj === 0) {
-                    t.difNum = 999; // Asegura que quien no ha debutado quede al final de la tabla
+                    t.difNum = 999;
                     t.dif = '-';
                 } else {
                     const gb = ((leaderJG - t.jg) + (t.jp - leaderJP)) / 2.0;
@@ -678,7 +676,6 @@
         function calculateOBP(h, bb, vb, sf) { return (vb + bb + sf) > 0 ? (h + bb) / (vb + bb + sf) : 0; }
         function calculateSLG(singles, d2b, d3b, hr, vb) { return vb > 0 ? (singles + (d2b * 2) + (d3b * 3) + (hr * 4)) / vb : 0; }
         
-        // ERA Y WHIP USANDO TERCIOS DE INNING REALES
         function calculateERA(cl, ip) {
             const realIP = ipToRealInnings(ip);
             return realIP > 0 ? (cl * 7) / realIP : 0;
@@ -868,7 +865,6 @@
             const teamSLG = calculateSLG(totSingles, tot2B, tot3B, totHR, totVB);
             const teamOPS = teamOBP + teamSLG;
 
-            // SUMA COLECTIVA DE INNINGS EN BASE 3 (OUTS)
             let totJL = 0, totJG = 0, totJP = 0, totJS = 0, totOuts = 0, totPitH = 0, totCL = 0, totPitBB = 0, totPitK = 0;
             teamPitchers.forEach(p => {
                 totJL += (p.jl || 0); totJG += (p.jg || 0); totJP += (p.jp || 0); totJS += (p.js || 0);
@@ -1045,7 +1041,6 @@
                 player.jg = (player.jg || 0) + parseInt(document.getElementById('loadPitchJG').value || 0);
                 player.jp = (player.jp || 0) + parseInt(document.getElementById('loadPitchJP').value || 0);
                 player.js = (player.js || 0) + parseInt(document.getElementById('loadPitchJS').value || 0);
-                // SUMA DE INNINGS EN BASE 3 (0.1 + 0.2 = 1.0)
                 player.ip = addBaseballIP(player.ip || 0, parseFloat(document.getElementById('loadPitchIP').value || 0));
                 player.h = (player.h || 0) + parseInt(document.getElementById('loadPitchH').value || 0);
                 player.cl = (player.cl || 0) + parseInt(document.getElementById('loadPitchCL').value || 0);
@@ -1118,7 +1113,5 @@
 
         window.onload = initLeague;
     </script>
-</body>
-</html>
 </body>
 </html>
